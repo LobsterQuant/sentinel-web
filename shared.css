@@ -1,0 +1,256 @@
+/* ═══════════════════════════════════════════════════════
+   SENTINEL — Shared Styles (modal + banner fix)
+   Loaded by all pages
+═══════════════════════════════════════════════════════ */
+
+/* ── BANNER Z-INDEX FIX ────────────────────────────────
+   Ensure anchor scroll-targets clear both fixed nav (60px)
+   and fixed banner (37px). Also add a pseudo-element spacer
+   on the body so no inline content starts under the banner.
+──────────────────────────────────────────────────────── */
+html {
+  scroll-padding-top: calc(60px + 37px + 24px); /* nav + banner + breathing room */
+}
+
+/* ── WAITLIST MODAL ────────────────────────────────────── */
+.wl-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease, visibility 200ms ease;
+}
+
+.wl-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.wl-modal {
+  background: #080808;
+  border: 1px solid #1A1A1A;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 460px;
+  position: relative;
+  transform: translateY(16px) scale(0.97);
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wl-overlay.open .wl-modal {
+  transform: translateY(0) scale(1);
+}
+
+.wl-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #4A4A5A;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  transition: color 150ms ease;
+  z-index: 2;
+}
+
+.wl-close:hover {
+  color: #FFFFFF;
+}
+
+.wl-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.wl-header {
+  padding: 32px 32px 0;
+}
+
+.wl-eyebrow {
+  font-family: 'JetBrains Mono', 'Cascadia Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #00E5BD;
+  margin-bottom: 10px;
+}
+
+.wl-title {
+  font-family: 'Syne', 'DM Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.wl-subtitle {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 13px;
+  color: #ABABBA;
+  line-height: 1.55;
+}
+
+.wl-form {
+  padding: 28px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wl-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wl-field label {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #4A4A5A;
+}
+
+.wl-field input,
+.wl-field select {
+  background: #000000;
+  border: 1px solid #1A1A1A;
+  border-radius: 4px;
+  padding: 11px 14px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 14px;
+  color: #FFFFFF;
+  outline: none;
+  transition: border-color 150ms ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.wl-field input::placeholder {
+  color: #4A4A5A;
+}
+
+.wl-field input:focus,
+.wl-field select:focus {
+  border-color: #00E5BD44;
+}
+
+.wl-field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234A4A5A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.wl-submit {
+  display: block;
+  width: 100%;
+  background: #FFFFFF;
+  color: #000000;
+  border: none;
+  border-radius: 9999px;
+  padding: 13px 24px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease;
+  margin-top: 4px;
+}
+
+.wl-submit:hover {
+  background: #00E5BD;
+  color: #000000;
+}
+
+.wl-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Success state */
+.wl-success {
+  display: none;
+  padding: 52px 32px;
+  text-align: center;
+}
+
+.wl-success.show {
+  display: block;
+}
+
+.wl-success-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #00E5BD18;
+  border: 1px solid #00E5BD44;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.wl-success-icon svg {
+  width: 24px;
+  height: 24px;
+  color: #00E5BD;
+}
+
+.wl-success h3 {
+  font-family: 'Syne', 'DM Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 10px;
+}
+
+.wl-success p {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 14px;
+  color: #ABABBA;
+  line-height: 1.6;
+}
+
+.wl-form.hidden {
+  display: none;
+}
+
+.wl-header.hidden {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .wl-modal {
+    max-width: 100%;
+  }
+  .wl-header {
+    padding: 24px 20px 0;
+  }
+  .wl-form {
+    padding: 20px 20px 24px;
+  }
+  .wl-success {
+    padding: 40px 20px;
+  }
+  .wl-title {
+    font-size: 24px;
+  }
+}
