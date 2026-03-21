@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing — SENTINEL | MiCA Compliance From €99/mo</title>
+  <meta name="description" content="SENTINEL MiCA compliance plans from €99/month. Automated transaction classification, Modelo filings, and regulatory alerts for CASPs and traders in Spain.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://sentinel-web-delta.vercel.app/pricing">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pricing — SENTINEL | MiCA Compliance From €99/mo">
+  <meta property="og:description" content="SENTINEL MiCA compliance plans from €99/month. Automated transaction classification, Modelo filings, and regulatory alerts for CASPs and traders in Spain.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sentinel-web-delta.vercel.app/pricing">
+  <meta property="og:image" content="https://sentinel-web-delta.vercel.app/og-image.png">
+  <meta property="og:site_name" content="SENTINEL">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pricing — SENTINEL | MiCA Compliance From €99/mo">
+  <meta name="twitter:description" content="SENTINEL MiCA compliance plans from €99/month. Automated transaction classification, Modelo filings, and regulatory alerts for CASPs and traders in Spain.">
+  <meta name="twitter:image" content="https://sentinel-web-delta.vercel.app/og-image.png">
+
+  <!-- Fonts — preloaded -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SENTINEL",
+    "description": "Automated EU MiCA and DAC8 compliance infrastructure for crypto businesses operating in Spain and the EU.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Individual",
+        "price": "99",
+        "priceCurrency": "EUR",
+        "billingPeriod": "P1M"
+      },
+      {
+        "@type": "Offer",
+        "name": "Professional",
+        "price": "499",
+        "priceCurrency": "EUR",
+        "billingPeriod": "P1M"
+      },
+      {
+        "@type": "Offer",
+        "name": "CASP",
+        "price": "1500",
+        "priceCurrency": "EUR",
+        "billingPeriod": "P1M"
+      }
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "True Nordic Capital",
+      "url": "https://sentinel-web-delta.vercel.app"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-void:         #000000;
+      --bg-surface:      #080808;
+      --bg-elevated:     #0F0F0F;
+      --bg-border:       #1A1A1A;
+      --bg-subtle:       #141414;
+      --text-primary:    #FFFFFF;
+      --text-secondary:  #ABABBA;
+      --text-muted:      #4A4A5A;
+      --text-mono:       #A8B4C0;
+      --accent:          #00E5BD;
+      --accent-dim:      #00E5BD22;
+      --accent-border:   #00E5BD44;
+      --status-critical: #FF3B3B;
+      --status-warning:  #F59E0B;
+      --status-ok:       #00E5BD;
+      --status-info:     #6B8CFF;
+      --deadline-red:    #FF3B3B;
+      --font-display:    'Syne', 'DM Sans', sans-serif;
+      --font-ui:         'DM Sans', system-ui, sans-serif;
+      --font-mono:       'JetBrains Mono', 'Cascadia Mono', monospace;
+      --radius-card:     4px;
+      --radius-pill:     9999px;
+      --radius-badge:    3px;
+      --nav-height:      60px;
+      --banner-height:   37px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-void);
+      color: var(--text-primary);
+      font-family: var(--font-ui);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ──────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      z-index: 200;
+      background: rgba(0,0,0,0.88);
+      border-bottom: 1px solid var(--bg-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo svg { color: var(--accent); }
+
+    .nav-wordmark {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: 0.14em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-links a.active { color: var(--accent); }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--text-primary);
+      color: #000;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 10px 24px;
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 150ms ease, color 150ms ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover { background: var(--accent); color: #000; }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-pill);
+      padding: 10px 24px;
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 150ms ease, color 150ms ease;
+      white-space: nowrap;
+    }
+
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── COUNTDOWN BANNER ────────────────────────────── */
+    .countdown-banner {
+      position: fixed;
+      top: var(--nav-height);
+      left: 0; right: 0;
+      z-index: 199;
+      height: var(--banner-height);
+      background: linear-gradient(90deg, #FF3B3B0D, #FF3B3B22, #FF3B3B0D);
+      border-bottom: 1px solid #FF3B3B44;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+      color: #FF3B3B;
+      letter-spacing: 0.02em;
+      padding: 0 24px;
+    }
+
+    /* ── PAGE HEADER ─────────────────────────────────── */
+    .page-header {
+      padding: calc(var(--nav-height) + var(--banner-height) + 80px) 48px 64px;
+      text-align: center;
+    }
+
+    .page-header-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 0.55s ease forwards 0.1s;
+    }
+
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(44px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards 0.22s;
+    }
+
+    .page-header-sub {
+      font-family: var(--font-ui);
+      font-size: clamp(15px, 1.8vw, 18px);
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards 0.38s;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION SCAFFOLD ────────────────────────────── */
+    .section-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 80px 48px;
+    }
+
+    .section-label {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .section-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 4.5vw, 52px);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--text-primary);
+      margin-bottom: 48px;
+    }
+
+    /* ── PRICING CARDS ───────────────────────────────── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .pricing-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-card);
+      padding: 36px 32px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 150ms ease;
+    }
+
+    .pricing-card:hover { border-color: var(--bg-elevated); }
+
+    .pricing-card.featured {
+      border-color: var(--accent-border);
+    }
+
+    .pricing-card.featured::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-card);
+      background: linear-gradient(160deg, var(--accent-dim) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .pricing-popular {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      border-radius: var(--radius-badge);
+      padding: 3px 9px;
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-tier {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-price {
+      font-family: var(--font-mono);
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+      margin-bottom: 5px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-period {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 32px;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-family: var(--font-ui);
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding: 9px 0;
+      border-bottom: 1px solid var(--bg-border);
+      line-height: 1.45;
+    }
+
+    .pricing-features li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .pricing-cta {
+      width: 100%;
+      text-align: center;
+      padding: 12px 24px;
+      font-size: 13px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── COMPARISON TABLE ────────────────────────────── */
+    .comparison-section {
+      border-top: 1px solid var(--bg-border);
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .comparison-table thead tr {
+      border-bottom: 1px solid var(--bg-border);
+    }
+
+    .comparison-table th {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      padding: 16px 20px;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .comparison-table th.tier-header {
+      text-align: center;
+      color: var(--text-primary);
+      font-size: 13px;
+    }
+
+    .comparison-table th.tier-header.featured-col {
+      color: var(--accent);
+    }
+
+    .comparison-table tbody tr {
+      border-bottom: 1px solid var(--bg-border);
+      transition: background 150ms ease;
+    }
+
+    .comparison-table tbody tr:nth-child(even) { background: var(--bg-subtle); }
+    .comparison-table tbody tr:hover { background: var(--bg-elevated); }
+
+    .comparison-table td {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding: 14px 20px;
+      white-space: nowrap;
+    }
+
+    .comparison-table td.feature-name {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .comparison-table td.center {
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 13px;
+    }
+
+    .check {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .dash {
+      color: var(--text-muted);
+    }
+
+    /* ── FAQ ACCORDION ───────────────────────────────── */
+    .faq-section {
+      border-top: 1px solid var(--bg-border);
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--bg-border);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .faq-question span {
+      font-family: var(--font-ui);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.45;
+    }
+
+    .faq-question svg {
+      width: 18px;
+      height: 18px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      transition: transform 200ms ease, color 200ms ease;
+    }
+
+    .faq-item.open .faq-question svg {
+      transform: rotate(45deg);
+      color: var(--accent);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 300ms ease, padding 300ms ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding-bottom: 22px;
+    }
+
+    .faq-answer p {
+      font-family: var(--font-ui);
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 720px;
+    }
+
+    /* ── CTA SECTION ─────────────────────────────────── */
+    .cta-section {
+      border-top: 1px solid var(--bg-border);
+      text-align: center;
+    }
+
+    .cta-section .section-h2 {
+      margin-bottom: 20px;
+    }
+
+    .cta-sub {
+      font-family: var(--font-ui);
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 36px;
+      line-height: 1.65;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-buttons .btn-primary { padding: 14px 32px; font-size: 14px; }
+    .cta-buttons .btn-secondary { padding: 14px 32px; font-size: 14px; }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--bg-border);
+      padding: 52px 48px;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+    }
+
+    .footer-logo svg { color: var(--accent); }
+
+    .footer-wordmark {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: 0.14em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    .footer-disclaimer {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      color: var(--text-muted);
+      max-width: 420px;
+      line-height: 1.65;
+    }
+
+    /* ── SCROLL REVEAL ────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 900px) {
+      .pricing-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    }
+
+    @media (max-width: 700px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .page-header { padding: calc(var(--nav-height) + var(--banner-height) + 48px) 24px 40px; }
+      .section-wrap { padding: 56px 24px; }
+      .countdown-banner { font-size: 11px; padding: 0 16px; }
+      footer { padding: 40px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav id="mainNav">
+    <a href="/" class="nav-logo">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <span class="nav-wordmark">SENTINEL</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#how-it-works">How It Works</a></li>
+      <li><a href="/pricing" class="active">Pricing</a></li>
+      <li><a href="/faq">FAQ</a></li>
+      <li><a href="/#deadlines">Deadlines</a></li>
+    </ul>
+    <a href="/pricing" class="btn-primary">Request Access</a>
+  </nav>
+
+  <!-- ═══════════════ COUNTDOWN BANNER ═══════════════ -->
+  <div class="countdown-banner">
+    ⚠&nbsp; MiCA full enforcement:&nbsp;<span id="countdownDisplay">calculating...</span>&nbsp;— 1 July 2026
+  </div>
+
+  <!-- ═══════════════ PAGE HEADER ═══════════════ -->
+  <header class="page-header">
+    <div class="page-header-label">Pricing</div>
+    <h1>Compliant by default.</h1>
+    <p class="page-header-sub">
+      Choose the plan that fits your compliance obligations. Every tier includes automated MiCA classification and regulatory monitoring.
+    </p>
+  </header>
+
+  <!-- ═══════════════ PRICING CARDS ═══════════════ -->
+  <section id="plans">
+    <div class="section-wrap" style="padding-top: 0;">
+
+      <div class="pricing-grid">
+
+        <!-- Individual -->
+        <div class="pricing-card reveal">
+          <div class="pricing-tier">Individual</div>
+          <div class="pricing-price">€99</div>
+          <div class="pricing-period">per month</div>
+          <ul class="pricing-features">
+            <li>Up to 500 transactions / month</li>
+            <li>Automated MiCA asset classification</li>
+            <li>Modelo 721 generation</li>
+            <li>Compliance deadline alerts</li>
+            <li>7-day audit log</li>
+          </ul>
+          <a href="#" class="btn-secondary pricing-cta">Get Started</a>
+        </div>
+
+        <!-- Professional -->
+        <div class="pricing-card featured reveal">
+          <div class="pricing-popular">Most Popular</div>
+          <div class="pricing-tier">Professional</div>
+          <div class="pricing-price">€499</div>
+          <div class="pricing-period">per month</div>
+          <ul class="pricing-features">
+            <li>Unlimited transactions</li>
+            <li>Automated MiCA asset classification</li>
+            <li>Modelo 172 + 173 + 721</li>
+            <li>DAC8 category reporting</li>
+            <li>Priority deadline alerts</li>
+            <li>30-day audit log</li>
+            <li>Full API access</li>
+          </ul>
+          <a href="#" class="btn-primary pricing-cta">Get Started</a>
+        </div>
+
+        <!-- CASP -->
+        <div class="pricing-card reveal">
+          <div class="pricing-tier">CASP</div>
+          <div class="pricing-price">€1,500</div>
+          <div class="pricing-period">per month</div>
+          <ul class="pricing-features">
+            <li>Unlimited transactions</li>
+            <li>Full MiCA CASP compliance suite</li>
+            <li>All Modelo filings + XML export</li>
+            <li>Full DAC8 pack</li>
+            <li>Custom deadline management</li>
+            <li>90-day audit log</li>
+            <li>API + webhooks</li>
+            <li>Dedicated compliance contact</li>
+          </ul>
+          <a href="#" class="btn-secondary pricing-cta">Contact Sales</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ COMPARISON TABLE ═══════════════ -->
+  <section class="comparison-section">
+    <div class="section-wrap">
+      <div class="section-label reveal">Feature Comparison</div>
+      <h2 class="section-h2 reveal">Every feature, side by side.</h2>
+
+      <div class="table-container reveal">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="tier-header">Individual</th>
+              <th class="tier-header featured-col">Professional</th>
+              <th class="tier-header">CASP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feature-name">Monthly transactions</td>
+              <td class="center">500</td>
+              <td class="center">Unlimited</td>
+              <td class="center">Unlimited</td>
+            </tr>
+            <tr>
+              <td class="feature-name">MiCA asset classification</td>
+              <td class="center"><span class="check">✓</span></td>
+              <td class="center"><span class="check">✓</span></td>
+              <td class="center"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">Regulatory monitoring (Watchdog)</td>
+              <td class="center"><span class="check">✓</span></td>
+              <td class="center"><span class="check">✓</span></td>
+              <td class="center"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">Modelo 721 generation</td>
+              <td class="center"><span class="check">✓</span></td>
+              <td class="center"><span class="check">✓</span></td>
+              <td class="center"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">Modelo 172 + 173 generation</td>
+              <td class="center"><span class="dash">—</span></td>
+              <td class="center"><span class="check">✓</span></td>
+              <td class="center"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">DAC8 category reporting</td>
+              <td class="center"><span class="dash">—</span></td>
+              <td class="center"><span class="check">✓</span></td>
+              <td class="center"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">XML export (submission-ready)</td>
+              <td class="center"><span class="dash">—</span></td>
+              <td class="center"><span class="dash">—</span></td>
+              <td class="center"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">Compliance deadline alerts</td>
+              <td class="center">Basic</td>
+              <td class="center">Priority</td>
+              <td class="center">Custom</td>
+            </tr>
+            <tr>
+              <td class="feature-name">Audit log retention</td>
+              <td class="center">7 days</td>
+              <td class="center">30 days</td>
+              <td class="center">90 days</td>
+            </tr>
+            <tr>
+              <td class="feature-name">API access</td>
+              <td class="center"><span class="dash">—</span></td>
+              <td class="center"><span class="check">✓</span></td>
+              <td class="center"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">Webhooks</td>
+              <td class="center"><span class="dash">—</span></td>
+              <td class="center"><span class="dash">—</span></td>
+              <td class="center"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="feature-name">Dedicated compliance contact</td>
+              <td class="center"><span class="dash">—</span></td>
+              <td class="center"><span class="dash">—</span></td>
+              <td class="center"><span class="check">✓</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FAQ ═══════════════ -->
+  <section class="faq-section" id="faq">
+    <div class="section-wrap">
+      <div class="section-label reveal">Frequently Asked Questions</div>
+      <h2 class="section-h2 reveal">Pricing questions, answered.</h2>
+
+      <div class="faq-list">
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            <span>Can I switch plans after signing up?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. You can upgrade or downgrade your plan at any time. Changes take effect at the start of your next billing cycle. No data is lost when switching tiers.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            <span>What happens if I exceed 500 transactions on the Individual plan?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>You'll receive an alert when approaching the limit. Transactions beyond 500 are queued but not classified until you upgrade to Professional or the next billing cycle begins. No data is lost.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            <span>Is there a free trial?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>We offer a 14-day free trial on the Professional plan. No credit card required. You'll have full access to all Professional features during the trial period.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            <span>Do you offer annual billing discounts?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. Annual billing saves 20% across all tiers: Individual at €79/mo, Professional at €399/mo, and CASP at €1,200/mo. Contact us for custom enterprise agreements.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            <span>What payment methods do you accept?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>We accept all major credit and debit cards, SEPA bank transfers, and wire transfers for CASP-tier clients. All payments are processed in EUR.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            <span>What does the CASP plan include that Professional doesn't?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>The CASP plan adds submission-ready XML export for all Modelo filings, webhook integrations, 90-day audit log retention, custom deadline management, and a dedicated compliance contact for your organization.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA ═══════════════ -->
+  <section class="cta-section">
+    <div class="section-wrap">
+      <div class="section-label reveal">Get Started</div>
+      <h2 class="section-h2 reveal">Before the deadline.</h2>
+      <p class="cta-sub reveal">MiCA enforcement begins July 1, 2026. Start automating your compliance today.</p>
+      <div class="cta-buttons reveal">
+        <a href="#plans" class="btn-primary">Choose Your Plan</a>
+        <a href="/faq" class="btn-secondary">Read the FAQ →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <a href="/" class="footer-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span class="footer-wordmark">SENTINEL</span>
+      </a>
+      <ul class="footer-links">
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/blog/mica-deadline-july-2026">Blog</a></li>
+        <li><a href="/#deadlines">Deadlines</a></li>
+      </ul>
+      <p class="footer-disclaimer">
+        SENTINEL provides compliance tooling, not legal advice. Consult a qualified legal professional for all regulatory decisions. True Nordic Capital © 2026.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // ── Live MiCA countdown ──────────────────────────────────────────
+    const MiCA_DEADLINE = new Date('2026-07-01T00:00:00+00:00');
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function updateCountdown() {
+      const diff = MiCA_DEADLINE - new Date();
+      if (diff <= 0) { document.getElementById('countdownDisplay').textContent = 'ENFORCEMENT ACTIVE'; return; }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000)  / 60000);
+      const s = Math.floor((diff % 60000)    / 1000);
+      document.getElementById('countdownDisplay').textContent = `${d}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ── FAQ accordion ────────────────────────────────────────────────
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+
+    // ── Scroll reveal ────────────────────────────────────────────────
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const siblings = [...entry.target.parentElement.querySelectorAll('.reveal:not(.visible)')];
+        const idx = siblings.indexOf(entry.target);
+        const delay = Math.max(0, idx * 75);
+        setTimeout(() => entry.target.classList.add('visible'), delay);
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
+</body>
+</html>

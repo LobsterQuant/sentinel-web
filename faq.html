@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — SENTINEL | MiCA, DAC8 & Modelo Compliance</title>
+  <meta name="description" content="Answers to common questions about MiCA compliance, DAC8 reporting, Modelo 172/173/721 filings, and how SENTINEL automates EU crypto compliance for CASPs.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://sentinel-web-delta.vercel.app/faq">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FAQ — SENTINEL | MiCA, DAC8 & Modelo Compliance">
+  <meta property="og:description" content="Answers to common questions about MiCA compliance, DAC8 reporting, Modelo 172/173/721 filings, and how SENTINEL automates EU crypto compliance for CASPs.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sentinel-web-delta.vercel.app/faq">
+  <meta property="og:image" content="https://sentinel-web-delta.vercel.app/og-image.png">
+  <meta property="og:site_name" content="SENTINEL">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FAQ — SENTINEL | MiCA, DAC8 & Modelo Compliance">
+  <meta name="twitter:description" content="Answers to common questions about MiCA compliance, DAC8 reporting, Modelo 172/173/721 filings, and how SENTINEL automates EU crypto compliance for CASPs.">
+  <meta name="twitter:image" content="https://sentinel-web-delta.vercel.app/og-image.png">
+
+  <!-- Fonts — preloaded -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is MiCA regulation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MiCA (Markets in Crypto-Assets Regulation) is the EU's comprehensive regulatory framework for crypto-assets. It requires all Crypto-Asset Service Providers (CASPs) to obtain a license and comply with operational, disclosure, and reporting obligations by July 1, 2026."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When does MiCA enforcement begin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MiCA full enforcement begins on July 1, 2026. After this date, any CASP operating in the EU without a MiCA license commits a criminal offence in all 27 member states. Fines can reach up to €5 million per violation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is DAC8?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DAC8 (Directive on Administrative Cooperation 8) mandates automatic exchange of crypto-asset transaction data between EU member state tax authorities. All CASPs and intermediaries must report transaction details including amounts, asset types, and counterparty information."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are Modelo 172, 173, and 721?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "These are Spanish tax reporting forms for crypto assets. Modelo 172 reports crypto-asset balances held by third parties. Modelo 173 reports crypto transactions performed through intermediaries. Modelo 721 declares crypto assets held abroad exceeding €50,000."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does SENTINEL automate compliance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SENTINEL uses four autonomous agents: Watchdog monitors EU regulators for new publications, Classifier assigns MiCA and DAC8 categories to every transaction, Reporter generates submission-ready Modelo filings in XML, and Advisor surfaces compliance gaps with actionable recommendations."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-void:         #000000;
+      --bg-surface:      #080808;
+      --bg-elevated:     #0F0F0F;
+      --bg-border:       #1A1A1A;
+      --bg-subtle:       #141414;
+      --text-primary:    #FFFFFF;
+      --text-secondary:  #ABABBA;
+      --text-muted:      #4A4A5A;
+      --text-mono:       #A8B4C0;
+      --accent:          #00E5BD;
+      --accent-dim:      #00E5BD22;
+      --accent-border:   #00E5BD44;
+      --status-critical: #FF3B3B;
+      --font-display:    'Syne', 'DM Sans', sans-serif;
+      --font-ui:         'DM Sans', system-ui, sans-serif;
+      --font-mono:       'JetBrains Mono', 'Cascadia Mono', monospace;
+      --radius-card:     4px;
+      --radius-pill:     9999px;
+      --radius-badge:    3px;
+      --nav-height:      60px;
+      --banner-height:   37px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-void);
+      color: var(--text-primary);
+      font-family: var(--font-ui);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-height); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; z-index: 200; background: rgba(0,0,0,0.88); border-bottom: 1px solid var(--bg-border); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo svg { color: var(--accent); }
+    .nav-wordmark { font-family: var(--font-display); font-size: 15px; font-weight: 800; color: var(--text-primary); letter-spacing: 0.14em; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { font-family: var(--font-ui); font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color 150ms ease; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-links a.active { color: var(--accent); }
+    .btn-primary { display: inline-block; background: var(--text-primary); color: #000; border: none; border-radius: var(--radius-pill); padding: 10px 24px; font-family: var(--font-ui); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; text-decoration: none; transition: background 150ms ease, color 150ms ease; white-space: nowrap; }
+    .btn-primary:hover { background: var(--accent); color: #000; }
+    .btn-secondary { display: inline-block; background: transparent; color: var(--text-primary); border: 1px solid var(--bg-border); border-radius: var(--radius-pill); padding: 10px 24px; font-family: var(--font-ui); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; text-decoration: none; transition: border-color 150ms ease, color 150ms ease; white-space: nowrap; }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── COUNTDOWN BANNER ── */
+    .countdown-banner { position: fixed; top: var(--nav-height); left: 0; right: 0; z-index: 199; height: var(--banner-height); background: linear-gradient(90deg, #FF3B3B0D, #FF3B3B22, #FF3B3B0D); border-bottom: 1px solid #FF3B3B44; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: #FF3B3B; letter-spacing: 0.02em; padding: 0 24px; }
+
+    /* ── PAGE HEADER ── */
+    .page-header { padding: calc(var(--nav-height) + var(--banner-height) + 80px) 48px 64px; text-align: center; }
+    .page-header-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 20px; opacity: 0; transform: translateY(14px); animation: fadeUp 0.55s ease forwards 0.1s; }
+    .page-header h1 { font-family: var(--font-display); font-size: clamp(44px, 6vw, 72px); font-weight: 800; line-height: 1; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: 20px; opacity: 0; transform: translateY(20px); animation: fadeUp 0.6s ease forwards 0.22s; }
+    .page-header-sub { font-family: var(--font-ui); font-size: clamp(15px, 1.8vw, 18px); font-weight: 400; line-height: 1.65; color: var(--text-secondary); max-width: 580px; margin: 0 auto; opacity: 0; transform: translateY(20px); animation: fadeUp 0.6s ease forwards 0.38s; }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* ── SECTION SCAFFOLD ── */
+    .section-wrap { max-width: 1120px; margin: 0 auto; padding: 80px 48px; }
+    .section-label { font-family: var(--font-ui); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-muted); margin-bottom: 14px; }
+    .section-h2 { font-family: var(--font-display); font-size: clamp(36px, 4.5vw, 52px); font-weight: 700; line-height: 1.05; color: var(--text-primary); margin-bottom: 48px; }
+
+    /* ── FAQ CATEGORY TABS ── */
+    .faq-cats { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
+    .faq-cat-btn { background: var(--bg-surface); border: 1px solid var(--bg-border); border-radius: var(--radius-pill); padding: 8px 20px; font-family: var(--font-ui); font-size: 12px; font-weight: 600; color: var(--text-secondary); cursor: pointer; transition: all 150ms ease; text-transform: uppercase; letter-spacing: 0.06em; }
+    .faq-cat-btn:hover { border-color: var(--accent-border); color: var(--text-primary); }
+    .faq-cat-btn.active { background: var(--accent); color: #000; border-color: var(--accent); }
+
+    /* ── FAQ ACCORDION ── */
+    .faq-group-label { font-family: var(--font-ui); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin-top: 40px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--bg-border); }
+    .faq-group-label:first-child { margin-top: 0; }
+
+    .faq-item { border-bottom: 1px solid var(--bg-border); }
+    .faq-question { width: 100%; background: none; border: none; padding: 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 20px; cursor: pointer; text-align: left; }
+    .faq-question span { font-family: var(--font-ui); font-size: 15px; font-weight: 600; color: var(--text-primary); line-height: 1.45; }
+    .faq-question svg { width: 18px; height: 18px; color: var(--text-muted); flex-shrink: 0; transition: transform 200ms ease, color 200ms ease; }
+    .faq-item.open .faq-question svg { transform: rotate(45deg); color: var(--accent); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 300ms ease, padding 300ms ease; }
+    .faq-item.open .faq-answer { max-height: 600px; padding-bottom: 22px; }
+    .faq-answer p { font-family: var(--font-ui); font-size: 14px; line-height: 1.7; color: var(--text-secondary); max-width: 720px; }
+    .faq-answer p + p { margin-top: 12px; }
+    .faq-answer a { color: var(--accent); text-decoration: none; transition: color 150ms ease; }
+    .faq-answer a:hover { color: var(--text-primary); }
+
+    /* ── CTA SECTION ── */
+    .cta-section { border-top: 1px solid var(--bg-border); text-align: center; }
+    .cta-section .section-h2 { margin-bottom: 20px; }
+    .cta-sub { font-family: var(--font-ui); font-size: 15px; color: var(--text-secondary); margin-bottom: 36px; line-height: 1.65; }
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .cta-buttons .btn-primary { padding: 14px 32px; font-size: 14px; }
+    .cta-buttons .btn-secondary { padding: 14px 32px; font-size: 14px; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--bg-border); padding: 52px 48px; }
+    .footer-inner { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    .footer-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+    .footer-logo svg { color: var(--accent); }
+    .footer-wordmark { font-family: var(--font-display); font-size: 14px; font-weight: 800; color: var(--text-primary); letter-spacing: 0.14em; }
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a { font-family: var(--font-ui); font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 150ms ease; }
+    .footer-links a:hover { color: var(--text-secondary); }
+    .footer-disclaimer { font-family: var(--font-ui); font-size: 11px; color: var(--text-muted); max-width: 420px; line-height: 1.65; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .page-header { padding: calc(var(--nav-height) + var(--banner-height) + 48px) 24px 40px; }
+      .section-wrap { padding: 56px 24px; }
+      .countdown-banner { font-size: 11px; padding: 0 16px; }
+      footer { padding: 40px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .faq-cats { gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span class="nav-wordmark">SENTINEL</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#how-it-works">How It Works</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a href="/faq" class="active">FAQ</a></li>
+      <li><a href="/#deadlines">Deadlines</a></li>
+    </ul>
+    <a href="/pricing" class="btn-primary">Request Access</a>
+  </nav>
+
+  <!-- ═══════════════ COUNTDOWN BANNER ═══════════════ -->
+  <div class="countdown-banner">
+    ⚠&nbsp; MiCA full enforcement:&nbsp;<span id="countdownDisplay">calculating...</span>&nbsp;— 1 July 2026
+  </div>
+
+  <!-- ═══════════════ PAGE HEADER ═══════════════ -->
+  <header class="page-header">
+    <div class="page-header-label">Frequently Asked Questions</div>
+    <h1>Everything you need to know.</h1>
+    <p class="page-header-sub">
+      From MiCA regulation to Modelo filings — answers to the questions compliance officers, traders, and CASPs ask most.
+    </p>
+  </header>
+
+  <!-- ═══════════════ FAQ CONTENT ═══════════════ -->
+  <section>
+    <div class="section-wrap" style="padding-top: 0;">
+
+      <!-- ── MiCA Regulation ── -->
+      <div class="faq-group-label reveal">MiCA Regulation</div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          <span>What is MiCA regulation?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>MiCA (Markets in Crypto-Assets Regulation) is the EU's comprehensive regulatory framework for crypto-assets. It establishes uniform rules across all 27 member states for the issuance, offering, and provision of services related to crypto-assets. MiCA requires all Crypto-Asset Service Providers (CASPs) to obtain a license and comply with operational, disclosure, and reporting obligations.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          <span>When does MiCA enforcement begin?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>MiCA full enforcement begins on <strong style="color:var(--status-critical)">July 1, 2026</strong>. Title III and IV (covering asset-referenced tokens and e-money tokens) have been in effect since June 30, 2024. After July 1, 2026, any CASP operating in the EU without a MiCA license commits a criminal offence. Fines can reach up to €5 million per violation.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          <span>What crypto assets does MiCA classify?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>MiCA defines three categories of crypto-assets: <strong>Asset-Referenced Tokens (ARTs)</strong> — tokens pegged to multiple assets like commodities or currencies; <strong>E-Money Tokens (EMTs)</strong> — tokens pegged to a single fiat currency (e.g., USDC, USDT); and <strong>Other crypto-assets</strong> — everything else including Bitcoin, Ethereum, and utility tokens. Each category carries different regulatory requirements.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          <span>Who needs a MiCA CASP license?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Any entity providing crypto-asset services to EU residents needs a MiCA CASP license. This includes exchanges, custodial wallet providers, crypto-to-fiat and crypto-to-crypto trading platforms, portfolio managers, advisors, and entities involved in the transfer of crypto-assets. There is no grandfathering clause after July 2026 — all CASPs must hold a valid license.</p>
+          <p><a href="/blog/mica-deadline-july-2026">Read our full guide on MiCA CASP license requirements →</a></p>
+        </div>
+      </div>
+
+      <!-- ── DAC8 & Modelo Filings ── -->
+      <div class="faq-group-label reveal">DAC8 & Modelo Filings</div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          <span>What is DAC8?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>DAC8 (Directive on Administrative Cooperation 8) is an EU directive mandating automatic exchange of crypto-asset transaction data between member state tax authorities. CASPs and intermediaries must report transaction details including amounts, asset types, settlement values, and counterparty information. The implementation deadline is September 30, 2027.</p>
+          <p><a href="/blog/dac8-reporting-spain-guide">Read our DAC8 reporting guide for Spain →</a></p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          <span>What is Modelo 721?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Modelo 721 is a Spanish tax declaration form for crypto-assets held abroad. If you are a Spanish tax resident and hold crypto-assets on foreign platforms with a total value exceeding €50,000, you must file Modelo 721 annually with the AEAT (Agencia Tributaria). The filing deadline is March 31 each year for holdings as of December 31 of the previous year.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          <span>What are Modelo 172 and 173?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p><strong>Modelo 172</strong> reports crypto-asset balances held by third parties — platforms and custodians must file this to declare client holdings. <strong>Modelo 173</strong> reports crypto-asset transactions performed through intermediaries — every buy, sell, swap, and transfer must be declared with EUR equivalent values. Both require machine-readable XML schema submissions to AEAT.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          <span>When are Spanish crypto tax filings due?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Modelo 721 is due by <strong>March 31</strong> each year. Modelo 172 and 173 annual filings are also due by <strong>March 31</strong> for the preceding fiscal year. SENTINEL tracks all deadlines and sends priority alerts as they approach — so you never miss a filing window.</p>
+        </div>
+      </div>
+
+      <!-- ── SENTINEL Platform ── -->
+      <div class="faq-group-label reveal">SENTINEL Platform</div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          <span>How does SENTINEL automate compliance?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>SENTINEL runs four autonomous agents every 12 hours: <strong>Watchdog</strong> monitors ESMA, EBA, and national competent authorities for regulatory updates. <strong>Classifier</strong> assigns MiCA asset class, DAC8 category, and tax event type to every transaction. <strong>Reporter</strong> generates Modelo 172, 173, and 721 filings in submission-ready XML. <strong>Advisor</strong> surfaces compliance gaps with actionable recommendations and due dates.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          <span>What exchanges and wallets does SENTINEL support?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>SENTINEL integrates with major exchanges including Binance, Coinbase, Kraken, and Bitstamp via API, as well as on-chain data from Ethereum, Bitcoin, Solana, and Polygon. CSV import is available for any platform. We're continuously expanding coverage — contact us for specific integration requests.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          <span>Is SENTINEL secure?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. SENTINEL uses read-only API access — we never have the ability to move or trade your assets. All data is encrypted at rest and in transit. Infrastructure is hosted in EU data centers (Frankfurt) compliant with GDPR requirements. Audit logs are retained according to your plan tier.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          <span>Does SENTINEL provide legal advice?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>No. SENTINEL provides compliance tooling, not legal advice. Our platform automates data classification, report generation, and regulatory monitoring — but all regulatory decisions should be made in consultation with a qualified legal professional. CASP-tier clients receive a dedicated compliance contact for platform support, not legal counsel.</p>
+        </div>
+      </div>
+
+      <!-- ── Pricing & Plans ── -->
+      <div class="faq-group-label reveal">Pricing & Plans</div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          <span>How much does SENTINEL cost?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>SENTINEL offers three plans: <strong>Individual</strong> at €99/month (up to 500 transactions), <strong>Professional</strong> at €499/month (unlimited transactions, full filing suite), and <strong>CASP</strong> at €1,500/month (enterprise features + dedicated support). Annual billing saves 20% across all tiers.</p>
+          <p><a href="/pricing">See the full pricing comparison →</a></p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          <span>Is there a free trial?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. We offer a 14-day free trial on the Professional plan — no credit card required. You'll have full access to all Professional features including unlimited transactions, all Modelo filings, and DAC8 reporting during the trial.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          <span>Can I change plans later?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. Upgrade or downgrade at any time — changes take effect at the start of your next billing cycle. No data is lost when switching tiers. If you upgrade mid-cycle, you'll receive prorated access to the new plan features immediately.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          <span>What payment methods do you accept?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>We accept all major credit and debit cards, SEPA bank transfers, and wire transfers for CASP-tier clients. All payments are processed in EUR through our PCI-compliant payment infrastructure.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA ═══════════════ -->
+  <section class="cta-section">
+    <div class="section-wrap">
+      <div class="section-label reveal">Still have questions?</div>
+      <h2 class="section-h2 reveal">Get in touch.</h2>
+      <p class="cta-sub reveal">Our team is available to answer technical and compliance questions about SENTINEL.</p>
+      <div class="cta-buttons reveal">
+        <a href="/pricing" class="btn-primary">View Pricing</a>
+        <a href="/" class="btn-secondary">Back to Home →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <a href="/" class="footer-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span class="footer-wordmark">SENTINEL</span>
+      </a>
+      <ul class="footer-links">
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/blog/mica-deadline-july-2026">Blog</a></li>
+        <li><a href="/#deadlines">Deadlines</a></li>
+      </ul>
+      <p class="footer-disclaimer">
+        SENTINEL provides compliance tooling, not legal advice. Consult a qualified legal professional for all regulatory decisions. True Nordic Capital © 2026.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // ── Live MiCA countdown ──────────────────────────────────────
+    const MiCA_DEADLINE = new Date('2026-07-01T00:00:00+00:00');
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function updateCountdown() {
+      const diff = MiCA_DEADLINE - new Date();
+      if (diff <= 0) { document.getElementById('countdownDisplay').textContent = 'ENFORCEMENT ACTIVE'; return; }
+      const d = Math.floor(diff / 86400000), h = Math.floor((diff % 86400000) / 3600000), m = Math.floor((diff % 3600000) / 60000), s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('countdownDisplay').textContent = `${d}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ── FAQ accordion ────────────────────────────────────────────
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+
+    // ── Scroll reveal ────────────────────────────────────────────
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const siblings = [...entry.target.parentElement.querySelectorAll('.reveal:not(.visible)')];
+        const idx = siblings.indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add('visible'), Math.max(0, idx * 75));
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
+</body>
+</html>
