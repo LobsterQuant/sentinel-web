@@ -3,8 +3,8 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/sentinel-dashboard",
-      "destination": "/dashboard",
+      "source": "/dashboard",
+      "destination": "/sentinel-dashboard",
       "permanent": true
     }
   ]
