@@ -236,7 +236,7 @@ html {
   display: none;
 }
 
-/* Responsive */
+/* Responsive — modal */
 @media (max-width: 500px) {
   .wl-modal {
     max-width: 100%;
@@ -252,5 +252,125 @@ html {
   }
   .wl-title {
     font-size: 24px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   MOBILE TYPOGRAPHY & OVERFLOW FIXES
+   Applied at 768px — overrides per-page inline <style> rules
+   because shared.css loads AFTER each page's <style> block.
+══════════════════════════════════════════════════════════ */
+
+/* Prevent horizontal overflow on every page */
+body {
+  overflow-x: hidden;
+}
+
+.hero,
+.hero-content,
+.page-header,
+.article-header,
+.section-wrap,
+.article-body,
+.article-cta {
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+
+  /* ── Landing page hero h1 ─────────────────────────────── */
+  .hero-h1 {
+    font-size: clamp(32px, 8vw, 48px) !important;
+    letter-spacing: -0.02em;
+    word-break: break-word;
+  }
+
+  .hero-sub {
+    font-size: clamp(14px, 3.5vw, 17px) !important;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+
+  /* ── Section h2 headings (all pages) ──────────────────── */
+  .section-h2 {
+    font-size: clamp(28px, 7vw, 40px) !important;
+    word-break: break-word;
+  }
+
+  /* ── Page header h1 (pricing, faq) ────────────────────── */
+  .page-header h1 {
+    font-size: clamp(28px, 7vw, 44px) !important;
+    word-break: break-word;
+  }
+
+  .page-header-sub {
+    font-size: clamp(14px, 3.5vw, 17px) !important;
+  }
+
+  /* ── Blog article h1 ──────────────────────────────────── */
+  .article-header h1 {
+    font-size: clamp(28px, 7vw, 40px) !important;
+    word-break: break-word;
+  }
+
+  .article-header .lead {
+    font-size: 15px;
+  }
+
+  .article-body h2 {
+    font-size: clamp(22px, 5.5vw, 28px) !important;
+  }
+
+  .article-body h3 {
+    font-size: 16px;
+  }
+
+  /* ── Countdown banner — proper wrapping ────────────────── */
+  .countdown-banner {
+    font-size: 11px !important;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.4;
+    height: auto;
+    min-height: var(--banner-height, 37px);
+    padding: 6px 16px !important;
+  }
+
+  /* ── Pricing cards — prevent overflow ──────────────────── */
+  .pricing-price {
+    font-size: clamp(32px, 9vw, 44px) !important;
+  }
+
+  /* ── CTA buttons — stack on mobile ─────────────────────── */
+  .hero-ctas,
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Nav padding ───────────────────────────────────────── */
+  nav {
+    padding: 0 16px;
+  }
+
+  /* ── Urgency stats — single col ────────────────────────── */
+  .urgency-stat-value {
+    font-size: clamp(32px, 8vw, 48px) !important;
+  }
+
+  /* ── Tables — horizontal scroll ────────────────────────── */
+  .deadline-table,
+  .comparison-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ── Dashboard header title ────────────────────────────── */
+  .dash-header h1 {
+    font-size: clamp(24px, 6vw, 36px) !important;
   }
 }
