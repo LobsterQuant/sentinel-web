@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SENTINEL — EU MiCA Compliance Infrastructure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-void:         #000000;
+      --bg-surface:      #080808;
+      --bg-elevated:     #0F0F0F;
+      --bg-border:       #1A1A1A;
+      --bg-subtle:       #141414;
+      --text-primary:    #FFFFFF;
+      --text-secondary:  #ABABBA;
+      --text-muted:      #4A4A5A;
+      --text-mono:       #A8B4C0;
+      --accent:          #00E5BD;
+      --accent-dim:      #00E5BD22;
+      --accent-border:   #00E5BD44;
+      --status-critical: #FF3B3B;
+      --status-warning:  #F59E0B;
+      --status-ok:       #00E5BD;
+      --status-info:     #6B8CFF;
+      --deadline-red:    #FF3B3B;
+      --deadline-amber:  #F59E0B;
+      --deadline-green:  #00E5BD;
+      --font-display:    'Syne', 'DM Sans', sans-serif;
+      --font-ui:         'DM Sans', system-ui, sans-serif;
+      --font-mono:       'JetBrains Mono', 'Cascadia Mono', monospace;
+      --radius-card:     4px;
+      --radius-pill:     9999px;
+      --radius-badge:    3px;
+      --nav-height:      60px;
+      --banner-height:   37px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-void);
+      color: var(--text-primary);
+      font-family: var(--font-ui);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      z-index: 200;
+      transition: background 200ms ease, border-bottom 200ms ease, backdrop-filter 200ms ease;
+    }
+
+    nav.scrolled {
+      background: rgba(0,0,0,0.88);
+      border-bottom: 1px solid var(--bg-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo svg { color: var(--accent); }
+
+    .nav-wordmark {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: 0.14em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--text-primary);
+      color: #000;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 10px 24px;
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 150ms ease, color 150ms ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover { background: var(--accent); color: #000; }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-pill);
+      padding: 10px 24px;
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 150ms ease, color 150ms ease;
+      white-space: nowrap;
+    }
+
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ─────────────────────────────────────────
+       COUNTDOWN BANNER
+    ───────────────────────────────────────── */
+    .countdown-banner {
+      position: fixed;
+      top: var(--nav-height);
+      left: 0; right: 0;
+      z-index: 199;
+      height: var(--banner-height);
+      background: linear-gradient(90deg, #FF3B3B0D, #FF3B3B22, #FF3B3B0D);
+      border-bottom: 1px solid #FF3B3B44;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+      color: #FF3B3B;
+      letter-spacing: 0.02em;
+      padding: 0 24px;
+    }
+
+    /* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--nav-height) + var(--banner-height) + 100px) 48px 100px;
+      overflow: hidden;
+    }
+
+    .hero-dot-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, #222 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse 75% 70% at 50% 40%, black 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 40%, black 20%, transparent 75%);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: calc(var(--nav-height) + var(--banner-height));
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 560px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(0,229,189,0.09) 0%, transparent 65%);
+      pointer-events: none;
+      animation: glowPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.65; }
+      50%       { opacity: 1; }
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 860px;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 28px;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 0.55s ease forwards 0.1s;
+    }
+
+    .hero-h1 {
+      font-family: var(--font-display);
+      font-size: clamp(58px, 7.5vw, 88px);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 32px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards 0.22s;
+    }
+
+    .hero-sub {
+      font-family: var(--font-ui);
+      font-size: clamp(15px, 1.8vw, 20px);
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto 44px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards 0.38s;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards 0.52s;
+    }
+
+    .hero-ctas .btn-primary  { padding: 14px 32px; font-size: 14px; }
+    .hero-ctas .btn-secondary { padding: 14px 32px; font-size: 14px; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─────────────────────────────────────────
+       URGENCY STATS
+    ───────────────────────────────────────── */
+    .urgency-stats {
+      border-top: 1px solid var(--bg-border);
+      border-bottom: 1px solid var(--bg-border);
+      padding: 72px 48px;
+    }
+
+    .urgency-stats-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr 1px 1fr;
+      align-items: center;
+    }
+
+    .urgency-stat {
+      text-align: center;
+      padding: 0 40px;
+    }
+
+    .urgency-stat-value {
+      font-family: var(--font-mono);
+      font-size: clamp(40px, 5.5vw, 64px);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .urgency-stat-value.color-red    { color: var(--deadline-red); }
+    .urgency-stat-value.color-white  { color: var(--text-primary); }
+    .urgency-stat-value.color-accent { color: var(--accent); }
+
+    .urgency-stat-label {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+
+    .stat-sep {
+      background: var(--bg-border);
+      width: 1px;
+      height: 60px;
+      margin: 0 auto;
+    }
+
+    /* ─────────────────────────────────────────
+       SECTION SCAFFOLD
+    ───────────────────────────────────────── */
+    .section-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 100px 48px;
+    }
+
+    .section-label {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .section-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5vw, 60px);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--text-primary);
+      margin-bottom: 56px;
+    }
+
+    /* ─────────────────────────────────────────
+       HOW IT WORKS — AGENT CARDS
+    ───────────────────────────────────────── */
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .agent-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-left: 1px solid var(--bg-border);
+      border-radius: var(--radius-card);
+      padding: 28px 24px 24px;
+      transition: border-color 150ms ease, border-left-color 150ms ease, border-left-width 150ms ease;
+      cursor: default;
+    }
+
+    .agent-card:hover {
+      border-color: var(--accent-border);
+      border-left: 3px solid var(--accent);
+    }
+
+    .agent-icon {
+      width: 26px;
+      height: 26px;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .agent-name {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .agent-desc {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 22px;
+    }
+
+    .agent-badge {
+      display: inline-block;
+      background: var(--bg-elevated);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-badge);
+      padding: 3px 8px;
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    /* ─────────────────────────────────────────
+       PRICING
+    ───────────────────────────────────────── */
+    .pricing-section {
+      background: var(--bg-void);
+      border-top: 1px solid var(--bg-border);
+      border-bottom: 1px solid var(--bg-border);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 0;
+    }
+
+    .pricing-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-card);
+      padding: 36px 32px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 150ms ease;
+    }
+
+    .pricing-card:hover { border-color: var(--bg-elevated); }
+
+    .pricing-card.featured {
+      border-color: var(--accent-border);
+    }
+
+    .pricing-card.featured::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-card);
+      background: linear-gradient(160deg, var(--accent-dim) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .pricing-popular {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      border-radius: var(--radius-badge);
+      padding: 3px 9px;
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-tier {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-price {
+      font-family: var(--font-mono);
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+      margin-bottom: 5px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-period {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 32px;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-family: var(--font-ui);
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding: 9px 0;
+      border-bottom: 1px solid var(--bg-border);
+      line-height: 1.45;
+    }
+
+    .pricing-features li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .pricing-cta {
+      width: 100%;
+      text-align: center;
+      padding: 12px 24px;
+      font-size: 13px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─────────────────────────────────────────
+       COMPLIANCE CALENDAR
+    ───────────────────────────────────────── */
+    .timeline {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 108px;
+      top: 24px;
+      bottom: 24px;
+      width: 1px;
+      background: var(--bg-border);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      gap: 24px;
+      position: relative;
+      align-items: start;
+    }
+
+    .timeline-date {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: right;
+      padding-top: 22px;
+      line-height: 1.5;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 104px;
+      top: 26px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: 2px solid var(--bg-void);
+    }
+
+    .timeline-content {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-card);
+      padding: 22px 26px;
+      transition: border-color 150ms ease;
+    }
+
+    .timeline-content:hover { border-color: var(--bg-elevated); }
+
+    .timeline-title {
+      font-family: var(--font-ui);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 7px;
+    }
+
+    .timeline-desc {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .timeline-tag {
+      display: inline-block;
+      border-radius: var(--radius-badge);
+      padding: 3px 8px;
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--bg-border);
+      padding: 52px 48px;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+    }
+
+    .footer-logo svg { color: var(--accent); }
+
+    .footer-wordmark {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: 0.14em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    .footer-disclaimer {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      color: var(--text-muted);
+      max-width: 420px;
+      line-height: 1.65;
+    }
+
+    /* ─────────────────────────────────────────
+       SCROLL REVEAL
+    ───────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .agents-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
+    }
+
+    @media (max-width: 700px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: calc(var(--nav-height) + var(--banner-height) + 60px) 24px 60px; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .section-wrap { padding: 72px 24px; }
+      .urgency-stats { padding: 56px 24px; }
+      .urgency-stats-inner { grid-template-columns: 1fr; gap: 48px; }
+      .stat-sep { display: none; }
+      .agents-grid { grid-template-columns: 1fr; }
+      .countdown-banner { font-size: 11px; padding: 0 16px; }
+      footer { padding: 40px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .timeline::before { left: 80px; }
+      .timeline-item { grid-template-columns: 80px 1fr; gap: 16px; }
+      .timeline-dot { left: 76px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav id="mainNav">
+    <a href="#" class="nav-logo">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <span class="nav-wordmark">SENTINEL</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#deadlines">Deadlines</a></li>
+      <li><a href="#">Docs</a></li>
+    </ul>
+    <a href="#pricing" class="btn-primary">Request Access</a>
+  </nav>
+
+  <!-- ═══════════════ COUNTDOWN BANNER ═══════════════ -->
+  <div class="countdown-banner">
+    ⚠&nbsp; MiCA full enforcement:&nbsp;<span id="countdownDisplay">calculating...</span>&nbsp;— 1 July 2026
+  </div>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero">
+    <div class="hero-dot-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">EU Crypto Compliance Infrastructure</div>
+      <h1 class="hero-h1">MiCA compliance,<br>automated.</h1>
+      <p class="hero-sub">
+        SENTINEL scans EU regulators daily, classifies every transaction,
+        and generates Modelo 172/173/721 automatically.
+      </p>
+      <div class="hero-ctas">
+        <a href="#pricing" class="btn-primary">Request Early Access</a>
+        <a href="#how-it-works" class="btn-secondary">See How It Works ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ URGENCY STATS ═══════════════ -->
+  <section class="urgency-stats">
+    <div class="urgency-stats-inner">
+      <div class="urgency-stat">
+        <div class="urgency-stat-value color-red" id="daysStat" data-countup-target="days">—</div>
+        <div class="urgency-stat-label">Days to MiCA Enforcement</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="urgency-stat">
+        <div class="urgency-stat-value color-white" data-countup-target="5" data-countup-prefix="€" data-countup-suffix="M">€5M</div>
+        <div class="urgency-stat-label">Maximum Fine per Violation</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="urgency-stat">
+        <div class="urgency-stat-value color-accent" data-countup-target="0">0</div>
+        <div class="urgency-stat-label">CASPs Operating Without License After July 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ HOW IT WORKS ═══════════════ -->
+  <section id="how-it-works">
+    <div class="section-wrap">
+      <div class="section-label reveal">System Architecture</div>
+      <h2 class="section-h2 reveal">Four agents.<br>Zero gaps.</h2>
+
+      <div class="agents-grid">
+
+        <div class="agent-card reveal">
+          <svg class="agent-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+          <div class="agent-name">Watchdog</div>
+          <div class="agent-desc">Monitors ESMA, EBA, and all national competent authorities for new regulatory publications. Parses every circular, guideline, and Q&A the moment it's issued.</div>
+          <span class="agent-badge">Runs every 12h</span>
+        </div>
+
+        <div class="agent-card reveal">
+          <svg class="agent-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+          </svg>
+          <div class="agent-name">Classifier</div>
+          <div class="agent-desc">Assigns MiCA asset class, DAC8 category, and tax event type to every transaction in real-time. EUR equivalent computed at settlement price.</div>
+          <span class="agent-badge">Runs every 12h</span>
+        </div>
+
+        <div class="agent-card reveal">
+          <svg class="agent-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+          <div class="agent-name">Reporter</div>
+          <div class="agent-desc">Generates Modelo 172, 173, and 721 filings in machine-readable XML. Validates schema compliance before every delivery. Submission-ready output.</div>
+          <span class="agent-badge">Runs every 12h</span>
+        </div>
+
+        <div class="agent-card reveal">
+          <svg class="agent-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          <div class="agent-name">Advisor</div>
+          <div class="agent-desc">Surfaces actionable compliance gaps and deadline alerts. Maps every open position to its reporting obligation with required action steps and due dates.</div>
+          <span class="agent-badge">Runs every 12h</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PRICING ═══════════════ -->
+  <section id="pricing" class="pricing-section">
+    <div class="section-wrap">
+      <div class="section-label reveal">Pricing</div>
+      <h2 class="section-h2 reveal">Compliant by default.</h2>
+
+      <div class="pricing-grid">
+
+        <!-- Individual -->
+        <div class="pricing-card reveal">
+          <div class="pricing-tier">Individual</div>
+          <div class="pricing-price">€99</div>
+          <div class="pricing-period">per month</div>
+          <ul class="pricing-features">
+            <li>Up to 500 transactions / month</li>
+            <li>Automated MiCA asset classification</li>
+            <li>Modelo 721 generation</li>
+            <li>Compliance deadline alerts</li>
+            <li>7-day audit log</li>
+          </ul>
+          <a href="#" class="btn-secondary pricing-cta">Get Started</a>
+        </div>
+
+        <!-- Professional -->
+        <div class="pricing-card featured reveal">
+          <div class="pricing-popular">Most Popular</div>
+          <div class="pricing-tier">Professional</div>
+          <div class="pricing-price">€499</div>
+          <div class="pricing-period">per month</div>
+          <ul class="pricing-features">
+            <li>Unlimited transactions</li>
+            <li>Automated MiCA asset classification</li>
+            <li>Modelo 172 + 173 + 721</li>
+            <li>DAC8 category reporting</li>
+            <li>Priority deadline alerts</li>
+            <li>30-day audit log</li>
+            <li>Full API access</li>
+          </ul>
+          <a href="#" class="btn-primary pricing-cta">Get Started</a>
+        </div>
+
+        <!-- CASP -->
+        <div class="pricing-card reveal">
+          <div class="pricing-tier">CASP</div>
+          <div class="pricing-price">€1,500</div>
+          <div class="pricing-period">per month</div>
+          <ul class="pricing-features">
+            <li>Unlimited transactions</li>
+            <li>Full MiCA CASP compliance suite</li>
+            <li>All Modelo filings + XML export</li>
+            <li>Full DAC8 pack</li>
+            <li>Custom deadline management</li>
+            <li>90-day audit log</li>
+            <li>API + webhooks</li>
+            <li>Dedicated compliance contact</li>
+          </ul>
+          <a href="#" class="btn-secondary pricing-cta">Contact Sales</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ COMPLIANCE CALENDAR ═══════════════ -->
+  <section id="deadlines">
+    <div class="section-wrap">
+      <div class="section-label reveal">Compliance Calendar</div>
+      <h2 class="section-h2 reveal">Know what's coming.</h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-date">01 JUL<br>2026</div>
+          <div class="timeline-dot" style="background: var(--deadline-red);"></div>
+          <div class="timeline-content" style="border-left: 3px solid var(--deadline-red);">
+            <div class="timeline-title">MiCA Full Enforcement</div>
+            <div class="timeline-desc">All Crypto-Asset Service Providers operating in the EU must hold a MiCA license. Unauthorized operation constitutes a criminal offence in all 27 member states.</div>
+            <span class="timeline-tag" style="background: #FF3B3B18; color: var(--deadline-red);">Critical</span>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-date">31 MAR<br>2027</div>
+          <div class="timeline-dot" style="background: var(--deadline-amber);"></div>
+          <div class="timeline-content" style="border-left: 3px solid var(--deadline-amber);">
+            <div class="timeline-title">Modelo 173 Annual Filing</div>
+            <div class="timeline-desc">Spanish AEAT deadline for annual crypto-asset transaction reporting covering fiscal year 2026. Machine-readable XML schema required for all submissions.</div>
+            <span class="timeline-tag" style="background: #F59E0B18; color: var(--deadline-amber);">Important</span>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-date">30 SEP<br>2027</div>
+          <div class="timeline-dot" style="background: var(--deadline-green);"></div>
+          <div class="timeline-content" style="border-left: 3px solid var(--deadline-green);">
+            <div class="timeline-title">DAC8 Implementation Deadline</div>
+            <div class="timeline-desc">EU Directive on Administrative Cooperation — mandatory crypto-asset transaction data exchange between member state tax authorities. All CASPs must report.</div>
+            <span class="timeline-tag" style="background: #00E5BD18; color: var(--deadline-green);">Upcoming</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <a href="#" class="footer-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span class="footer-wordmark">SENTINEL</span>
+      </a>
+      <ul class="footer-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <p class="footer-disclaimer">
+        SENTINEL provides compliance tooling, not legal advice. Consult a qualified legal professional for all regulatory decisions. True Nordic Capital © 2026.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // ── Nav scroll state ──────────────────────────────────────────────────────
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // ── Live MiCA countdown ───────────────────────────────────────────────────
+    const MiCA_DEADLINE = new Date('2026-07-01T00:00:00+00:00');
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = MiCA_DEADLINE - now;
+
+      if (diff <= 0) {
+        document.getElementById('countdownDisplay').textContent = 'ENFORCEMENT ACTIVE';
+        return;
+      }
+
+      const days    = Math.floor(diff / 86400000);
+      const hours   = Math.floor((diff % 86400000) / 3600000);
+      const minutes = Math.floor((diff % 3600000)  / 60000);
+      const seconds = Math.floor((diff % 60000)    / 1000);
+
+      document.getElementById('countdownDisplay').textContent =
+        `${days}d ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ── Days stat — calculated from same source ───────────────────────────────
+    const daysStat = document.getElementById('daysStat');
+    const daysRemaining = Math.floor((MiCA_DEADLINE - new Date()) / 86400000);
+    daysStat.dataset.countupTarget = daysRemaining;
+    daysStat.textContent = daysRemaining;
+
+    // ── Count-up on scroll-into-view ─────────────────────────────────────────
+    function runCountUp(el) {
+      const rawTarget = el.dataset.countupTarget;
+      const target  = rawTarget === 'days' ? daysRemaining : parseInt(rawTarget, 10);
+      const prefix  = el.dataset.countupPrefix  || '';
+      const suffix  = el.dataset.countupSuffix  || '';
+      const duration = 1800;
+      const startTs  = performance.now();
+
+      function step(ts) {
+        const elapsed  = ts - startTs;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased    = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+        const current  = Math.round(eased * target);
+        el.textContent = prefix + current + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    const countUpObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          runCountUp(entry.target);
+          countUpObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.35 });
+
+    document.querySelectorAll('[data-countup-target]').forEach(el => {
+      countUpObserver.observe(el);
+    });
+
+    // ── Scroll reveal ─────────────────────────────────────────────────────────
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        // stagger siblings within same parent
+        const siblings = [...entry.target.parentElement.querySelectorAll('.reveal:not(.visible)')];
+        const idx = siblings.indexOf(entry.target);
+        const delay = Math.max(0, idx * 75);
+
+        setTimeout(() => entry.target.classList.add('visible'), delay);
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
+</body>
+</html>
