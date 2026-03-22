@@ -255,6 +255,31 @@ html {
   }
 }
 
+/* ── FOOTER SOCIAL ICONS ─────────────────────────────────── */
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4A4A5A;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.footer-social a:hover {
+  color: #FFFFFF;
+}
+
+.footer-social svg {
+  width: 18px;
+  height: 18px;
+}
+
 /* ══════════════════════════════════════════════════════════
    MOBILE TYPOGRAPHY & OVERFLOW FIXES
    Applied at 768px — overrides per-page inline <style> rules
