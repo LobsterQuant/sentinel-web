@@ -89,31 +89,21 @@
   });
 
   // ── 3. Intercept CTA buttons ────────────────────────────────────────────────
-  var ctaTexts = [
-    'get started',
-    'request access',
-    'request early access',
-    'contact sales',
-    'start free trial',
-    'join waitlist'
-  ];
-
-  function shouldIntercept(el) {
-    // Check the text content of the element
-    var text = (el.textContent || el.innerText || '').trim().toLowerCase();
-    for (var i = 0; i < ctaTexts.length; i++) {
-      if (text === ctaTexts[i]) return true;
-    }
-    return false;
-  }
-
   // Use event delegation on document for all clicks
   document.addEventListener('click', function(e) {
     var target = e.target;
     // Walk up to find an anchor or button
     while (target && target !== document) {
       if (target.tagName === 'A' || target.tagName === 'BUTTON') {
-        if (shouldIntercept(target)) {
+        var href = target.getAttribute('href') || '';
+        
+        if (href.indexOf('https://buy.stripe.com') === 0) {
+          e.preventDefault();
+          window.open(href, '_blank');
+          return;
+        }
+        
+        if (href === '#' || href === '/pricing') {
           openModal(e);
           return;
         }
