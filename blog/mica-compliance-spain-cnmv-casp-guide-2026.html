@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiCA Compliance Spain: CNMV License Guide for CASPs in 2026 — SENTINEL</title>
+  <meta name="description" content="Complete guide to MiCA compliance requirements for Spanish crypto exchanges and CASPs. CNMV licensing, DAC8 reporting, July 1 deadline explained.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://micaready.eu/blog/mica-compliance-spain-cnmv-casp-guide-2026">
+
+  <meta property="og:title" content="MiCA Compliance Spain: CNMV License Guide for CASPs in 2026 — SENTINEL">
+  <meta property="og:description" content="Complete guide to MiCA compliance requirements for Spanish crypto exchanges and CASPs. CNMV licensing, DAC8 reporting, July 1 deadline explained.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://micaready.eu/blog/mica-compliance-spain-cnmv-casp-guide-2026">
+  <meta property="og:image" content="https://micaready.eu/og-image.png">
+  <meta property="og:site_name" content="SENTINEL">
+  <meta property="article:published_time" content="2026-03-22">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MiCA Compliance Spain: CNMV License Guide for CASPs in 2026 — SENTINEL">
+  <meta name="twitter:description" content="Complete guide to MiCA compliance requirements for Spanish crypto exchanges and CASPs. CNMV licensing, DAC8 reporting, July 1 deadline explained.">
+  <meta name="twitter:image" content="https://micaready.eu/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "MiCA Compliance Spain: The 100-Day Reality Check for Spanish CASPs",
+    "description": "Complete guide to MiCA compliance requirements for Spanish crypto exchanges and CASPs. CNMV licensing, DAC8 reporting, July 1 deadline explained.",
+    "author": { "@type": "Organization", "name": "True Nordic Capital" },
+    "publisher": { "@type": "Organization", "name": "SENTINEL" },
+    "datePublished": "2026-03-22",
+    "dateModified": "2026-03-22",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://micaready.eu/blog/mica-compliance-spain-cnmv-casp-guide-2026" }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-void: #000000; --bg-surface: #080808; --bg-elevated: #0F0F0F; --bg-border: #1A1A1A; --bg-subtle: #141414;
+      --text-primary: #FFFFFF; --text-secondary: #ABABBA; --text-muted: #4A4A5A; --text-mono: #A8B4C0;
+      --accent: #00E5BD; --accent-dim: #00E5BD22; --accent-border: #00E5BD44;
+      --status-critical: #FF3B3B; --status-warning: #F59E0B; --status-ok: #00E5BD; --status-info: #6B8CFF;
+      --font-display: 'Syne', 'DM Sans', sans-serif; --font-ui: 'DM Sans', system-ui, sans-serif; --font-mono: 'JetBrains Mono', 'Cascadia Mono', monospace;
+      --radius-card: 4px; --radius-pill: 9999px; --radius-badge: 3px; --nav-height: 60px; --banner-height: 37px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg-void); color: var(--text-primary); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-height); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; z-index: 200; background: rgba(0,0,0,0.88); border-bottom: 1px solid var(--bg-border); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo svg { color: var(--accent); }
+    .nav-wordmark { font-family: var(--font-display); font-size: 15px; font-weight: 800; color: var(--text-primary); letter-spacing: 0.14em; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { font-family: var(--font-ui); font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color 150ms ease; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .btn-primary { display: inline-block; background: var(--text-primary); color: #000; border: none; border-radius: var(--radius-pill); padding: 10px 24px; font-family: var(--font-ui); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; text-decoration: none; transition: background 150ms ease, color 150ms ease; white-space: nowrap; }
+    .btn-primary:hover { background: var(--accent); color: #000; }
+    .btn-secondary { display: inline-block; background: transparent; color: var(--text-primary); border: 1px solid var(--bg-border); border-radius: var(--radius-pill); padding: 10px 24px; font-family: var(--font-ui); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; text-decoration: none; transition: border-color 150ms ease, color 150ms ease; white-space: nowrap; }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    .countdown-banner { position: fixed; top: var(--nav-height); left: 0; right: 0; z-index: 199; height: var(--banner-height); background: linear-gradient(90deg, #FF3B3B0D, #FF3B3B22, #FF3B3B0D); border-bottom: 1px solid #FF3B3B44; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: #FF3B3B; letter-spacing: 0.02em; padding: 0 24px; }
+
+    .article-header { padding: calc(var(--nav-height) + var(--banner-height) + 72px) 48px 48px; max-width: 760px; margin: 0 auto; }
+    .article-breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 28px; }
+    .article-breadcrumb a, .article-breadcrumb span { font-family: var(--font-ui); font-size: 12px; color: var(--text-muted); text-decoration: none; }
+    .article-breadcrumb a:hover { color: var(--accent); }
+    .article-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+    .article-tag { background: #6B8CFF18; border: 1px solid #6B8CFF33; color: var(--status-info); border-radius: var(--radius-badge); padding: 3px 10px; font-family: var(--font-ui); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+    .article-date { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
+    .article-read-time { font-family: var(--font-ui); font-size: 12px; color: var(--text-muted); }
+    .article-header h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 52px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 20px; }
+    .article-header .lead { font-family: var(--font-ui); font-size: 17px; line-height: 1.7; color: var(--text-secondary); }
+
+    .article-body { max-width: 760px; margin: 0 auto; padding: 0 48px 80px; }
+    .article-body h2 { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--text-primary); margin: 56px 0 20px; line-height: 1.15; }
+    .article-body h3 { font-family: var(--font-ui); font-size: 18px; font-weight: 600; color: var(--text-primary); margin: 40px 0 14px; }
+    .article-body p { font-family: var(--font-ui); font-size: 15px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px; }
+    .article-body a { color: var(--accent); text-decoration: none; transition: color 150ms ease; }
+    .article-body a:hover { color: var(--text-primary); }
+    .article-body strong { color: var(--text-primary); font-weight: 600; }
+    .article-body ul, .article-body ol { margin: 0 0 20px 0; padding-left: 0; list-style: none; }
+    .article-body li { font-family: var(--font-ui); font-size: 15px; line-height: 1.8; color: var(--text-secondary); padding: 6px 0 6px 20px; position: relative; }
+    .article-body li::before { content: ''; position: absolute; left: 0; top: 14px; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; }
+
+    .callout { background: var(--bg-surface); border: 1px solid var(--bg-border); border-left: 3px solid var(--status-info); border-radius: var(--radius-card); padding: 24px 28px; margin: 32px 0; }
+    .callout.warning { border-left-color: var(--status-warning); }
+    .callout.critical { border-left-color: var(--status-critical); }
+    .callout.ok { border-left-color: var(--accent); }
+    .callout-label { font-family: var(--font-ui); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .callout-label.info { color: var(--status-info); }
+    .callout-label.warning { color: var(--status-warning); }
+    .callout-label.ok { color: var(--accent); }
+    .callout p { margin-bottom: 0; }
+
+    .modelo-card { background: var(--bg-surface); border: 1px solid var(--bg-border); border-radius: var(--radius-card); padding: 28px; margin: 20px 0; transition: border-color 150ms ease; }
+    .modelo-card:hover { border-color: var(--accent-border); }
+    .modelo-number { font-family: var(--font-mono); font-size: 32px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+    .modelo-title { font-family: var(--font-ui); font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: 12px; }
+    .modelo-meta { display: flex; gap: 20px; margin-bottom: 14px; flex-wrap: wrap; }
+    .modelo-meta-item { font-family: var(--font-ui); font-size: 12px; color: var(--text-muted); }
+    .modelo-meta-item strong { color: var(--text-secondary); }
+    .modelo-desc { font-family: var(--font-ui); font-size: 14px; line-height: 1.7; color: var(--text-secondary); }
+
+    .deadline-table { width: 100%; border-collapse: collapse; margin: 24px 0 32px; }
+    .deadline-table th { font-family: var(--font-ui); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--bg-border); }
+    .deadline-table td { font-family: var(--font-ui); font-size: 14px; color: var(--text-secondary); padding: 14px 16px; border-bottom: 1px solid var(--bg-border); }
+    .deadline-table td.mono { font-family: var(--font-mono); font-size: 13px; }
+    .deadline-table tr:hover { background: var(--bg-elevated); }
+    .badge-red { display: inline-block; background: #FF3B3B18; color: var(--status-critical); border-radius: var(--radius-badge); padding: 2px 7px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+    .badge-amber { display: inline-block; background: #F59E0B18; color: var(--status-warning); border-radius: var(--radius-badge); padding: 2px 7px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+
+    .article-cta { max-width: 760px; margin: 0 auto; padding: 0 48px 80px; }
+    .article-cta-box { background: var(--bg-surface); border: 1px solid var(--accent-border); border-radius: var(--radius-card); padding: 40px 36px; text-align: center; }
+    .article-cta-box h3 { font-family: var(--font-display); font-size: 28px; font-weight: 700; margin-bottom: 12px; color: var(--text-primary); }
+    .article-cta-box p { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; }
+    .article-cta-box .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    .related-posts { max-width: 760px; margin: 0 auto; padding: 0 48px 48px; }
+    .related-label { font-family: var(--font-ui); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-muted); margin-bottom: 16px; }
+    .related-link { display: block; background: var(--bg-surface); border: 1px solid var(--bg-border); border-radius: var(--radius-card); padding: 20px 24px; text-decoration: none; transition: border-color 150ms ease; margin-bottom: 12px; }
+    .related-link:hover { border-color: var(--accent-border); }
+    .related-link-title { font-family: var(--font-ui); font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+    .related-link-desc { font-family: var(--font-ui); font-size: 13px; color: var(--text-muted); }
+
+    footer { border-top: 1px solid var(--bg-border); padding: 52px 48px; }
+    .footer-inner { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    .footer-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+    .footer-logo svg { color: var(--accent); }
+    .footer-wordmark { font-family: var(--font-display); font-size: 14px; font-weight: 800; color: var(--text-primary); letter-spacing: 0.14em; }
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a { font-family: var(--font-ui); font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 150ms ease; }
+    .footer-links a:hover { color: var(--text-secondary); }
+    .footer-disclaimer { font-family: var(--font-ui); font-size: 11px; color: var(--text-muted); max-width: 420px; line-height: 1.65; }
+
+    @media (max-width: 700px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .article-header { padding: calc(var(--nav-height) + var(--banner-height) + 48px) 24px 32px; }
+      .article-body, .article-cta, .related-posts { padding-left: 24px; padding-right: 24px; }
+      .countdown-banner { font-size: 11px; }
+      footer { padding: 40px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .modelo-meta { flex-direction: column; gap: 6px; }
+    }
+  </style>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span class="nav-wordmark">SENTINEL</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#how-it-works">How It Works</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a href="/faq">FAQ</a></li>
+      <li><a href="/#deadlines">Deadlines</a></li>
+    </ul>
+    <a href="/pricing" class="btn-primary">Request Access</a>
+  </nav>
+
+  <div class="countdown-banner">
+    ⚠&nbsp; MiCA full enforcement:&nbsp;<span id="countdownDisplay">calculating...</span>&nbsp;— 1 July 2026
+  </div>
+
+  <header class="article-header">
+    <div class="article-breadcrumb">
+      <a href="/">SENTINEL</a><span class="sep">/</span><span class="current">Blog</span>
+    </div>
+    <div class="article-meta">
+      <span class="article-tag">MiCA REGULATION</span>
+      <span class="article-date">22 Mar 2026</span>
+      <span class="article-read-time">7 min read</span>
+    </div>
+    <h1>MiCA Compliance Spain: The 100-Day Reality Check for Spanish CASPs</h1>
+    <p class="lead">The Spanish crypto compliance deadline isn't a proposal. It's July 1, 2026. In 100 days, every CASP operating in Spain must hold a valid CNMV license or legally cease operations. No extensions. No grandfather clauses. No second chances after the Banco de España registry closed on December 30, 2024.</p>
+  </header>
+
+  <article class="article-body">
+    <p>We built SENTINEL because we watched this exact problem unfold across Spanish exchanges and crypto asset service providers. Over 200 Spain-based crypto companies are still unlicensed. The two Spanish-native firms who managed to get licensed (Bit2Me in July 2025, Criptan in March 2026) spent months navigating a regulatory framework that Spain itself is still calibrating. So here's what actually matters for MiCA compliance in Spain right now.</p>
+
+    <h2>What MiCA Actually Means for Spanish CASPs</h2>
+    <p>MiCA is the EU's Markets in Crypto Assets Regulation. It went fully live on December 30, 2024. For Spain, that means CNMV (the Spanish financial regulator) is now the licensing authority for every CASP — custodian wallets, crypto exchanges, staking services, even some blockchain infrastructure providers.</p>
+    <p>Spain chose the maximum transition period allowed under MiCA: 18 months from the regulation's effective date. That means a July 1, 2026 hard stop. Any firm that hasn't submitted and been approved for a CNMV license by then has two options: migrate to another EU member state or close.</p>
+    <p>What makes Spain's situation unique is that firms previously registered under the old Banco de España regime weren't automatically grandfathered in. They had to re-qualify under MiCA's stricter standards — resubmitting business plans, updating compliance frameworks, and proving they meet new organizational requirements that didn't exist before. The 85 licensed firms operating in Spain today are mostly large EU players using passporting rights. The Spanish-native cohort is tiny.</p>
+
+    <h2>The 5 Compliance Obligations Every Licensed CASP Must Manage</h2>
+    <p>Getting a CNMV license is the start, not the finish line.</p>
+    <ul>
+      <li><strong>Market Abuse and Insider Trading Prevention</strong> — You must monitor for market manipulation and insider trading across all your trading venues and services. Documented systems, real-time flagging, audit trails, and CNMV reporting within set timeframes.</li>
+      <li><strong>Stablecoin and Asset-Referenced Token Reserves</strong> — If your CASP holds customer funds or issues any crypto asset token, reserve requirements apply now. Stablecoins must be backed 1:1 by liquid reserves. Proving this quarterly to CNMV requires robust treasury systems.</li>
+      <li><strong>Custody and Operational Resilience</strong> — Customer crypto assets must be segregated from operational holdings. Your systems must meet CNMV's resilience standards — uptime targets, incident response plans, cyber insurance, backup systems.</li>
+      <li><strong>Organizational and Governance Requirements</strong> — A compliance officer with direct board access. Written policies for AML, KYC, conflicts of interest, complaints handling. CNMV conducts annual supervisory reviews and can demand proof these aren't just documents in a shared folder.</li>
+      <li><strong>Data Reporting and Transparency</strong> — This is where DAC8 comes in, and it's the one obligation most Spanish CASPs underestimate.</li>
+    </ul>
+
+    <h2>Why DAC8 Reporting Matters (and Why Most Firms Get It Wrong)</h2>
+    <p>DAC8 is the EU's Directive on Administrative Cooperation. Spanish CASPs must file quarterly reports on crypto asset transactions to CNMV, feeding into the broader EU AML intelligence apparatus.</p>
+    <p>The problem: DAC8 requirements are still being clarified. What triggers a reportable transaction? What's the threshold? How do you classify DeFi interactions? Firms that took shortcuts in their reporting systems now face compliance gaps. We've seen 15-20 licensing holders request extensions to initial filings because their DAC8 setup was incomplete.</p>
+
+    <h2>The Practical Reality: 100 Days, Two Paths</h2>
+    <p>If you're reading this unlicensed, two realistic paths exist:</p>
+    <ul>
+      <li><strong>Fast-track CNMV approval:</strong> Takes 4-6 months if your application is clean on the first pass. Getting licensed by July 1 is possible but tight. Submit now.</li>
+      <li><strong>Planned migration or restructuring:</strong> If Spain isn't viable, you migrate operations to another EU member state (Germany, Portugal, and Malta have faster processes) or restructure as a non-CASP service.</li>
+    </ul>
+    <p>Both paths require moving now. Waiting for June to decide isn't a strategy.</p>
+    <p>If you're already licensed, the risk isn't regulatory — it's operational. Staying compliant post-license means continuous monitoring of CNMV guidance updates, DAC8 filing deadlines, quarterly reserve certifications, and incident reporting obligations. Missing one quarterly deadline can trigger a formal investigation that costs months and legal fees.</p>
+    <p>This is exactly why we built SENTINEL. It monitors MiCA requirement changes across Spain, flags which CNMV guidance applies to your specific CASP type, tracks your DAC8 filing deadlines, and alerts you when regulatory interpretation shifts. You stop guessing and start acting.</p>
+
+    <h2>Moving Forward</h2>
+    <p>The Spanish crypto market will be smaller on August 1, 2026. Dozens of companies that couldn't get licensed will have exited. That's not speculation — that's MiCA's actual design.</p>
+    <p>The firms that survive are the ones that treated MiCA compliance as a core business problem. The ones that thrive are the ones treating it as a continuous operational obligation, not a one-time checkbox.</p>
+    <p>July 1 isn't coming. It's already here.</p>
+
+  </article>
+
+  <div class="article-cta">
+    <div class="article-cta-box">
+      <h3>Automate your MiCA compliance</h3>
+      <p>SENTINEL monitors regulations effortlessly and automates compliant transaction reporting.</p>
+      <div class="cta-buttons">
+        <a href="/pricing" class="btn-primary">View Pricing</a>
+        <a href="/" class="btn-secondary">Learn More →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="related-posts">
+    <div class="related-label">Related Articles</div>
+    <a href="/blog/dac8-reporting-spain-guide" class="related-link">
+      <div class="related-link-title">DAC8 in Spain: Modelo 172, 173 and 721 Explained</div>
+      <div class="related-link-desc">Complete guide to DAC8 crypto reporting obligations and deadlines in Spain.</div>
+    </a>
+    <a href="/faq" class="related-link">
+      <div class="related-link-title">Frequently Asked Questions</div>
+      <div class="related-link-desc">Answers to common questions about MiCA, DAC8, and SENTINEL.</div>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="/" class="footer-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span class="footer-wordmark">SENTINEL</span>
+      </a>
+      <ul class="footer-links">
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/blog/mica-deadline-july-2026">Blog</a></li>
+        <li><a href="/#deadlines">Deadlines</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="https://linkedin.com/in/micaready" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://x.com/micareadyeu" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
+      <p class="footer-disclaimer">SENTINEL provides compliance tooling, not legal advice. Consult a qualified legal professional for all regulatory decisions. True Nordic Capital © 2026.</p>
+    </div>
+  </footer>
+
+  <script>
+    const MiCA_DEADLINE = new Date('2026-07-01T00:00:00+00:00');
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function updateCountdown() {
+      const diff = MiCA_DEADLINE - new Date();
+      if (diff <= 0) { document.getElementById('countdownDisplay').textContent = 'ENFORCEMENT ACTIVE'; return; }
+      const d = Math.floor(diff / 86400000), h = Math.floor((diff % 86400000) / 3600000), m = Math.floor((diff % 3600000) / 60000), s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('countdownDisplay').textContent = `${d}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+    }
+    updateCountdown(); setInterval(updateCountdown, 1000);
+  </script>
+  <script src="/shared.js" defer></script>
+</body>
+</html>
