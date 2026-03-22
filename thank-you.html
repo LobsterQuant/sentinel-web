@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You — SENTINEL | Payment Confirmed</title>
+  <meta name="description" content="Your SENTINEL subscription is confirmed. We'll be in touch within 24 hours to get you onboarded.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://micaready.eu/thank-you">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Thank You — SENTINEL | Payment Confirmed">
+  <meta property="og:description" content="Your SENTINEL subscription is confirmed. We'll be in touch within 24 hours to get you onboarded.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://micaready.eu/thank-you">
+  <meta property="og:image" content="https://micaready.eu/og-image.png">
+  <meta property="og:site_name" content="SENTINEL">
+
+  <!-- Fonts — preloaded -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+
+  <style>
+    :root {
+      --bg-void:         #000000;
+      --bg-surface:      #080808;
+      --bg-elevated:     #0F0F0F;
+      --bg-border:       #1A1A1A;
+      --bg-subtle:       #141414;
+      --text-primary:    #FFFFFF;
+      --text-secondary:  #ABABBA;
+      --text-muted:      #4A4A5A;
+      --text-mono:       #A8B4C0;
+      --accent:          #00E5BD;
+      --accent-dim:      #00E5BD22;
+      --accent-border:   #00E5BD44;
+      --status-critical: #FF3B3B;
+      --font-display:    'Syne', 'DM Sans', sans-serif;
+      --font-ui:         'DM Sans', system-ui, sans-serif;
+      --font-mono:       'JetBrains Mono', 'Cascadia Mono', monospace;
+      --radius-card:     4px;
+      --radius-pill:     9999px;
+      --radius-badge:    3px;
+      --nav-height:      60px;
+      --banner-height:   37px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-void);
+      color: var(--text-primary);
+      font-family: var(--font-ui);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ──────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      z-index: 200;
+      background: rgba(0,0,0,0.88);
+      border-bottom: 1px solid var(--bg-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo svg { color: var(--accent); }
+
+    .nav-wordmark {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: 0.14em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--text-primary);
+      color: #000;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 10px 24px;
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 150ms ease, color 150ms ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover { background: var(--accent); color: #000; }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-pill);
+      padding: 10px 24px;
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 150ms ease, color 150ms ease;
+      white-space: nowrap;
+    }
+
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── COUNTDOWN BANNER ────────────────────────────── */
+    .countdown-banner {
+      position: fixed;
+      top: var(--nav-height);
+      left: 0; right: 0;
+      z-index: 199;
+      height: var(--banner-height);
+      background: linear-gradient(90deg, #FF3B3B0D, #FF3B3B22, #FF3B3B0D);
+      border-bottom: 1px solid #FF3B3B44;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+      color: #FF3B3B;
+      letter-spacing: 0.02em;
+      padding: 0 24px;
+    }
+
+    /* ── CONFIRMATION HERO ───────────────────────────── */
+    .confirmation {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--nav-height) + var(--banner-height) + 80px) 48px 80px;
+      overflow: hidden;
+    }
+
+    .confirm-dot-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, #222 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse 75% 70% at 50% 40%, black 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 40%, black 20%, transparent 75%);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .confirm-glow {
+      position: absolute;
+      top: calc(var(--nav-height) + var(--banner-height));
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 450px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(0,229,189,0.09) 0%, transparent 65%);
+      pointer-events: none;
+      animation: glowPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.65; }
+      50%       { opacity: 1; }
+    }
+
+    .confirm-content {
+      position: relative;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    /* ── ANIMATED SHIELD ICON ────────────────────────── */
+    .confirm-icon {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 36px;
+      opacity: 0;
+      transform: scale(0.7);
+      animation: iconPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
+    }
+
+    .confirm-icon svg {
+      width: 40px;
+      height: 40px;
+      color: var(--accent);
+    }
+
+    @keyframes iconPop {
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .confirm-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 0.55s ease forwards 0.35s;
+    }
+
+    .confirm-h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5.5vw, 56px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards 0.48s;
+    }
+
+    .confirm-sub {
+      font-family: var(--font-ui);
+      font-size: clamp(15px, 1.8vw, 18px);
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto 44px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards 0.6s;
+    }
+
+    /* ── STATUS CARD ──────────────────────────────────── */
+    .confirm-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-card);
+      padding: 28px 32px;
+      text-align: left;
+      margin-bottom: 44px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards 0.72s;
+    }
+
+    .confirm-card-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--bg-border);
+    }
+
+    .confirm-card-row:last-child {
+      border-bottom: none;
+    }
+
+    .confirm-card-label {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+
+    .confirm-card-value {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .confirm-card-value.status-active {
+      color: var(--accent);
+    }
+
+    /* ── CTA BUTTONS ─────────────────────────────────── */
+    .confirm-ctas {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards 0.84s;
+    }
+
+    .confirm-ctas .btn-primary  { padding: 14px 32px; font-size: 14px; }
+    .confirm-ctas .btn-secondary { padding: 14px 32px; font-size: 14px; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--bg-border);
+      padding: 52px 48px;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+    }
+
+    .footer-logo svg { color: var(--accent); }
+
+    .footer-wordmark {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: 0.14em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    .footer-disclaimer {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      color: var(--text-muted);
+      max-width: 420px;
+      line-height: 1.65;
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 700px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .confirmation { padding: calc(var(--nav-height) + var(--banner-height) + 48px) 24px 48px; }
+      .confirm-card { padding: 20px 20px; }
+      .confirm-ctas { flex-direction: column; align-items: center; }
+      .countdown-banner { font-size: 11px; padding: 0 16px; }
+      footer { padding: 40px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
+    }
+  </style>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+<body>
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <span class="nav-wordmark">SENTINEL</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#how-it-works">How It Works</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a href="/faq">FAQ</a></li>
+      <li><a href="/#deadlines">Deadlines</a></li>
+    </ul>
+    <a href="/pricing" class="btn-primary">Request Access</a>
+  </nav>
+
+  <!-- ═══════════════ COUNTDOWN BANNER ═══════════════ -->
+  <div class="countdown-banner">
+    ⚠&nbsp; MiCA full enforcement:&nbsp;<span id="countdownDisplay">calculating...</span>&nbsp;— 1 July 2026
+  </div>
+
+  <!-- ═══════════════ CONFIRMATION ═══════════════ -->
+  <section class="confirmation">
+    <div class="confirm-dot-grid"></div>
+    <div class="confirm-glow"></div>
+    <div class="confirm-content">
+
+      <!-- Shield + check icon -->
+      <div class="confirm-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <polyline points="9 12 11.5 14.5 15.5 10"/>
+        </svg>
+      </div>
+
+      <div class="confirm-eyebrow">Payment Confirmed</div>
+      <h1 class="confirm-h1">You're in.</h1>
+      <p class="confirm-sub">
+        Your subscription is active. We'll be in touch within 24 hours to onboard your account and get SENTINEL running on your compliance obligations.
+      </p>
+
+      <!-- Status card -->
+      <div class="confirm-card">
+        <div class="confirm-card-row">
+          <span class="confirm-card-label">Status</span>
+          <span class="confirm-card-value status-active">● Active</span>
+        </div>
+        <div class="confirm-card-row">
+          <span class="confirm-card-label">Onboarding</span>
+          <span class="confirm-card-value">Within 24 hours</span>
+        </div>
+        <div class="confirm-card-row">
+          <span class="confirm-card-label">Next step</span>
+          <span class="confirm-card-value">Check your inbox</span>
+        </div>
+      </div>
+
+      <div class="confirm-ctas">
+        <a href="https://micaready.eu" class="btn-primary">Back to SENTINEL</a>
+        <a href="/pricing" class="btn-secondary">View Plans</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <a href="/" class="footer-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span class="footer-wordmark">SENTINEL</span>
+      </a>
+      <ul class="footer-links">
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/blog/mica-deadline-july-2026">Blog</a></li>
+        <li><a href="/#deadlines">Deadlines</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="https://linkedin.com/in/micaready" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://x.com/micareadyeu" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
+      <p class="footer-disclaimer">
+        SENTINEL provides compliance tooling, not legal advice. Consult a qualified legal professional for all regulatory decisions. True Nordic Capital © 2026.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // ── Live MiCA countdown ──────────────────────────────────────────
+    const MiCA_DEADLINE = new Date('2026-07-01T00:00:00+00:00');
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function updateCountdown() {
+      const diff = MiCA_DEADLINE - new Date();
+      if (diff <= 0) { document.getElementById('countdownDisplay').textContent = 'ENFORCEMENT ACTIVE'; return; }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000)  / 60000);
+      const s = Math.floor((diff % 60000)    / 1000);
+      document.getElementById('countdownDisplay').textContent = `${d}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+  <script src="/shared.js" defer></script>
+</body>
+</html>
