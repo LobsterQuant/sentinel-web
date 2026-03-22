@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://sentinel-web-delta.vercel.app/</loc>
+    <loc>https://micaready.eu/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://sentinel-web-delta.vercel.app/pricing</loc>
+    <loc>https://micaready.eu/pricing</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://sentinel-web-delta.vercel.app/faq</loc>
+    <loc>https://micaready.eu/faq</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sentinel-web-delta.vercel.app/blog/mica-deadline-july-2026</loc>
+    <loc>https://micaready.eu/blog/mica-deadline-july-2026</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sentinel-web-delta.vercel.app/blog/dac8-reporting-spain-guide</loc>
+    <loc>https://micaready.eu/blog/dac8-reporting-spain-guide</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sentinel-web-delta.vercel.app/sentinel-dashboard</loc>
+    <loc>https://micaready.eu/sentinel-dashboard</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Sitemap: https://sentinel-web-delta.vercel.app/sitemap.xml
+Sitemap: https://micaready.eu/sitemap.xml
