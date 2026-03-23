@@ -399,3 +399,15 @@ body {
     font-size: clamp(24px, 6vw, 36px) !important;
   }
 }
+
+/* ── NAV CENTER FIX ────────────────────────────────────────
+   Restores the centered position of nav-links 
+   after the Right CTA was removed.
+───────────────────────────────────────────────────────── */
+@media (min-width: 701px) {
+  .nav-links {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+}

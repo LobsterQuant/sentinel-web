@@ -103,7 +103,7 @@
           return;
         }
         
-        if (href === '#' || href === '/pricing') {
+        if (href === '#') {
           openModal(e);
           return;
         }
