@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — SENTINEL</title>
+  <meta name="description" content="Terms of Service for SENTINEL. Understand the legal agreements and terms of subscription for our compliance platform.">
+  <meta name="robots" content="noindex, follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-void: #000000; --bg-surface: #080808; --bg-elevated: #0F0F0F; --bg-border: #1A1A1A; --bg-subtle: #141414;
+      --text-primary: #FFFFFF; --text-secondary: #ABABBA; --text-muted: #4A4A5A;
+      --accent: #00E5BD; --accent-dim: #00E5BD22; --accent-border: #00E5BD44;
+      --font-display: 'Syne', 'DM Sans', sans-serif; --font-ui: 'DM Sans', system-ui, sans-serif; --font-mono: 'JetBrains Mono', 'Cascadia Mono', monospace;
+      --radius-card: 4px; --radius-pill: 9999px; --nav-height: 60px; --banner-height: 37px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg-void); color: var(--text-primary); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-height); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; z-index: 200; background: rgba(0,0,0,0.88); border-bottom: 1px solid var(--bg-border); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo svg { color: var(--accent); }
+    .nav-wordmark { font-family: var(--font-display); font-size: 15px; font-weight: 800; color: var(--text-primary); letter-spacing: 0.14em; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { font-family: var(--font-ui); font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color 150ms ease; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .btn-primary { display: inline-block; background: var(--text-primary); color: #000; border: none; border-radius: var(--radius-pill); padding: 10px 24px; font-family: var(--font-ui); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; text-decoration: none; transition: background 150ms ease, color 150ms ease; }
+    .btn-primary:hover { background: var(--accent); color: #000; }
+    .btn-secondary { display: inline-block; background: transparent; color: var(--text-primary); border: 1px solid var(--bg-border); border-radius: var(--radius-pill); padding: 10px 24px; font-family: var(--font-ui); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; text-decoration: none; transition: border-color 150ms ease, color 150ms ease; }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    .countdown-banner { position: fixed; top: var(--nav-height); left: 0; right: 0; z-index: 199; height: var(--banner-height); background: linear-gradient(90deg, #FF3B3B0D, #FF3B3B22, #FF3B3B0D); border-bottom: 1px solid #FF3B3B44; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: #FF3B3B; letter-spacing: 0.02em; padding: 0 24px; }
+
+    /* PAGE HEADER */
+    .page-header { padding: calc(var(--nav-height) + var(--banner-height) + 80px) 48px 40px; text-align: center; max-width: 800px; margin: 0 auto; }
+    .page-header h1 { font-family: var(--font-display); font-size: 44px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--text-primary); }
+    .page-header-sub { font-family: var(--font-ui); font-size: 17px; line-height: 1.6; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+
+    /* LEGAL CONTENT */
+    .legal-content { max-width: 800px; margin: 0 auto; padding: 0 48px 80px; }
+    .legal-content h2 { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--text-primary); margin: 56px 0 20px; line-height: 1.25; }
+    .legal-content h3 { font-family: var(--font-ui); font-size: 18px; font-weight: 600; color: var(--text-primary); margin: 40px 0 14px; }
+    .legal-content p { font-family: var(--font-ui); font-size: 15px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px; }
+    .legal-content ul { font-family: var(--font-ui); font-size: 15px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px; padding-left: 20px; }
+    .legal-content li { margin-bottom: 8px; }
+    .legal-content a { color: var(--accent); text-decoration: none; }
+    .legal-content a:hover { color: var(--text-primary); }
+    
+    .last-updated { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-bottom: 40px; }
+
+    /* CTA SECTION */
+    .cta-section { background: var(--bg-surface); padding: 100px 48px; text-align: center; border-top: 1px solid var(--bg-border); }
+    .section-label { font-family: var(--font-ui); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin-bottom: 16px; }
+    .section-h2 { font-family: var(--font-display); font-size: 40px; font-weight: 800; margin-bottom: 24px; letter-spacing: -0.02em; }
+    .cta-sub { font-size: 16px; color: var(--text-secondary); margin: 0 auto 32px; max-width: 500px; line-height: 1.6; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--bg-border); padding: 52px 48px; }
+    .footer-inner { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    .footer-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+    .footer-logo svg { color: var(--accent); }
+    .footer-wordmark { font-family: var(--font-display); font-size: 14px; font-weight: 800; color: var(--text-primary); letter-spacing: 0.14em; }
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a { font-family: var(--font-ui); font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 150ms ease; }
+    .footer-links a:hover { color: var(--text-secondary); }
+    .footer-social { display: flex; gap: 16px; }
+    .footer-social a { color: #4a4a5a; transition: color 150ms ease; }
+    .footer-social a:hover { color: #fff; }
+    .footer-social svg { width: 18px; height: 18px; }
+
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 800ms ease, transform 800ms cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 700px) {
+      .page-header { padding: calc(var(--nav-height) + var(--banner-height) + 40px) 24px 32px; }
+      .legal-content { padding: 0 24px 60px; }
+      .cta-section { padding: 80px 24px; }
+      .cta-buttons { flex-direction: column; }
+      footer { padding: 40px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .footer-links { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span class="nav-wordmark">SENTINEL</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#how-it-works">How It Works</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a href="/faq">FAQ</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/#deadlines">Deadlines</a></li>
+    </ul>
+  </nav>
+
+  <div class="countdown-banner">
+    ⚠&nbsp; MiCA full enforcement:&nbsp;<span id="countdownDisplay">calculating...</span>&nbsp;— 1 July 2026
+  </div>
+
+  <!-- ═══════════════ HEADER ═══════════════ -->
+  <header class="page-header">
+    <h1 class="reveal">Terms of Service</h1>
+    <p class="page-header-sub reveal">The rules and agreements managing your access to SENTINEL structure and algorithms.</p>
+  </header>
+
+  <!-- ═══════════════ CONTENT ═══════════════ -->
+  <section class="legal-content">
+    <div class="last-updated reveal">Last updated: March 2026</div>
+
+    <div class="reveal">
+      <h2>1. Introduction</h2>
+      <p>These Terms of Service ("Terms") frame your access and usage of the SENTINEL SaaS product operated by True Nordic Capital. By registering, you agree to these Terms. Do not use the service if you disagree.</p>
+    </div>
+
+    <div class="reveal">
+      <h2>2. Subscription Terms</h2>
+      <p>SENTINEL is provided on a flat monthly subscription based on your plan tier:</p>
+      <ul>
+        <li><strong>Individual:</strong> €99/month</li>
+        <li><strong>Professional:</strong> €499/month</li>
+        <li><strong>CASP:</strong> €1,500/month</li>
+      </ul>
+      <p>A <strong>14-day free trial</strong> is available across all tiers to test the platform. Afterward, processing relies on Stripe. You may cancel at any time before your billing cycle renews.</p>
+    </div>
+
+    <div class="reveal">
+      <h2>3. Disclaimer of Legal Advice</h2>
+      <p><strong>SENTINEL provides heavily automated regulatory and compliance tooling. It does NOT provide legal advice.</strong> True Nordic Capital makes no warranties concerning your immunity from non-compliance. All tools must be validated against your own competent legal and compliance counsel. Users bear exclusive responsibility for their regulatory status concerning DAC8, MiCA, and national regulations.</p>
+    </div>
+    
+    <div class="reveal">
+      <h2>4. Platform Usage</h2>
+      <p>You agree not to modify, reverse-engineer, or attempt to extract the source code or algorithms belonging to the SENTINEL platform. Abuse, overload, or disruption of our endpoints via scripts, exploits, or scrapers will result in immediate termination.</p>
+    </div>
+
+    <div class="reveal">
+      <h2>5. Contact Us</h2>
+      <p>If you have any questions or require custom SLA stipulations, you may contact our operations team at <a href="mailto:contact@micaready.eu">contact@micaready.eu</a>.</p>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════ CTA ═══════════════ -->
+  <section class="cta-section">
+    <div class="section-wrap">
+      <div class="section-label reveal">MiCA is here</div>
+      <h2 class="section-h2 reveal">Ready to automate?</h2>
+      <div class="cta-buttons reveal">
+        <a href="/pricing" class="btn-primary">View Pricing</a>
+        <a href="/" class="btn-secondary">Back to Home →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <a href="/" class="footer-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span class="footer-wordmark">SENTINEL</span>
+      </a>
+      <ul class="footer-links">
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/#deadlines">Deadlines</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="https://linkedin.com/in/micaready" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://x.com/micareadyeu" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="mailto:contact@micaready.eu" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+      </div>
+      <div>
+        <p class="footer-disclaimer" style="margin-bottom: 8px;">
+          SENTINEL provides compliance tooling, not legal advice. Consult a qualified legal professional for all regulatory decisions. True Nordic Capital © 2026.
+        </p>
+        <div style="font-family: var(--font-ui); font-size: 11px;">
+          <a href="/privacy" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
+          <span style="margin: 0 8px; color: var(--bg-border);">|</span>
+          <a href="/terms" style="color: var(--text-muted); text-decoration: none;">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/shared.js" defer></script>
+  <script>
+    // ── Scope shared features ────────────────────────────────────────────
+    const MiCA_DEADLINE = new Date('2026-07-01T00:00:00+00:00');
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function updateCountdown() {
+      const el = document.getElementById('countdownDisplay');
+      if (!el) return;
+      const diff = MiCA_DEADLINE - new Date();
+      if (diff <= 0) { el.textContent = 'ENFORCEMENT ACTIVE'; return; }
+      const d = Math.floor(diff / 86400000), h = Math.floor((diff % 86400000) / 3600000), m = Math.floor((diff % 3600000) / 60000), s = Math.floor((diff % 60000) / 1000);
+      el.textContent = `${d}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const siblings = [...entry.target.parentElement.querySelectorAll('.reveal:not(.visible)')];
+        const idx = siblings.indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add('visible'), Math.max(0, idx * 75));
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
+</body>
+</html>
