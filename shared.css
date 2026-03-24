@@ -307,7 +307,10 @@ body {
   .hero-h1 {
     font-size: clamp(32px, 8vw, 48px) !important;
     letter-spacing: -0.02em;
-    word-break: break-word;
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: none;
+    -webkit-hyphens: none;
   }
 
   .hero-sub {
@@ -322,13 +325,19 @@ body {
   /* ── Section h2 headings (all pages) ──────────────────── */
   .section-h2 {
     font-size: clamp(28px, 7vw, 40px) !important;
-    word-break: break-word;
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: none;
+    -webkit-hyphens: none;
   }
 
   /* ── Page header h1 (pricing, faq) ────────────────────── */
   .page-header h1 {
     font-size: clamp(28px, 7vw, 44px) !important;
-    word-break: break-word;
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: none;
+    -webkit-hyphens: none;
   }
 
   .page-header-sub {
@@ -338,7 +347,10 @@ body {
   /* ── Blog article h1 ──────────────────────────────────── */
   .article-header h1 {
     font-size: clamp(28px, 7vw, 40px) !important;
-    word-break: break-word;
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: none;
+    -webkit-hyphens: none;
   }
 
   .article-header .lead {
@@ -356,12 +368,16 @@ body {
   /* ── Countdown banner — proper wrapping ────────────────── */
   .countdown-banner {
     font-size: 11px !important;
-    white-space: normal;
+    white-space: normal !important;
     text-align: center;
-    line-height: 1.4;
-    height: auto;
+    line-height: 1.5;
+    height: auto !important;
     min-height: var(--banner-height, 37px);
-    padding: 6px 16px !important;
+    padding: 8px 16px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;       /* Ensure the text can wrap if flex causes issues */
   }
 
   /* ── Pricing cards — prevent overflow ──────────────────── */
@@ -409,5 +425,55 @@ body {
     position: absolute !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
+  }
+}
+
+/* ── MOBILE NAV MENU ─────────────────────────────────────── */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary, #FFF);
+  cursor: pointer;
+  padding: 8px;
+  z-index: 201;
+}
+
+@media (max-width: 700px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none; /* Hide by default */
+  }
+  
+  .nav-links.mobile-open {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: var(--nav-height, 60px);
+    left: 0;
+    right: 0;
+    background: rgba(8, 8, 8, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--bg-border, #1A1A1A);
+    padding: 24px 20px 32px;
+    gap: 24px;
+    align-items: center;
+    z-index: 200;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  
+  .nav-links.mobile-open li {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-links.mobile-open a {
+    font-size: 16px;
+    padding: 8px 0;
+    display: block;
   }
 }

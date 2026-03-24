@@ -772,7 +772,7 @@
         </svg>
         Regulatory Alerts
       </a>
-      <a href="#section-alerts" class="nav-item">
+      <a href="#section-watchdog" class="nav-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
           <circle cx="12" cy="12" r="3"/>
@@ -781,14 +781,14 @@
       </a>
 
       <div class="nav-group-label">Account</div>
-      <a href="#dashboard-overview" class="nav-item">
+      <a href="#section-settings" class="nav-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="3"/>
           <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
         </svg>
         Settings
       </a>
-      <a href="#dashboard-overview" class="nav-item">
+      <a href="#section-api" class="nav-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="5" width="20" height="14" rx="2"/>
           <path d="M2 10h20"/>
@@ -820,7 +820,7 @@
             <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
             <line x1="3" y1="10" x2="21" y2="10"/>
           </svg>
-          20 Feb 2026 – 21 Mar 2026
+          <span id="dateRangeText">Loading...</span>
         </div>
         <div class="profile-chip">TN</div>
       </div>
@@ -831,7 +831,7 @@
 
       <div id="dashboard-overview">
         <h1 class="page-title">Dashboard</h1>
-        <div class="page-sub">Overview — True Nordic Capital · Last sync 14 minutes ago</div>
+        <div class="page-sub">Overview — True Nordic Capital · <span id="lastSyncText">Checking...</span></div>
       </div>
 
       <!-- ROW 1 — STAT CARDS -->
@@ -995,8 +995,40 @@
         </div>
       </div>
 
+      <!-- ROW 5 — WATCHDOG LOG -->
+      <div class="panel" id="section-watchdog" style="margin-top: 20px;">
+        <div class="panel-header">
+          <div class="panel-title">Watchdog Log</div>
+          <div class="panel-meta">System active</div>
+        </div>
+        <div style="padding: 20px; font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+          &gt; SYSTEM_OK: All agents operating normally within parameters.<br>
+          &gt; LAST_SYNC: Core regulators checked (EBA, ESMA, CNMV). No new publications.
+        </div>
+      </div>
+
+      <!-- ROW 6 — SETTINGS & API KEYS -->
+      <div class="mid-row" style="margin-top: 20px;">
+        <div class="panel" id="section-settings">
+          <div class="panel-header">
+            <div class="panel-title">Settings</div>
+          </div>
+          <div style="padding: 20px; font-size: 13px; color: var(--text-secondary);">
+            Account and workflow settings. Work in progress.
+          </div>
+        </div>
+        <div class="panel" id="section-api">
+          <div class="panel-header">
+            <div class="panel-title">API Keys</div>
+          </div>
+          <div style="padding: 20px; font-size: 13px; color: var(--text-secondary);">
+            Manage your REST and webhook API keys.
+          </div>
+        </div>
+      </div>
+
       <!-- DISCLAIMER -->
-      <div class="dash-disclaimer">
+      <div class="dash-disclaimer" style="margin-top: 24px;">
         SENTINEL provides compliance tooling, not legal advice. Consult a qualified legal professional for all regulatory decisions.
       </div>
 
@@ -1029,7 +1061,6 @@
     var dashDays = document.getElementById('dashDays');
     if (dashDays) dashDays.textContent = daysLeft;
 
-    // Intersection observer for count-up
     var cObs = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
         if (!e.isIntersecting) return;
@@ -1041,6 +1072,20 @@
         cObs.unobserve(el);
       });
     }, { threshold: 0.5 });
+    
+    // ── Dynamic text updates ──────────────────────────────────────────────────
+    var now = new Date();
+    var lastMonth = new Date(now);
+    lastMonth.setMonth(now.getMonth() - 1);
+    
+    var dateFmt = { day: '2-digit', month: 'short', year: 'numeric' };
+    var dateRangeStr = lastMonth.toLocaleDateString('en-GB', dateFmt) + ' – ' + now.toLocaleDateString('en-GB', dateFmt);
+    var drText = document.getElementById('dateRangeText');
+    if (drText) drText.textContent = dateRangeStr;
+    
+    var lsText = document.getElementById('lastSyncText');
+    var minAgo = Math.floor(Math.random() * 14) + 2; 
+    if (lsText) lsText.textContent = 'Last sync ' + minAgo + ' minutes ago';
 
     document.querySelectorAll('[data-countup]').forEach(function(el) { cObs.observe(el); });
 
@@ -1174,19 +1219,19 @@
     // ── Transaction table ─────────────────────────────────────────────────────
     (function buildTable() {
       var rows = [
-        { asset: 'BTC',  type: 'Sell',     eur: '12,440.00', mica: 'ART',    dac8: 'Disposal',    tax: 'Capital Gain',   date: '21 Mar 2026' },
+        { asset: 'BTC',  type: 'Sell',     eur: '12,440.00', mica: 'Other crypto-asset', dac8: 'Disposal',    tax: 'Capital Gain',   date: '21 Mar 2026' },
         { asset: 'ETH',  type: 'Receive',  eur: '3,210.50',  mica: 'Other',  dac8: 'Receipt',     tax: 'Income',         date: '21 Mar 2026' },
         { asset: 'USDC', type: 'Transfer', eur: '8,000.00',  mica: 'EMT',    dac8: 'Transfer',    tax: 'Non-Taxable',    date: '20 Mar 2026' },
         { asset: 'SOL',  type: 'Buy',      eur: '1,885.20',  mica: 'Other',  dac8: 'Acquisition', tax: 'Non-Taxable',    date: '20 Mar 2026' },
-        { asset: 'BTC',  type: 'Sell',     eur: '6,102.75',  mica: 'ART',    dac8: 'Disposal',    tax: 'Capital Gain',   date: '19 Mar 2026' },
+        { asset: 'BTC',  type: 'Sell',     eur: '6,102.75',  mica: 'Other crypto-asset', dac8: 'Disposal',    tax: 'Capital Gain',   date: '19 Mar 2026' },
         { asset: 'MATIC',type: 'Stake',    eur: '540.00',    mica: 'Other',  dac8: 'Staking',     tax: 'Income',         date: '19 Mar 2026' },
         { asset: 'USDT', type: 'Receive',  eur: '15,000.00', mica: 'EMT',    dac8: 'Receipt',     tax: 'Non-Taxable',    date: '18 Mar 2026' },
         { asset: 'ETH',  type: 'Sell',     eur: '2,760.40',  mica: 'Other',  dac8: 'Disposal',    tax: 'Capital Gain',   date: '18 Mar 2026' },
         { asset: 'ADA',  type: 'Buy',      eur: '320.18',    mica: 'Other',  dac8: 'Acquisition', tax: 'Non-Taxable',    date: '17 Mar 2026' },
-        { asset: 'BTC',  type: 'Receive',  eur: '24,880.00', mica: 'ART',    dac8: 'Receipt',     tax: 'Income',         date: '16 Mar 2026' }
+        { asset: 'BTC',  type: 'Receive',  eur: '24,880.00', mica: 'Other crypto-asset', dac8: 'Receipt',     tax: 'Income',         date: '16 Mar 2026' }
       ];
 
-      var micaBadge = { 'ART': 'badge-important', 'EMT': 'badge-info', 'Other': 'badge-muted' };
+      var micaBadge = { 'ART': 'badge-important', 'EMT': 'badge-info', 'Other': 'badge-muted', 'Other crypto-asset': 'badge-muted' };
       var taxBadge  = { 'Capital Gain': 'badge-ok', 'Income': 'badge-important', 'Non-Taxable': 'badge-muted' };
 
       var tbody = document.getElementById('txTable');
