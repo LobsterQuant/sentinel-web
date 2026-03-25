@@ -44,7 +44,7 @@
 
     /* LEGAL CONTENT */
     .legal-content { max-width: 800px; margin: 0 auto; padding: 0 48px 80px; }
-    .legal-content h2 { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--text-primary); margin: 56px 0 20px; line-height: 1.25; }
+    .legal-content h2 { font-family: var(--font-ui); font-size: 28px; font-weight: 700; color: var(--text-primary); margin: 56px 0 20px; line-height: 1.25; }
     .legal-content h3 { font-family: var(--font-ui); font-size: 18px; font-weight: 600; color: var(--text-primary); margin: 40px 0 14px; }
     .legal-content p { font-family: var(--font-ui); font-size: 15px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px; }
     .legal-content ul { font-family: var(--font-ui); font-size: 15px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px; padding-left: 20px; }
@@ -53,6 +53,20 @@
     .legal-content a:hover { color: var(--text-primary); }
     
     .last-updated { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-bottom: 40px; }
+    .anchor { color: var(--accent); text-decoration: none; display: inline-block; margin-left: 8px; opacity: 0; transition: opacity 150ms ease; }
+    h2:hover .anchor, h3:hover .anchor { opacity: 1; }
+    
+    /* Responsive Data Tables */
+    .data-table { width: 100%; margin: 24px 0; border: 1px solid var(--bg-border); border-radius: 8px; overflow: hidden; font-family: var(--font-ui); font-size: 15px; }
+    .data-row { display: flex; flex-direction: column; padding: 16px; border-bottom: 1px solid var(--bg-border); }
+    .data-row:last-child { border-bottom: none; }
+    .data-label { color: var(--text-primary); font-weight: 700; margin-bottom: 8px; }
+    .data-value { color: var(--text-secondary); line-height: 1.6; }
+    .data-value strong { color: var(--text-primary); font-weight: 600; }
+    @media (min-width: 768px) {
+      .data-row { flex-direction: row; gap: 24px; padding: 20px 24px; }
+      .data-label { width: 220px; flex-shrink: 0; margin-bottom: 0; }
+    }
 
     /* CTA SECTION */
     .cta-section { background: var(--bg-surface); padding: 100px 48px; text-align: center; border-top: 1px solid var(--bg-border); }
@@ -125,47 +139,294 @@
 
   <!-- ═══════════════ CONTENT ═══════════════ -->
   <section class="legal-content">
-    <div class="last-updated reveal">Last updated: March 2026</div>
+    <div class="last-updated reveal">Effective: March 2026</div>
 
     <div class="reveal">
-      <h2>1. Introduction</h2>
-      <p>This Privacy Policy describes how True Nordic Capital ("Company", "we", "us", and "our") collects, uses, and shares your personal data when you use SENTINEL by micaready.eu ("Product", "Service"). We are committed to protecting your privacy and ensuring GDPR compliance across all our operations.</p>
+      <h2 id="section-1">1. WHO WE ARE AND HOW TO REACH US <a href="#section-1" class="anchor">#</a></h2>
+      <p><strong>Data Controller:</strong><br>
+      Michael Hansen<br>
+      Operating as: SENTINEL / micaready.eu<br>
+      Email: primo@micaready.eu<br>
+      Website: micaready.eu</p>
+      
+      <p>We do not have a Data Protection Officer (we are not required to appoint one under GDPR Article 37). For all data protection enquiries, contact primo@micaready.eu.</p>
     </div>
 
     <div class="reveal">
-      <h2>2. Data Collection and Processing</h2>
-      <p>We collect and process personal data in a limited scope to administer the platform and provide the service:</p>
+      <h2 id="section-2">2. WHAT PERSONAL DATA WE COLLECT AND HOW <a href="#section-2" class="anchor">#</a></h2>
+      <p>We collect Personal Data through the following means:</p>
+      
+      <h3>A. Directly from you (Article 13)</h3>
+      <div class="data-table">
+        <div class="data-row">
+          <div class="data-label">Email address</div>
+          <div class="data-value"><strong>Collection point:</strong> Waitlist form, contact form, account creation<br><strong>Why we collect it:</strong> To communicate with you about SENTINEL</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Name</div>
+          <div class="data-value"><strong>Collection point:</strong> Contact form, account creation<br><strong>Why we collect it:</strong> To address you correctly</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Company name and role</div>
+          <div class="data-value"><strong>Collection point:</strong> Contact form, account creation<br><strong>Why we collect it:</strong> To understand your organisation's needs</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Billing name, address, last 4 digits of card</div>
+          <div class="data-value"><strong>Collection point:</strong> Stripe payment flow<br><strong>Why we collect it:</strong> To process your subscription payment</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Communications content</div>
+          <div class="data-value"><strong>Collection point:</strong> Email correspondence<br><strong>Why we collect it:</strong> To respond to your enquiries</div>
+        </div>
+      </div>
+
+      <h3>B. Automatically when you use the Service or website (Article 13)</h3>
+      <div class="data-table">
+        <div class="data-row">
+          <div class="data-label">IP address</div>
+          <div class="data-value"><strong>Source:</strong> Server logs<br><strong>Why we collect it:</strong> Security, fraud prevention, abuse detection</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Browser type and version</div>
+          <div class="data-value"><strong>Source:</strong> Server logs<br><strong>Why we collect it:</strong> Technical compatibility</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Pages visited and timestamps</div>
+          <div class="data-value"><strong>Source:</strong> Server logs<br><strong>Why we collect it:</strong> Service improvement, security monitoring</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Referring URL</div>
+          <div class="data-value"><strong>Source:</strong> Server logs<br><strong>Why we collect it:</strong> Understanding how visitors find us</div>
+        </div>
+      </div>
+
+      <h3>C. From third parties (Article 14)</h3>
+      <p>We receive limited Personal Data from our payment processor Stripe (transaction confirmation, billing address verification) when you purchase a subscription. Stripe's own privacy policy governs their processing: stripe.com/privacy.</p>
+    </div>
+
+    <div class="reveal">
+      <h2 id="section-3">3. LEGAL BASIS FOR PROCESSING <a href="#section-3" class="anchor">#</a></h2>
+      <p>We process your Personal Data on the following legal bases under GDPR Article 6:</p>
+      
+      <div class="data-table">
+        <div class="data-row">
+          <div class="data-label">Providing the Service to subscribers</div>
+          <div class="data-value"><strong>Legal basis:</strong> Performance of contract<br><strong>Article 6 ground:</strong> Art. 6(1)(b)</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Processing payments</div>
+          <div class="data-value"><strong>Legal basis:</strong> Performance of contract<br><strong>Article 6 ground:</strong> Art. 6(1)(b)</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Responding to contact/waitlist requests</div>
+          <div class="data-value"><strong>Legal basis:</strong> Pre-contractual steps or consent<br><strong>Article 6 ground:</strong> Art. 6(1)(b) / Art. 6(1)(a)</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Sending product updates to subscribers</div>
+          <div class="data-value"><strong>Legal basis:</strong> Legitimate interests<br><strong>Article 6 ground:</strong> Art. 6(1)(f)</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Security monitoring and fraud prevention</div>
+          <div class="data-value"><strong>Legal basis:</strong> Legitimate interests<br><strong>Article 6 ground:</strong> Art. 6(1)(f)</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Keeping billing records</div>
+          <div class="data-value"><strong>Legal basis:</strong> Legal obligation (Spanish tax law)<br><strong>Article 6 ground:</strong> Art. 6(1)(c)</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Server log analysis for service improvement</div>
+          <div class="data-value"><strong>Legal basis:</strong> Legitimate interests<br><strong>Article 6 ground:</strong> Art. 6(1)(f)</div>
+        </div>
+      </div>
+
+      <p><strong>Legitimate interests assessment:</strong> Where we rely on legitimate interests, we have assessed that our interests (operating a secure, functioning service; communicating relevant product updates to customers) do not override your interests or fundamental rights, given the limited scope and nature of the data involved.</p>
+      <p><strong>Consent withdrawal:</strong> Where processing is based on your consent (e.g., waitlist sign-up), you may withdraw consent at any time by emailing primo@micaready.eu. Withdrawal does not affect the lawfulness of processing before withdrawal.</p>
+    </div>
+
+    <div class="reveal">
+      <h2 id="section-4">4. PURPOSES OF PROCESSING <a href="#section-4" class="anchor">#</a></h2>
+      <p>We use your Personal Data for the following purposes:</p>
       <ul>
-        <li><strong>Account Information:</strong> We collect your business email and basic account details during waitlist registration and account creation.</li>
-        <li><strong>Payment Data:</strong> Payment processing is securely handled via Stripe. We do not store your full credit card information locally or on our servers.</li>
-        <li><strong>CASP Client Data:</strong> We act as a <strong>Data Processor</strong> for the transactional data of your clients that you upload or process through SENTINEL for MiCA/DAC8 reporting. This data is handled in strict confidentiality.</li>
+        <li><strong>Service delivery:</strong> Providing access to the SENTINEL compliance monitoring platform</li>
+        <li><strong>Account management:</strong> Creating and managing your account, authentication, and access control</li>
+        <li><strong>Payment processing:</strong> Billing, invoicing, and payment verification</li>
+        <li><strong>Customer support:</strong> Responding to technical and commercial enquiries</li>
+        <li><strong>Service communications:</strong> Sending essential notifications about your subscription, the Service, or relevant regulatory changes (these are not marketing emails and cannot be opted out of while you are a subscriber)</li>
+        <li><strong>Product improvement:</strong> Analysing usage patterns (using aggregated and anonymised data where possible) to improve the Service</li>
+        <li><strong>Security and integrity:</strong> Detecting and preventing fraud, abuse, and unauthorised access</li>
+        <li><strong>Legal compliance:</strong> Meeting our obligations under Spanish, EU, and applicable law</li>
+      </ul>
+      <p>We do not use your Personal Data for automated individual decision-making or profiling as defined in GDPR Article 22.</p>
+    </div>
+
+    <div class="reveal">
+      <h2 id="section-5">5. HOW LONG WE KEEP YOUR DATA <a href="#section-5" class="anchor">#</a></h2>
+      <div class="data-table">
+        <div class="data-row">
+          <div class="data-label">Account and contact data</div>
+          <div class="data-value"><strong>Retention period:</strong> Duration of subscription + 2 years<br><strong>Reason:</strong> Dispute resolution, service continuity</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Billing and payment records</div>
+          <div class="data-value"><strong>Retention period:</strong> 7 years from transaction<br><strong>Reason:</strong> Spanish General Tax Law (Ley 58/2003) and Commercial Code obligation</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Correspondence and support</div>
+          <div class="data-value"><strong>Retention period:</strong> 3 years from last contact<br><strong>Reason:</strong> Dispute resolution and legal claims</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Server logs (IP, access logs)</div>
+          <div class="data-value"><strong>Retention period:</strong> 90 days<br><strong>Reason:</strong> Security monitoring; balancing privacy with incident investigation</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Waitlist data (non-subscribers)</div>
+          <div class="data-value"><strong>Retention period:</strong> 18 months from sign-up, or until you ask us to delete it<br><strong>Reason:</strong> Business purpose proportionality</div>
+        </div>
+      </div>
+      <p>After the applicable retention period, Personal Data is securely deleted or permanently anonymised.</p>
+    </div>
+
+    <div class="reveal">
+      <h2 id="section-6">6. WHO WE SHARE YOUR DATA WITH <a href="#section-6" class="anchor">#</a></h2>
+      <h3>6.1 Sub-processors</h3>
+      <p>We use the following third-party processors to provide the Service. Each has been assessed for GDPR adequacy or appropriate safeguards:</p>
+      
+      <div class="data-table">
+        <div class="data-row">
+          <div class="data-label">Stripe Inc.</div>
+          <div class="data-value"><strong>Purpose:</strong> Payment processing, billing<br><strong>Location:</strong> USA<br><strong>Transfer safeguard:</strong> Standard Contractual Clauses (SCCs); Stripe's DPA available at stripe.com/legal/dpa</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Formspree Inc.</div>
+          <div class="data-value"><strong>Purpose:</strong> Contact and waitlist form processing<br><strong>Location:</strong> USA<br><strong>Transfer safeguard:</strong> SCCs; data minimised to email and message content</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Vercel Inc.</div>
+          <div class="data-value"><strong>Purpose:</strong> Website and application hosting<br><strong>Location:</strong> USA (with global CDN)<br><strong>Transfer safeguard:</strong> SCCs; Vercel's DPA available at vercel.com/legal/dpa</div>
+        </div>
+      </div>
+      
+      <p>We do not sell, rent, or trade your Personal Data to any third party for their own marketing purposes.</p>
+
+      <h3>6.2 Other disclosures</h3>
+      <p>We may disclose Personal Data to:</p>
+      <ul>
+        <li><strong>Legal authorities:</strong> Where required by applicable law, court order, or to protect our legal rights or those of third parties</li>
+        <li><strong>Professional advisers:</strong> Lawyers and accountants, subject to confidentiality obligations</li>
+        <li><strong>Business transfers:</strong> In connection with a merger, acquisition, or sale of substantially all assets, with notice to you</li>
       </ul>
     </div>
 
     <div class="reveal">
-      <h2>3. Purpose of Data Processing</h2>
-      <p>We process your data primarily to deliver our core SaaS functionality, manage billing subscriptions (Individual €99 / Professional €499 / CASP €1,500), and verify your authorization to access SENTINEL. We do not sell your data to any third party under any circumstances.</p>
+      <h2 id="section-7">7. INTERNATIONAL TRANSFERS <a href="#section-7" class="anchor">#</a></h2>
+      <p>Our sub-processors Stripe, Formspree, and Vercel are based in the United States. Transfers of your Personal Data to these processors are made subject to Standard Contractual Clauses (SCCs) approved by the European Commission under GDPR Article 46(2)(c), which provide appropriate safeguards for your data. Copies of the applicable SCCs are available from us on request at primo@micaready.eu.</p>
+      <p>We do not transfer Personal Data to countries that lack adequate protection under GDPR without appropriate safeguards.</p>
     </div>
 
     <div class="reveal">
-      <h2>4. GDPR and User Rights</h2>
-      <p>As a European entity, True Nordic Capital operates in full compliance with the General Data Protection Regulation (GDPR). You have the right to:</p>
+      <h2 id="section-8">8. COOKIES AND TRACKING TECHNOLOGIES <a href="#section-8" class="anchor">#</a></h2>
+      <h3>8.1 What we use</h3>
+      <p>We use only technically necessary cookies. We do not use advertising, tracking, or analytics cookies.</p>
+      
+      <div class="data-table">
+        <div class="data-row">
+          <div class="data-label">Session cookie</div>
+          <div class="data-value"><strong>Type:</strong> Strictly necessary<br><strong>Purpose:</strong> Maintaining your login session<br><strong>Duration:</strong> Session (deleted when browser closes)</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">CSRF token</div>
+          <div class="data-value"><strong>Type:</strong> Strictly necessary<br><strong>Purpose:</strong> Security — preventing cross-site request forgery<br><strong>Duration:</strong> Session</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Preference cookie</div>
+          <div class="data-value"><strong>Type:</strong> Functional<br><strong>Purpose:</strong> Remembering language or display preferences, if applicable<br><strong>Duration:</strong> 12 months</div>
+        </div>
+      </div>
+
+      <h3>8.2 No consent banner required</h3>
+      <p>Because we use only strictly necessary and functional cookies, no consent banner is required under the Spanish Law on Information Society Services (LSSI-CE) and ePrivacy Directive guidance. If we add non-essential cookies in future, we will update this policy and implement a compliant consent mechanism.</p>
+
+      <h3>8.3 Third-party scripts</h3>
+      <p>We do not embed third-party analytics scripts (e.g., Google Analytics), social media widgets, or advertising pixels on this website.</p>
+    </div>
+
+    <div class="reveal">
+      <h2 id="section-9">9. YOUR RIGHTS UNDER GDPR <a href="#section-9" class="anchor">#</a></h2>
+      <p>You have the following rights regarding your Personal Data. We will respond to all valid requests within one (1) month, extendable by a further two months where necessary for complex requests.</p>
+      
+      <dl style="margin-top: 24px; color: var(--text-secondary); line-height: 1.6; font-family: var(--font-ui); font-size: 15px;">
+        <dt style="color: var(--text-primary); font-weight: 700; margin-bottom: 4px;">9.1 Right of access (Article 15)</dt>
+        <dd style="margin-left: 0; margin-bottom: 16px;">You have the right to obtain confirmation of whether we process your Personal Data, and if so, to receive a copy of it, together with information about the processing.</dd>
+
+        <dt style="color: var(--text-primary); font-weight: 700; margin-bottom: 4px;">9.2 Right to rectification (Article 16)</dt>
+        <dd style="margin-left: 0; margin-bottom: 16px;">You have the right to have inaccurate Personal Data corrected, or incomplete data completed.</dd>
+
+        <dt style="color: var(--text-primary); font-weight: 700; margin-bottom: 4px;">9.3 Right to erasure / "right to be forgotten" (Article 17)</dt>
+        <dd style="margin-left: 0; margin-bottom: 16px;">You have the right to request deletion of your Personal Data where: (a) it is no longer needed for the purpose it was collected; (b) you withdraw consent and there is no other legal basis; (c) you object to processing and there are no overriding legitimate grounds; (d) the data has been unlawfully processed.<br><br>This right does not apply where retention is required by legal obligation (e.g., billing records).</dd>
+
+        <dt style="color: var(--text-primary); font-weight: 700; margin-bottom: 4px;">9.4 Right to restriction of processing (Article 18)</dt>
+        <dd style="margin-left: 0; margin-bottom: 16px;">You have the right to request that we restrict processing of your Personal Data in certain circumstances, for example while the accuracy of data is disputed.</dd>
+
+        <dt style="color: var(--text-primary); font-weight: 700; margin-bottom: 4px;">9.5 Right to data portability (Article 20)</dt>
+        <dd style="margin-left: 0; margin-bottom: 16px;">Where processing is based on consent or contract and carried out by automated means, you have the right to receive your Personal Data in a structured, commonly used, machine-readable format, and to transmit it to another controller.</dd>
+
+        <dt style="color: var(--text-primary); font-weight: 700; margin-bottom: 4px;">9.6 Right to object (Article 21)</dt>
+        <dd style="margin-left: 0; margin-bottom: 16px;">You have the right to object at any time to processing based on legitimate interests (Article 6(1)(f)), including profiling. We will cease processing unless we can demonstrate compelling legitimate grounds that override your interests, or processing is necessary for legal claims.<br><br>You have an unconditional right to object to processing of your Personal Data for direct marketing purposes.</dd>
+
+        <dt style="color: var(--text-primary); font-weight: 700; margin-bottom: 4px;">9.7 Rights related to automated decision-making (Article 22)</dt>
+        <dd style="margin-left: 0; margin-bottom: 16px;">We do not make decisions based solely on automated processing that produce legal or similarly significant effects. This right is not currently applicable.</dd>
+
+        <dt style="color: var(--text-primary); font-weight: 700; margin-bottom: 4px;">9.8 Right to withdraw consent</dt>
+        <dd style="margin-left: 0; margin-bottom: 16px;">Where processing is based on consent, you may withdraw consent at any time. Withdrawal does not affect the lawfulness of prior processing.</dd>
+      </dl>
+
+      <p style="margin-top: 24px;">To exercise any of these rights: email primo@micaready.eu with a clear description of your request. We will verify your identity before processing any request. There is no fee for reasonable requests.</p>
+    </div>
+
+    <div class="reveal">
+      <h2 id="section-10">10. RIGHT TO LODGE A COMPLAINT <a href="#section-10" class="anchor">#</a></h2>
+      <p>If you believe we have not handled your Personal Data correctly, you have the right to lodge a complaint with a supervisory authority. The competent authority in Spain is:</p>
+      <p>Agencia Española de Protección de Datos (AEPD)<br>
+      C/ Jorge Juan, 6, 28001 Madrid<br>
+      <a href="http://www.aepd.es">www.aepd.es</a><br>
+      teléfono: +34 901 100 099</p>
+      <p>If you are based in another EU/EEA member state, you may also lodge a complaint with the supervisory authority in your country of residence.</p>
+      <p>We would appreciate the opportunity to address your concerns before you approach a supervisory authority, and invite you to contact us first at primo@micaready.eu.</p>
+    </div>
+
+    <div class="reveal">
+      <h2 id="section-11">11. SECURITY <a href="#section-11" class="anchor">#</a></h2>
+      <p>We implement appropriate technical and organisational measures to protect your Personal Data against unauthorised access, disclosure, alteration, or destruction. These measures include:</p>
       <ul>
-        <li>Access your personal data held by us.</li>
-        <li>Request correction or deletion of your data.</li>
-        <li>Withdraw your consent to data processing at any time.</li>
+        <li>HTTPS encryption for all data in transit</li>
+        <li>Access controls limiting who can access Personal Data</li>
+        <li>Regular review of our security practices</li>
+        <li>Contractual security obligations on all sub-processors</li>
       </ul>
-      <p>If you wish to exercise any of these rights, please contact us directly.</p>
+      <p>No method of transmission over the internet or electronic storage is 100% secure. In the event of a personal data breach that is likely to result in a high risk to your rights and freedoms, we will notify you without undue delay in accordance with GDPR Article 34.</p>
     </div>
 
     <div class="reveal">
-      <h2>5. Security</h2>
-      <p>We implement robust technical and organizational measures to ensure the security of your data. Since SENTINEL is an institutional-grade infrastructure, all your transactions and API interactions are secured through leading industry encryption protocols and standards.</p>
+      <h2 id="section-12">12. CHILDREN <a href="#section-12" class="anchor">#</a></h2>
+      <p>The Service is not directed to individuals under 18. We do not knowingly collect Personal Data from children. If you believe we have inadvertently collected data from a child, please contact us at primo@micaready.eu and we will delete it promptly.</p>
+    </div>
+
+    <div class="reveal">
+      <h2 id="section-13">13. CHANGES TO THIS POLICY <a href="#section-13" class="anchor">#</a></h2>
+      <p>We will update this Privacy Policy when necessary. Material changes will be notified by email to active subscribers at least 30 days before taking effect, and the "effective date" at the top of this page will be updated. We encourage you to review this policy periodically.</p>
+    </div>
+
+    <div class="reveal">
+      <h2 id="section-14">14. CONTACT <a href="#section-14" class="anchor">#</a></h2>
+      <p>For any questions about this Privacy Policy or our data practices:</p>
+      <p>Michael Hansen<br>
+      primo@micaready.eu<br>
+      micaready.eu</p>
+      <p>Response time: within 5 business days for general queries, within 30 days for formal data subject rights requests.</p>
     </div>
     
-    <div class="reveal">
-      <h2>6. Contact Us</h2>
-      <p>For questions or requests concerning this Privacy Policy, you may contact our compliance team directly at <a href="mailto:contact@micaready.eu">contact@micaready.eu</a>.</p>
+    <div class="reveal" style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--bg-border);">
+      <p><em>This Privacy Policy is provided in English. In the event of a conflict between this version and any translation, the English version prevails.</em></p>
     </div>
 
   </section>

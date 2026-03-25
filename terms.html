@@ -44,7 +44,7 @@
 
     /* LEGAL CONTENT */
     .legal-content { max-width: 800px; margin: 0 auto; padding: 0 48px 80px; }
-    .legal-content h2 { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--text-primary); margin: 56px 0 20px; line-height: 1.25; }
+    .legal-content h2 { font-family: var(--font-ui); font-size: 28px; font-weight: 700; color: var(--text-primary); margin: 56px 0 20px; line-height: 1.25; }
     .legal-content h3 { font-family: var(--font-ui); font-size: 18px; font-weight: 600; color: var(--text-primary); margin: 40px 0 14px; }
     .legal-content p { font-family: var(--font-ui); font-size: 15px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px; }
     .legal-content ul { font-family: var(--font-ui); font-size: 15px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px; padding-left: 20px; }
@@ -53,6 +53,14 @@
     .legal-content a:hover { color: var(--text-primary); }
     
     .last-updated { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-bottom: 40px; }
+    .anchor { color: var(--accent); text-decoration: none; display: inline-block; margin-left: 8px; opacity: 0; transition: opacity 150ms ease; }
+    h2:hover .anchor, h3:hover .anchor { opacity: 1; }
+    .accordion { border-top: 1px solid var(--bg-border); margin-top: 32px; padding-top: 16px; }
+    .accordion summary { list-style: none; font-family: var(--font-ui); font-size: 18px; font-weight: 700; color: var(--text-primary); cursor: pointer; display: flex; align-items: center; justify-content: space-between; }
+    .accordion summary::-webkit-details-marker { display: none; }
+    .accordion .expand-icon { color: var(--accent); font-size: 24px; font-weight: 400; transition: transform 0.2s ease; }
+    .accordion[open] .expand-icon { transform: rotate(45deg); }
+    .accordion-content { margin-top: 24px; }
 
     /* CTA SECTION */
     .cta-section { background: var(--bg-surface); padding: 100px 48px; text-align: center; border-top: 1px solid var(--bg-border); }
@@ -125,38 +133,140 @@
 
   <!-- ═══════════════ CONTENT ═══════════════ -->
   <section class="legal-content">
-    <div class="last-updated reveal">Last updated: March 2026</div>
-
-    <div class="reveal">
-      <h2>1. Introduction</h2>
-      <p>These Terms of Service ("Terms") frame your access and usage of the SENTINEL SaaS product operated by True Nordic Capital. By registering, you agree to these Terms. Do not use the service if you disagree.</p>
+    <div class="last-updated reveal">
+      TERMS OF SERVICE (CLOUD SERVICE AGREEMENT)<br>
+      micaready.eu — SENTINEL Compliance Platform<br>
+      Version 1.0 — Effective: March 2026
     </div>
 
     <div class="reveal">
-      <h2>2. Subscription Terms</h2>
-      <p>SENTINEL is provided on a flat monthly subscription based on your plan tier:</p>
-      <ul>
-        <li><strong>Individual:</strong> €99/month</li>
-        <li><strong>Professional:</strong> €499/month</li>
-        <li><strong>CASP:</strong> €1,500/month</li>
-      </ul>
-      <p>A <strong>14-day free trial</strong> is available across all tiers to test the platform. Afterward, processing relies on Stripe. You may cancel at any time before your billing cycle renews.</p>
+      <h2 id="1">1. DEFINITIONS <a href="#1" class="anchor">#</a></h2>
+      <p><strong>"Agreement"</strong> means this Cloud Service Agreement, including any Order Form.</p>
+      <p><strong>"Authorised Users"</strong> means employees or contractors of Customer who are permitted to access the Service under this Agreement.</p>
+      <p><strong>"Confidential Information"</strong> means any non-public information disclosed by one party to the other that is designated as confidential or that reasonably should be treated as confidential given its nature.</p>
+      <p><strong>"Customer"</strong> means the legal entity that has executed an Order Form or accepted this Agreement.</p>
+      <p><strong>"Customer Data"</strong> means all data submitted to or processed by the Service on behalf of Customer, including compliance records, regulatory filings, and entity information.</p>
+      <p><strong>"Documentation"</strong> means the technical and functional documentation for the Service made available by Provider.</p>
+      <p><strong>"Order Form"</strong> means a written or electronic order that references this Agreement and sets out subscription tier, fees, and term.</p>
+      <p><strong>"Personal Data"</strong> has the meaning given in Regulation (EU) 2016/679 (GDPR).</p>
+      <p><strong>"Provider"</strong> means Michael Hansen, operating micaready.eu ("SENTINEL").</p>
+      <p><strong>"Service"</strong> means the cloud-based MiCA compliance monitoring platform described in the Documentation, including CNMV registry tracking, DAC8 reporting alerts, AML monitoring notifications, and regulatory update feeds.</p>
+      <p><strong>"Service Level"</strong> means the uptime commitment set out in Section 6.</p>
+      <p><strong>"Subscription Term"</strong> means the period specified in the Order Form, or if none, one calendar month.</p>
     </div>
 
     <div class="reveal">
-      <h2>3. Disclaimer of Legal Advice</h2>
-      <p><strong>SENTINEL provides heavily automated regulatory and compliance tooling. It does NOT provide legal advice.</strong> True Nordic Capital makes no warranties concerning your immunity from non-compliance. All tools must be validated against your own competent legal and compliance counsel. Users bear exclusive responsibility for their regulatory status concerning DAC8, MiCA, and national regulations.</p>
-    </div>
-    
-    <div class="reveal">
-      <h2>4. Platform Usage</h2>
-      <p>You agree not to modify, reverse-engineer, or attempt to extract the source code or algorithms belonging to the SENTINEL platform. Abuse, overload, or disruption of our endpoints via scripts, exploits, or scrapers will result in immediate termination.</p>
+      <h2 id="2">2. SERVICE GRANT <a href="#2" class="anchor">#</a></h2>
+      <p><strong>2.1 Access.</strong> Subject to the terms of this Agreement and payment of fees, Provider grants Customer a non-exclusive, non-transferable right to access and use the Service during the Subscription Term solely for Customer's internal compliance purposes.</p>
+      <p><strong>2.2 Authorised Users.</strong> Customer may permit Authorised Users to access the Service. Customer is responsible for all use of the Service by its Authorised Users. Each subscription is licensed to a single legal entity; group or multi-entity use requires a separate Order Form.</p>
+      <p><strong>2.3 Restrictions.</strong> Customer shall not: (a) sublicense, resell, or make the Service available to third parties; (b) reverse engineer or attempt to extract the source code of the Service; (c) use the Service to build a competing product; (d) use the Service in violation of applicable law; (e) circumvent any usage limits.</p>
+      <p><strong>2.4 Acceptable Use.</strong> Customer shall use the Service only for lawful purposes and in accordance with this Agreement and any acceptable use policy published by Provider.</p>
     </div>
 
     <div class="reveal">
-      <h2>5. Contact Us</h2>
-      <p>If you have any questions or require custom SLA stipulations, you may contact our operations team at <a href="mailto:contact@micaready.eu">contact@micaready.eu</a>.</p>
+      <h2 id="3">3. FEES AND PAYMENT <a href="#3" class="anchor">#</a></h2>
+      <p><strong>3.1 Fees.</strong> Customer shall pay the fees set out in the Order Form. If no Order Form exists, fees are those published on the Provider's website at the time of subscription.</p>
+      <p><strong>3.2 Billing.</strong> Subscriptions are billed monthly in advance by credit or debit card via Stripe. All fees are stated and charged in EUR.</p>
+      <p><strong>3.3 Taxes.</strong> Fees are exclusive of VAT and other applicable taxes. Where Provider is required to collect VAT, it will be added to invoices at the applicable rate. Customer is responsible for all other taxes applicable to its purchase.</p>
+      <p><strong>3.4 Late Payment.</strong> If any undisputed amount is more than fourteen (14) days overdue, Provider may suspend access to the Service after written notice.</p>
+      <p><strong>3.5 Price Changes.</strong> Provider may change fees at any time with thirty (30) days' written notice. Continued use of the Service after the effective date constitutes acceptance. If Customer does not accept the new fees, Customer may terminate this Agreement before the effective date.</p>
+      <p><strong>3.6 No Refunds.</strong> Except as required by applicable law, all fees are non-refundable. Upon cancellation, access continues until the end of the then-current billing period.</p>
     </div>
+
+    <div class="reveal">
+      <h2 id="4">4. CUSTOMER DATA <a href="#4" class="anchor">#</a></h2>
+      <p><strong>4.1 Ownership.</strong> As between the parties, Customer retains all ownership of Customer Data. Provider acquires no rights in Customer Data except as necessary to perform its obligations under this Agreement.</p>
+      <p><strong>4.2 Processing.</strong> Provider will process Customer Data solely to provide the Service and as otherwise instructed by Customer in writing. Provider shall not process Customer Data for its own commercial purposes.</p>
+      <p><strong>4.3 Data Processing Agreement.</strong> To the extent Provider processes Personal Data on behalf of Customer as a data processor under GDPR, the Data Processing Agreement at Schedule 1 forms part of this Agreement and governs such processing.</p>
+      <p><strong>4.4 Security.</strong> Provider will implement and maintain reasonable technical and organisational security measures appropriate to the risk, designed to protect Customer Data against unauthorised access, disclosure, alteration, or destruction.</p>
+      <p><strong>4.5 Deletion.</strong> Upon termination of this Agreement, Provider will delete or return Customer Data within thirty (30) days of written request, unless retention is required by applicable law.</p>
+    </div>
+
+    <div class="reveal">
+      <h2 id="5">5. CONFIDENTIALITY <a href="#5" class="anchor">#</a></h2>
+      <p><strong>5.1 Obligations.</strong> Each party agrees to: (a) hold the other party's Confidential Information in confidence using at least the same degree of care it uses for its own confidential information, but no less than reasonable care; (b) not disclose Confidential Information to third parties without prior written consent; (c) use Confidential Information only as necessary to exercise rights or perform obligations under this Agreement.</p>
+      <p><strong>5.2 Exceptions.</strong> Confidentiality obligations do not apply to information that: (a) is or becomes publicly known through no breach of this Agreement; (b) was rightfully known before disclosure; (c) is independently developed without reference to Confidential Information; (d) is required to be disclosed by law or court order, provided the receiving party gives prompt written notice where permitted.</p>
+      <p><strong>5.3 Survival.</strong> Confidentiality obligations survive termination of this Agreement for three (3) years.</p>
+    </div>
+
+    <div class="reveal">
+      <h2 id="6">6. SERVICE LEVELS AND SUPPORT <a href="#6" class="anchor">#</a></h2>
+      <p><strong>6.1 Availability.</strong> Provider will use commercially reasonable efforts to make the Service available 99% of the time in any calendar month, excluding scheduled maintenance.</p>
+      <p><strong>6.2 Scheduled Maintenance.</strong> Provider will give at least twenty-four (24) hours' advance notice of scheduled maintenance that is expected to cause Service unavailability.</p>
+      <p><strong>6.3 Support.</strong> Provider will respond to support requests submitted to primo@micaready.eu within two (2) business days.</p>
+      <p><strong>6.4 No SLA Credits.</strong> Provider does not offer service credits for downtime under this version of the Agreement. This section may be updated in future versions.</p>
+    </div>
+
+    <div class="reveal">
+      <h2 id="7">7. INTELLECTUAL PROPERTY <a href="#7" class="anchor">#</a></h2>
+      <p><strong>7.1 Provider IP.</strong> Provider retains all intellectual property rights in the Service, Documentation, and any improvements, modifications, or derivative works thereof. No rights are transferred to Customer except the limited access right in Section 2.1.</p>
+      <p><strong>7.2 Feedback.</strong> If Customer provides suggestions or feedback about the Service, Provider may use such feedback without restriction or obligation to Customer.</p>
+      <p><strong>7.3 Aggregated Data.</strong> Provider may collect and use anonymised and aggregated data derived from Customer's use of the Service for product improvement, analytics, and benchmarking, provided such data cannot reasonably be used to identify Customer or any individual.</p>
+    </div>
+
+    <div class="reveal">
+      <h2 id="8">8. WARRANTIES AND DISCLAIMERS <a href="#8" class="anchor">#</a></h2>
+      <p><strong>8.1 Provider Warranties.</strong> Provider warrants that: (a) it has the right to grant the access rights in this Agreement; (b) the Service will perform materially in accordance with the Documentation under normal use; (c) Provider will comply with applicable laws in performing its obligations.</p>
+      <p><strong>8.2 Customer Warranties.</strong> Customer warrants that: (a) it has authority to enter into this Agreement; (b) its use of the Service will comply with applicable law; (c) Customer Data does not infringe third-party rights.</p>
+      <p><strong>8.3 Disclaimer.</strong> THE SERVICE IS PROVIDED AS A MONITORING AND ALERTING TOOL. PROVIDER DOES NOT PROVIDE LEGAL, REGULATORY, FINANCIAL, OR COMPLIANCE ADVICE. NOTHING IN THE SERVICE CONSTITUTES ADVICE ON WHICH CUSTOMER SHOULD RELY. CUSTOMER REMAINS SOLELY RESPONSIBLE FOR ITS OWN REGULATORY COMPLIANCE OBLIGATIONS, INCLUDING OBTAINING APPROPRIATE LEGAL COUNSEL. PROVIDER DOES NOT WARRANT THAT THE SERVICE WILL BE ERROR-FREE, THAT ALL REGULATORY CHANGES WILL BE CAPTURED, OR THAT USE OF THE SERVICE WILL ENSURE CUSTOMER'S COMPLIANCE WITH MICA OR ANY OTHER REGULATION.</p>
+      <p><strong>8.4 No Other Warranties.</strong> EXCEPT AS EXPRESSLY SET OUT IN SECTION 8.1, PROVIDER MAKES NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.</p>
+    </div>
+
+    <div class="reveal">
+      <h2 id="9">9. LIMITATION OF LIABILITY <a href="#9" class="anchor">#</a></h2>
+      <p><strong>9.1 Exclusion of Consequential Loss.</strong> TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, NEITHER PARTY SHALL BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR LOSS OF PROFITS, REVENUE, DATA, OR BUSINESS OPPORTUNITIES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+      <p><strong>9.2 Cap on Liability.</strong> PROVIDER'S TOTAL AGGREGATE LIABILITY ARISING OUT OF OR RELATED TO THIS AGREEMENT SHALL NOT EXCEED THE FEES PAID OR PAYABLE BY CUSTOMER IN THE THREE (3) MONTHS IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CLAIM.</p>
+      <p><strong>9.3 Exceptions.</strong> The limitations in this Section 9 do not apply to: (a) either party's indemnification obligations; (b) liability arising from fraud or wilful misconduct; (c) liability that cannot be excluded or limited under applicable law.</p>
+    </div>
+
+    <div class="reveal">
+      <h2 id="10">10. INDEMNIFICATION <a href="#10" class="anchor">#</a></h2>
+      <p><strong>10.1 By Provider.</strong> Provider shall defend, indemnify, and hold Customer harmless from third-party claims alleging that the Service, as provided by Provider, infringes a third party's intellectual property rights, subject to Customer: (a) promptly notifying Provider of the claim; (b) giving Provider sole control of the defence; (c) providing reasonable cooperation.</p>
+      <p><strong>10.2 By Customer.</strong> Customer shall defend, indemnify, and hold Provider harmless from third-party claims arising from: (a) Customer's use of the Service in breach of this Agreement or applicable law; (b) Customer Data infringing third-party rights.</p>
+    </div>
+
+    <div class="reveal">
+      <h2 id="11">11. TERM AND TERMINATION <a href="#11" class="anchor">#</a></h2>
+      <p><strong>11.1 Term.</strong> This Agreement begins on the date Customer first accepts it and continues until all Order Forms have expired or been terminated.</p>
+      <p><strong>11.2 Termination for Convenience.</strong> Either party may terminate this Agreement by providing written notice. Termination takes effect at the end of the then-current Subscription Term.</p>
+      <p><strong>11.3 Termination for Cause.</strong> Either party may terminate this Agreement immediately upon written notice if the other party: (a) materially breaches this Agreement and fails to cure the breach within fourteen (14) days of notice; (b) becomes insolvent, makes a general assignment for the benefit of creditors, or has a receiver appointed; (c) ceases to conduct business in the ordinary course.</p>
+      <p><strong>11.4 Effect of Termination.</strong> Upon termination: (a) all access rights immediately cease; (b) Customer shall promptly pay any outstanding fees; (c) each party shall return or destroy the other's Confidential Information on request; (d) Provider will make Customer Data available for export for thirty (30) days, after which it will be deleted.</p>
+      <p><strong>11.5 Survival.</strong> Sections 3 (Fees), 4.4 (Security), 5 (Confidentiality), 7 (IP), 8.3–8.4 (Disclaimers), 9 (Limitation of Liability), 10 (Indemnification), 11.4–11.5 (Effect/Survival), and 12 (General) survive termination.</p>
+    </div>
+
+    <div class="reveal">
+      <h2 id="12">12. GENERAL <a href="#12" class="anchor">#</a></h2>
+      <p><strong>12.1 Governing Law.</strong> This Agreement is governed by the laws of Spain, without regard to conflict of law rules. The parties submit to the exclusive jurisdiction of the courts of Madrid, Spain, except that either party may seek interim injunctive relief in any court of competent jurisdiction.</p>
+      <p><strong>12.2 EU Mandatory Law.</strong> Nothing in this Agreement limits rights that cannot be excluded under mandatory EU or Spanish consumer or business protection law where applicable.</p>
+      <p><strong>12.3 Entire Agreement.</strong> This Agreement, together with any Order Form and schedules, constitutes the entire agreement between the parties regarding its subject matter and supersedes all prior agreements, representations, and understandings.</p>
+      <p><strong>12.4 Amendments.</strong> Provider may update this Agreement by posting a revised version at micaready.eu/terms with thirty (30) days' notice. Continued use after the effective date constitutes acceptance.</p>
+      <p><strong>12.5 Assignment.</strong> Customer may not assign this Agreement without Provider's prior written consent. Provider may assign this Agreement in connection with a merger, acquisition, or sale of substantially all assets, with notice to Customer.</p>
+      <p><strong>12.6 Force Majeure.</strong> Neither party is liable for failure to perform obligations due to causes beyond its reasonable control, including acts of God, government actions, or internet outages, provided it gives prompt notice and uses reasonable efforts to resume performance.</p>
+      <p><strong>12.7 Severability.</strong> If any provision of this Agreement is found unenforceable, it shall be modified to the minimum extent necessary to make it enforceable; all remaining provisions continue in full force.</p>
+      <p><strong>12.8 No Waiver.</strong> Failure to enforce any provision of this Agreement is not a waiver of the right to enforce it later.</p>
+      <p><strong>12.9 Notices.</strong> Legal notices must be in writing and sent to primo@micaready.eu (for Provider) or the email address on the Order Form (for Customer).</p>
+      <p><strong>12.10 Language.</strong> This Agreement is in English. Any translation is for convenience only; the English version controls.</p>
+    </div>
+
+    <details class="accordion reveal">
+      <summary id="schedule-1"><span>SCHEDULE 1 — DATA PROCESSING AGREEMENT <a href="#schedule-1" class="anchor">#</a></span> <span class="expand-icon">+</span></summary>
+      <div class="accordion-content">
+        <p><strong>DPA-1. Scope.</strong> This DPA applies where Provider processes Personal Data on Customer's behalf as a data processor under GDPR.</p>
+        <p><strong>DPA-2. Subject matter and nature.</strong> Processing of Personal Data for the purpose of providing the Service described in this Agreement. Processing operations include storage, retrieval, disclosure to authorised staff, and deletion.</p>
+        <p><strong>DPA-3. Duration.</strong> For the term of the Agreement plus any retention period required by law.</p>
+        <p><strong>DPA-4. Type of data.</strong> Contact details of Authorised Users; any Personal Data included in Customer Data.</p>
+        <p><strong>DPA-5. Categories of data subjects.</strong> Customer's Authorised Users; individuals whose Personal Data appears in Customer Data.</p>
+        <p><strong>DPA-6. Instructions.</strong> Provider shall process Personal Data only on documented instructions from Customer, except where required by EU or Member State law.</p>
+        <p><strong>DPA-7. Confidentiality.</strong> Provider shall ensure that persons authorised to process Personal Data are subject to confidentiality obligations.</p>
+        <p><strong>DPA-8. Security.</strong> Provider shall implement measures required under GDPR Article 32 appropriate to the risk.</p>
+        <p><strong>DPA-9. Sub-processors.</strong> Customer authorises Provider to engage the sub-processors listed in the Privacy Policy. Provider shall impose equivalent data protection obligations on all sub-processors and remain liable for their acts.</p>
+        <p><strong>DPA-10. Data subject rights.</strong> Provider shall assist Customer in responding to data subject requests within reasonable timescales.</p>
+        <p><strong>DPA-11. Security incidents.</strong> Provider shall notify Customer without undue delay, and in any event within 72 hours, after becoming aware of a Personal Data breach affecting Customer Data.</p>
+        <p><strong>DPA-12. Deletion.</strong> On termination, Provider shall delete or return all Personal Data and delete existing copies, unless retention is required by law.</p>
+        <p><strong>DPA-13. Transfers.</strong> Provider shall not transfer Personal Data outside the EEA without Customer's prior written consent, except where appropriate safeguards (Standard Contractual Clauses or equivalent) are in place.</p>
+        <p><strong>DPA-14. Audits.</strong> Provider shall allow Customer to conduct audits or inspections, or provide information necessary to demonstrate compliance with this DPA, on reasonable notice.</p>
+      </div>
+    </details>
 
   </section>
 
