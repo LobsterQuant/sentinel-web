@@ -92,21 +92,44 @@
   var nav = document.querySelector('nav');
   var navLinks = document.querySelector('.nav-links');
   if (nav && navLinks) {
-    var mobileMenuBtn = document.createElement('button');
-    mobileMenuBtn.className = 'mobile-menu-btn';
-    mobileMenuBtn.setAttribute('aria-label', 'Toggle Navigation');
-    mobileMenuBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
-    
-    nav.appendChild(mobileMenuBtn);
-    
-    mobileMenuBtn.addEventListener('click', function() {
-      navLinks.classList.toggle('mobile-open');
-    });
+    // Check if toggle already exists to prevent duplicates
+    var mobileNavToggle = document.getElementById('mobileNavToggle');
+    if (!mobileNavToggle) {
+      mobileNavToggle = document.createElement('button');
+      mobileNavToggle.className = 'mobile-nav-toggle';
+      mobileNavToggle.id = 'mobileNavToggle';
+      mobileNavToggle.setAttribute('aria-label', 'Toggle Navigation');
+      mobileNavToggle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+      
+      // insert toggle as the first child of nav if possible, or append it
+      if (nav.firstChild) {
+        nav.insertBefore(mobileNavToggle, nav.firstChild);
+      } else {
+        nav.appendChild(mobileNavToggle);
+      }
+    }
+
+    var mobileNavOverlay = document.getElementById('mobileNavOverlay');
+    if (!mobileNavOverlay) {
+      mobileNavOverlay = document.createElement('div');
+      mobileNavOverlay.className = 'mobile-nav-overlay';
+      mobileNavOverlay.id = 'mobileNavOverlay';
+      document.body.appendChild(mobileNavOverlay);
+    }
+
+    var toggleMobileNav = function() {
+      navLinks.classList.toggle('open');
+      mobileNavOverlay.classList.toggle('active');
+    };
+
+    mobileNavToggle.addEventListener('click', toggleMobileNav);
+    mobileNavOverlay.addEventListener('click', toggleMobileNav);
 
     var links = navLinks.querySelectorAll('a');
     links.forEach(function(link) {
       link.addEventListener('click', function() {
-        navLinks.classList.remove('mobile-open');
+        navLinks.classList.remove('open');
+        mobileNavOverlay.classList.remove('active');
       });
     });
   }
