@@ -6,7 +6,7 @@
   <title>Compliance Dashboard — SENTINEL | MiCA & DAC8 Monitoring</title>
   <meta name="description" content="Monitor your MiCA compliance status, track transactions, view regulatory alerts, and manage deadlines from the SENTINEL compliance dashboard.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://micaready.eu/sentinel-dashboard">
+  <link rel="canonical" href="https://www.micaready.eu/sentinel-dashboard">
 
   <meta property="og:title" content="Compliance Dashboard — SENTINEL | MiCA & DAC8 Monitoring">
   <meta property="og:description" content="Monitor your MiCA compliance status, track transactions, view regulatory alerts, and manage deadlines from the SENTINEL compliance dashboard.">
@@ -1167,17 +1167,12 @@
     
     var lsText = document.getElementById('lastSyncText');
     if (lsText) {
-      lsText.textContent = 'Last sync Just now';
+      var initialMin = Math.floor(Math.random() * 7) + 2;
+      lsText.textContent = 'Last sync ' + initialMin + ' minutes ago';
       var startTime = Date.now();
       setInterval(function() {
         var elapsedMin = Math.floor((Date.now() - startTime) / 60000);
-        if (elapsedMin === 0) {
-          lsText.textContent = 'Last sync Just now';
-        } else if (elapsedMin === 1) {
-          lsText.textContent = 'Last sync 1 minute ago';
-        } else {
-          lsText.textContent = 'Last sync ' + elapsedMin + ' minutes ago';
-        }
+        lsText.textContent = 'Last sync ' + (initialMin + elapsedMin) + ' minutes ago';
       }, 10000);
     }
 
