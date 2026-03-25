@@ -716,10 +716,78 @@
       color: var(--text-muted);
       padding: 0 0 8px;
     }
+    /* ─────────────────────────────────────────
+       MOBILE RESPONSIVENESS
+    ───────────────────────────────────────── */
+    .mobile-nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      cursor: pointer;
+      padding: 4px;
+      margin-right: 12px;
+    }
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 90;
+      backdrop-filter: blur(2px);
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      .sidebar-overlay.active {
+        display: block;
+      }
+      .main {
+        margin-left: 0;
+      }
+      .mobile-nav-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .topbar {
+        padding: 0 16px;
+      }
+      .content {
+        padding: 20px 16px 40px;
+      }
+      .stat-row {
+        grid-template-columns: 1fr;
+      }
+      .mid-row {
+        grid-template-columns: 1fr;
+      }
+      .stat-value {
+        font-size: 28px;
+      }
+      .page-title {
+        font-size: 16px;
+      }
+    }
   </style>
   <link rel="stylesheet" href="/shared.css">
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-Qpy9rNYV7ZjMDJytfP6xI.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+<link rel="icon" href="/favicon.ico">
 </head>
 <body>
+  <!-- SIDEBAR OVERLAY -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
   <!-- ═══════════════ SIDEBAR ═══════════════ -->
   <aside class="sidebar">
@@ -809,6 +877,13 @@
     <!-- TOPBAR -->
     <header class="topbar">
       <div class="breadcrumb">
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
         <span class="breadcrumb-root">SENTINEL</span>
         <span class="breadcrumb-sep">/</span>
         <span class="breadcrumb-current">Dashboard</span>
@@ -1263,8 +1338,28 @@
       item.addEventListener('click', function() {
         navItems.forEach(function(n) { n.classList.remove('active'); });
         item.classList.add('active');
+        
+        // Hide sidebar on mobile after clicking a link
+        if (window.innerWidth <= 768) {
+          sidebar.classList.remove('open');
+          sidebarOverlay.classList.remove('active');
+        }
       });
     });
+
+    // ── Mobile Sidebar Toggle ─────────────────────────────────────────────────
+    var mobileNavToggle = document.getElementById('mobileNavToggle');
+    var sidebar = document.querySelector('.sidebar');
+    var sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    if (mobileNavToggle && sidebar && sidebarOverlay) {
+      var toggleSidebar = function() {
+        sidebar.classList.toggle('open');
+        sidebarOverlay.classList.toggle('active');
+      };
+      mobileNavToggle.addEventListener('click', toggleSidebar);
+      sidebarOverlay.addEventListener('click', toggleSidebar);
+    }
 
     }); // end window.addEventListener('load')
   </script>
