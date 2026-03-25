@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DAC8 Spain: The EU Crypto Reporting Directive Explained (2027 Deadline) — SENTINEL</title>
+  <meta name="description" content="DAC8 explained for Spanish crypto firms. What it is, who it covers, how it differs from Modelo 172/173, the CARF XML schema requirement, and what CASPs must build before the September 2027 deadline.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://micaready.eu/blog/dac8-spain-crypto-guide-2027">
+
+  <meta property="og:title" content="DAC8 Spain: The EU Crypto Reporting Directive Explained (2027 Deadline) — SENTINEL">
+  <meta property="og:description" content="Complete guide to DAC8 for Spanish crypto-asset service providers. Coverage scope, CARF schema, September 2027 deadline, and how to build on your existing Modelo 172/173 compliance infrastructure.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://micaready.eu/blog/dac8-spain-crypto-guide-2027">
+  <meta property="og:image" content="https://micaready.eu/og-image.png">
+  <meta property="og:site_name" content="SENTINEL">
+  <meta property="article:published_time" content="2026-03-25">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DAC8 Spain: The EU Crypto Reporting Directive Explained (2027 Deadline) — SENTINEL">
+  <meta name="twitter:description" content="DAC8 explained for Spanish crypto firms. What it is, who it covers, how it differs from Modelo 172/173, the CARF XML schema requirement, and what CASPs must build before the September 2027 deadline.">
+  <meta name="twitter:image" content="https://micaready.eu/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "DAC8 Spain: The EU Crypto Reporting Directive Explained (2027 Deadline)",
+    "description": "Complete guide to DAC8 for Spanish CASPs: what it covers, how it extends Modelo 172/173, the OECD CARF XML schema requirement, September 30 2027 implementation deadline, and practical steps to prepare now.",
+    "author": { "@type": "Organization", "name": "SENTINEL by micaready.eu" },
+    "publisher": { "@type": "Organization", "name": "micaready.eu", "url": "https://www.micaready.eu" },
+    "datePublished": "2026-03-25",
+    "dateModified": "2026-03-25",
+    "mainEntityOfPage": "https://micaready.eu/blog/dac8-spain-crypto-guide-2027"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is DAC8?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DAC8 is the 8th amendment to the EU Directive on Administrative Cooperation (Council Directive 2011/16/EU). It extends the EU's automatic exchange of financial information framework to cover crypto-asset transactions. From September 30, 2027, crypto-asset service providers across the EU must report their clients' crypto transactions to their national tax authority, which then shares the data automatically with tax authorities in other EU member states where those clients reside."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the DAC8 deadline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "September 30, 2027. From that date, EU CASPs must submit their first DAC8 reports covering the 2026 calendar year. Member states must have transposed DAC8 into national law by December 31, 2025 — Spain did so on schedule. The reporting infrastructure must therefore be operational before January 1, 2027, since it must capture 2026 data from day one."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between DAC8 and Modelo 172?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Modelo 172 is Spain's domestic quarterly crypto transaction report covering only Spanish tax resident clients. DAC8 is EU-wide: it covers clients resident in any EU member state, uses the OECD CARF XML schema (not the AEAT's Modelo XML format), includes additional transaction types (staking, lending, ICO proceeds, transfers to unhosted wallets), and triggers automatic cross-border data sharing between 27 national tax authorities. Both obligations run in parallel from 2027."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does DAC8 apply to non-EU crypto exchanges serving EU clients?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. DAC8 has extraterritorial reach. A non-EU CASP — for example, a US exchange, a UK broker, or an exchange incorporated in a third country — that provides crypto-asset services to EU residents is required to register with the competent authority of one EU member state and comply with DAC8 reporting for all EU clients. Failure to register triggers sanctions in every EU member state where the provider has clients."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What crypto transactions must be reported under DAC8?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DAC8 requires reporting of: crypto-to-fiat exchanges, crypto-to-crypto exchanges, transfers of crypto-assets (including to unhosted wallets above certain thresholds), initial coin offering (ICO) proceeds, staking rewards received, lending income, and crypto-asset balances held at year-end. This is broader than Modelo 172, which does not currently require reporting of transfers to unhosted wallets or staking/lending income in a standardized format."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the CARF XML schema required by DAC8?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CARF stands for Crypto-Asset Reporting Framework, developed by the OECD and adopted by DAC8 as the mandatory data format for cross-border reporting. It is an XML schema with specific field definitions for crypto transactions, client identification, asset classification, and reporting entity details. It is different from Spain's current Modelo 172 XML schema — CASPs complying with Modelo 172 cannot simply reuse the same files for DAC8. Both schemas must be maintained from 2027."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "If we already file Modelo 172, do we need much additional work for DAC8?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The conceptual overlap is significant — around 70% of the data elements in DAC8 CARF reports are the same as Modelo 172. However, three key differences require real engineering work: (1) expanded transaction scope adds staking, lending, ICO, and unhosted wallet transfers; (2) expanded client scope requires reporting EU clients from all 27 member states, not just Spanish residents; (3) the CARF XML schema is technically different from AEAT's Modelo schema and must be generated separately. Firms that build clean, structured Modelo 172 pipelines now are 65–70% of the way to DAC8 readiness."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-void: #000000; --bg-surface: #080808; --bg-elevated: #0F0F0F; --bg-border: #1A1A1A; --bg-subtle: #141414;
+      --text-primary: #FFFFFF; --text-secondary: #ABABBA; --text-muted: #4A4A5A; --text-mono: #A8B4C0;
+      --accent: #00E5BD; --accent-dim: #00E5BD22; --accent-border: #00E5BD44;
+      --status-critical: #FF3B3B; --status-warning: #F59E0B; --status-ok: #00E5BD; --status-info: #6B8CFF;
+      --font-display: 'Syne', 'DM Sans', sans-serif; --font-ui: 'DM Sans', system-ui, sans-serif; --font-mono: 'JetBrains Mono', 'Cascadia Mono', monospace;
+      --radius-card: 4px; --radius-pill: 9999px; --radius-badge: 3px; --nav-height: 60px; --banner-height: 37px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg-void); color: var(--text-primary); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-height); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; z-index: 200; background: rgba(0,0,0,0.88); border-bottom: 1px solid var(--bg-border); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo svg { color: var(--accent); }
+    .nav-wordmark { font-family: var(--font-display); font-size: 15px; font-weight: 800; color: var(--text-primary); letter-spacing: 0.14em; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { font-family: var(--font-ui); font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color 150ms ease; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .btn-primary { display: inline-block; background: var(--text-primary); color: #000; border: none; border-radius: var(--radius-pill); padding: 10px 24px; font-family: var(--font-ui); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; text-decoration: none; transition: background 150ms ease, color 150ms ease; white-space: nowrap; }
+    .btn-primary:hover { background: var(--accent); color: #000; }
+    .btn-secondary { display: inline-block; background: transparent; color: var(--text-primary); border: 1px solid var(--bg-border); border-radius: var(--radius-pill); padding: 10px 24px; font-family: var(--font-ui); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; text-decoration: none; transition: border-color 150ms ease, color 150ms ease; white-space: nowrap; }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    .countdown-banner { position: fixed; top: var(--nav-height); left: 0; right: 0; z-index: 199; height: var(--banner-height); background: linear-gradient(90deg, #FF3B3B0D, #FF3B3B22, #FF3B3B0D); border-bottom: 1px solid #FF3B3B44; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: #FF3B3B; letter-spacing: 0.02em; padding: 0 24px; }
+
+    .article-header { padding: calc(var(--nav-height) + var(--banner-height) + 72px) 48px 48px; max-width: 760px; margin: 0 auto; }
+    .article-breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 28px; }
+    .article-breadcrumb a, .article-breadcrumb span { font-family: var(--font-ui); font-size: 12px; color: var(--text-muted); text-decoration: none; }
+    .article-breadcrumb a:hover { color: var(--accent); }
+    .article-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+    .article-tag { background: #6B8CFF18; border: 1px solid #6B8CFF33; color: var(--status-info); border-radius: var(--radius-badge); padding: 3px 10px; font-family: var(--font-ui); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+    .article-date { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
+    .article-read-time { font-family: var(--font-ui); font-size: 12px; color: var(--text-muted); }
+    .article-header h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 52px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 20px; }
+    .article-header .lead { font-family: var(--font-ui); font-size: 17px; line-height: 1.7; color: var(--text-secondary); }
+
+    .article-body { max-width: 760px; margin: 0 auto; padding: 0 48px 80px; }
+    .article-body h2 { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--text-primary); margin: 56px 0 20px; line-height: 1.15; }
+    .article-body h3 { font-family: var(--font-ui); font-size: 18px; font-weight: 600; color: var(--text-primary); margin: 40px 0 14px; }
+    .article-body p { font-family: var(--font-ui); font-size: 15px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px; }
+    .article-body a { color: var(--accent); text-decoration: none; transition: color 150ms ease; }
+    .article-body a:hover { color: var(--text-primary); }
+    .article-body strong { color: var(--text-primary); font-weight: 600; }
+    .article-body ul, .article-body ol { margin: 0 0 20px 0; padding-left: 0; list-style: none; }
+    .article-body li { font-family: var(--font-ui); font-size: 15px; line-height: 1.8; color: var(--text-secondary); padding: 6px 0 6px 20px; position: relative; }
+    .article-body li::before { content: ''; position: absolute; left: 0; top: 14px; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; }
+
+    .callout { background: var(--bg-surface); border: 1px solid var(--bg-border); border-left: 3px solid var(--status-info); border-radius: var(--radius-card); padding: 24px 28px; margin: 32px 0; }
+    .callout.warning, .callout.warn { border-left-color: var(--status-warning); }
+    .callout.critical { border-left-color: var(--status-critical); }
+    .callout.ok { border-left-color: var(--accent); }
+    .callout-label { font-family: var(--font-ui); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .callout p { margin-bottom: 0; }
+
+    .timeline { position: relative; margin: 2rem 0; padding-left: 1.5rem; border-left: 2px solid #1a1a1a; }
+    .timeline-item { margin-bottom: 1.75rem; position: relative; }
+    .timeline-item::before { content: ''; position: absolute; left: -1.6rem; top: 0.4rem; width: 10px; height: 10px; border-radius: 50%; background: #00E5BD; }
+    .timeline-item.past::before { background: #333; }
+    .timeline-item.critical::before { background: #FF3B3B; }
+    .timeline-date { font-family: var(--font-mono); font-size: 0.78rem; color: #555; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.2rem; }
+    .timeline-title { font-weight: 600; color: #fff; margin-bottom: 0.3rem; font-family: var(--font-ui); font-size: 16px; }
+    .timeline-desc { font-size: 0.9rem; color: #888; font-family: var(--font-ui); margin-top: 4px;}
+    
+    .diff-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0 1.75rem; font-size: 0.875rem; }
+    .diff-table th { background: #0d0d0d; color: #00E5BD; font-weight: 600; padding: 0.65rem 0.85rem; text-align: left; border-bottom: 1px solid #1a1a1a; font-family: var(--font-ui); text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+    .diff-table td { padding: 0.65rem 0.85rem; border-bottom: 1px solid #111; color: var(--text-secondary); vertical-align: top; font-family: var(--font-ui); font-size: 14px; }
+    .diff-table tr:hover { background: var(--bg-elevated); }
+    .diff-table tr:last-child td { border-bottom: none; }
+    .diff-table td:first-child { font-weight: 600; color: #fff; white-space: nowrap; }
+    
+    .faq { margin-top: 3rem; border-top: 1px solid var(--bg-border); padding-top: 2rem; }
+    .faq-item { margin-bottom: 1.75rem; }
+    .faq-q { font-weight: 600; color: #fff; margin-bottom: 0.5rem; font-family: var(--font-ui); font-size: 16px; }
+    .faq-a { color: var(--text-secondary); font-family: var(--font-ui); font-size: 15px; line-height: 1.8; }
+
+    .article-cta { max-width: 760px; margin: 0 auto; padding: 0 48px 80px; }
+    .article-cta-box { background: var(--bg-surface); border: 1px solid var(--accent-border); border-radius: var(--radius-card); padding: 40px 36px; text-align: center; }
+    .article-cta-box h3 { font-family: var(--font-display); font-size: 28px; font-weight: 700; margin-bottom: 12px; color: var(--text-primary); }
+    .article-cta-box p { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; }
+    .article-cta-box .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    .related-posts { max-width: 760px; margin: 0 auto; padding: 0 48px 48px; }
+    .related-label { font-family: var(--font-ui); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-muted); margin-bottom: 16px; }
+    .related-link { display: block; background: var(--bg-surface); border: 1px solid var(--bg-border); border-radius: var(--radius-card); padding: 20px 24px; text-decoration: none; transition: border-color 150ms ease; margin-bottom: 12px; }
+    .related-link:hover { border-color: var(--accent-border); }
+    .related-link-title { font-family: var(--font-ui); font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+    .related-link-desc { font-family: var(--font-ui); font-size: 13px; color: var(--text-muted); }
+
+    footer { border-top: 1px solid var(--bg-border); padding: 52px 48px; }
+    .footer-inner { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    .footer-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+    .footer-logo svg { color: var(--accent); }
+    .footer-wordmark { font-family: var(--font-display); font-size: 14px; font-weight: 800; color: var(--text-primary); letter-spacing: 0.14em; }
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a { font-family: var(--font-ui); font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 150ms ease; }
+    .footer-links a:hover { color: var(--text-secondary); }
+    .footer-disclaimer { font-family: var(--font-ui); font-size: 11px; color: var(--text-muted); max-width: 420px; line-height: 1.65; }
+
+    @media (max-width: 700px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .article-header { padding: calc(var(--nav-height) + var(--banner-height) + 48px) 24px 32px; }
+      .article-body, .article-cta, .related-posts { padding-left: 24px; padding-right: 24px; }
+      .countdown-banner { font-size: 11px; }
+      footer { padding: 40px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
+    }
+  </style>
+  <link rel="stylesheet" href="/shared.css">
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-Qpy9rNYV7ZjMDJytfP6xI.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+<link rel="icon" href="/favicon.ico">
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span class="nav-wordmark">SENTINEL</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#how-it-works">How It Works</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a href="/faq">FAQ</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/#deadlines">Deadlines</a></li>
+    </ul>
+  </nav>
+
+  <div class="countdown-banner">
+    ⚠&nbsp; MiCA full enforcement:&nbsp;<span id="countdownDisplay">calculating...</span>&nbsp;— 1 July 2026
+  </div>
+
+  <header class="article-header">
+    <div class="article-breadcrumb">
+      <a href="/">SENTINEL</a><span class="sep">/</span><a href="/blog">Blog</a>
+    </div>
+    <div class="article-meta">
+      <span class="article-tag">REGULATION · DAC8</span>
+      <span class="article-date">25 Mar 2026</span>
+      <span class="article-read-time">9 min read</span>
+    </div>
+    <h1>DAC8 Spain: The EU Crypto Reporting Directive Explained (2027 Deadline)</h1>
+    <p class="lead">Every crypto-asset service provider operating in the EU — and every non-EU exchange with EU clients — faces a new mandatory reporting layer from September 2027. DAC8, the 8th amendment to the EU Directive on Administrative Cooperation, extends the EU's automatic financial information exchange framework to cover crypto-asset transactions for the first time.</p>
+  </header>
+
+  <article class="article-body">
+    <p>Spain transposed DAC8 into national law by the December 31, 2025 deadline. The first reports covering calendar year 2026 are due by <strong>September 30, 2027</strong>. That means your data capture infrastructure must be operational before January 1, 2027 — it needs to record 2026 transactions from day one.</p>
+
+    <p>This guide covers what DAC8 is, who it covers, how it differs from Spain's existing Modelo 172/173 obligations, the CARF XML schema it requires, and the practical steps to prepare without duplicating work you've already done.</p>
+
+    <h2>What DAC8 Actually Is</h2>
+
+    <p>DAC8 (Council Directive 2023/2226/EU) amends the EU's Directive on Administrative Cooperation to add crypto-assets to the list of financial assets subject to automatic information exchange. The existing DAC framework already covers bank accounts (DAC1), financial institutions (DAC2), tax rulings (DAC3–5), country-by-country reporting (DAC4), and real estate (DAC7). DAC8 closes the crypto gap.</p>
+
+    <p>The mechanism: every CASP reports its EU clients' crypto transactions to its home member state's tax authority. That national authority then automatically shares the data with the tax authority of every other EU member state where those clients reside. A Spanish CASP with French clients reports everything to the AEAT; AEAT forwards the French clients' data to the French tax authority (DGFiP). The French CASP with Spanish clients does the reverse.</p>
+
+    <p>The effect is a continent-wide transaction transparency layer. There is no longer anywhere inside the EU where a crypto transaction can be invisible to the relevant tax authority — assuming the reporting works correctly.</p>
+
+    <div class="callout warn">
+      <p><strong>Extraterritorial reach:</strong> DAC8 applies to non-EU CASPs with EU clients. A US exchange, a UK broker, or any third-country provider serving EU residents must register with a competent authority in one EU member state and comply with DAC8 reporting for all EU clients. Non-registration is sanctionable in every member state where the provider has users.</p>
+    </div>
+
+    <h2>Timeline</h2>
+
+    <div class="timeline">
+      <div class="timeline-item past">
+        <div class="timeline-date">October 2023</div>
+        <div class="timeline-title">DAC8 adopted</div>
+        <div class="timeline-desc">Council Directive 2023/2226/EU published in the Official Journal of the EU.</div>
+      </div>
+      <div class="timeline-item past">
+        <div class="timeline-date">December 31, 2025</div>
+        <div class="timeline-title">National transposition deadline ✅</div>
+        <div class="timeline-desc">All EU member states, including Spain, required to transpose DAC8 into national law. Spain completed on schedule. DAC8 is now Spanish law.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">January 1, 2026</div>
+        <div class="timeline-title">Data capture must begin</div>
+        <div class="timeline-desc">DAC8 covers calendar year 2026 transactions. Reporting infrastructure must be live from day one of 2026 — you cannot retroactively reconstruct data.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Mid-2026</div>
+        <div class="timeline-title">AEAT publishes CARF technical specifications</div>
+        <div class="timeline-desc">Expected Q3 2026. AEAT will publish the national CARF XML schema implementation guide. Build systems to be schema-agnostic until specs are confirmed.</div>
+      </div>
+      <div class="timeline-item critical">
+        <div class="timeline-date">September 30, 2027</div>
+        <div class="timeline-title">First DAC8 reports due</div>
+        <div class="timeline-desc">Reports covering full calendar year 2026. All EU CASPs and registered non-EU CASPs must submit to their competent national authority.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">September 30, 2028 onwards</div>
+        <div class="timeline-title">Annual cycle</div>
+        <div class="timeline-desc">Annual reporting covering each prior calendar year, due September 30.</div>
+      </div>
+    </div>
+
+    <h2>Who DAC8 Covers</h2>
+
+    <p>DAC8 defines a <strong>Reporting Crypto-Asset Service Provider</strong> (RCASP) broadly. You are an RCASP if you provide, on a professional basis, any of the following services to EU-resident clients:</p>
+
+    <ul>
+      <li>Exchange of crypto-assets for fiat currency</li>
+      <li>Exchange of crypto-assets for other crypto-assets</li>
+      <li>Transfer of crypto-assets (including to unhosted wallets)</li>
+      <li>Custody and administration of crypto-assets</li>
+      <li>Participation in or provision of financial services related to an issuer's offer or sale of crypto-assets</li>
+    </ul>
+
+    <p>This covers virtually every crypto business model: exchanges, custodians, OTC desks, staking service providers, crypto payment processors, and tokenization platforms that facilitate secondary trading.</p>
+
+    <p><strong>Explicitly excluded from DAC8:</strong> pure DeFi protocols without a legal entity operating the service; non-fungible tokens (NFTs) unless they are used as payment instruments; central bank digital currencies; and crypto-assets with no identifiable issuer that are not used as payment or investment instruments (a narrow category that excludes most established coins).</p>
+
+    <h2>DAC8 vs Modelo 172: Key Differences</h2>
+
+    <table class="diff-table">
+      <thead>
+        <tr><th>Dimension</th><th>Modelo 172</th><th>DAC8</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Client scope</td>
+          <td>Spanish tax residents only</td>
+          <td>All EU member state residents</td>
+        </tr>
+        <tr>
+          <td>Filing frequency</td>
+          <td>Quarterly</td>
+          <td>Annual</td>
+        </tr>
+        <tr>
+          <td>Filing deadline</td>
+          <td>30 days after quarter end</td>
+          <td>September 30 (covering prior year)</td>
+        </tr>
+        <tr>
+          <td>XML schema</td>
+          <td>AEAT proprietary Modelo schema</td>
+          <td>OECD CARF schema</td>
+        </tr>
+        <tr>
+          <td>Transfers to unhosted wallets</td>
+          <td>Not specifically required</td>
+          <td>Required above threshold</td>
+        </tr>
+        <tr>
+          <td>Staking rewards</td>
+          <td>Partial (operation type S)</td>
+          <td>Full mandatory reporting</td>
+        </tr>
+        <tr>
+          <td>Lending/DeFi income</td>
+          <td>Not covered</td>
+          <td>Covered</td>
+        </tr>
+        <tr>
+          <td>ICO proceeds</td>
+          <td>Not covered</td>
+          <td>Covered</td>
+        </tr>
+        <tr>
+          <td>Recipient authority</td>
+          <td>AEAT (Spain only)</td>
+          <td>AEAT + automatic exchange to 26 EU tax authorities</td>
+        </tr>
+        <tr>
+          <td>Non-EU provider obligation</td>
+          <td>Yes (if serving Spanish residents)</td>
+          <td>Yes (register in one EU state, report all EU clients)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>What Transactions Must Be Reported Under DAC8</h2>
+
+    <p>DAC8 requires annual reporting of the following per EU-resident client:</p>
+
+    <h3>Transaction-level data</h3>
+    <ul>
+      <li><strong>Crypto-to-fiat exchanges:</strong> full details of every sale of crypto for EUR or other fiat currency — date, asset type, quantity, EUR equivalent at execution</li>
+      <li><strong>Crypto-to-crypto exchanges:</strong> every swap — both sides, with EUR equivalent of each at the time of trade</li>
+      <li><strong>Transfers:</strong> outbound transfers from your platform to any wallet address, including unhosted wallets — destination address, asset type, quantity, EUR equivalent</li>
+      <li><strong>Staking rewards received:</strong> total rewards per asset type during the year, EUR equivalent on date of receipt</li>
+      <li><strong>Lending income:</strong> interest or yield received from crypto lending, valued in EUR on receipt</li>
+      <li><strong>ICO participation:</strong> amounts paid into token sales and tokens received</li>
+    </ul>
+
+    <h3>Year-end balance data</h3>
+    <ul>
+      <li>Each crypto-asset type held on behalf of the client at December 31</li>
+      <li>Quantity and EUR equivalent at year-end</li>
+    </ul>
+
+    <h3>Client identification data</h3>
+    <ul>
+      <li>Full legal name, date of birth, country of residence, tax identification number</li>
+      <li>For corporate clients: legal name, registration number, registered address, country of incorporation</li>
+      <li>TIN (Tax Identification Number) of the EU member state where the client is resident — not just Spanish NIF/NIE</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>TIN collection is the hard part.</strong> For Spanish clients, you already collect NIF/NIE. For clients from other EU member states, you need their local TIN — a French NIF, a German Steuer-ID, a Dutch BSN. This requires updating your KYC onboarding flow for all EU clients, not just Spanish residents. Start collecting now — retroactive collection from existing users is operationally painful.</p>
+    </div>
+
+    <h2>The CARF XML Schema</h2>
+
+    <p>DAC8 mandates the <strong>OECD Crypto-Asset Reporting Framework (CARF)</strong> as the data exchange format. CARF is an XML schema developed by the OECD in parallel with DAC8, designed to be the global standard for crypto transaction reporting — similar to how CRS (Common Reporting Standard) governs bank account information exchange.</p>
+
+    <p>Key structural differences from Spain's current Modelo XML schemas:</p>
+
+    <ul>
+      <li><strong>Reporting period:</strong> CARF is annual; Modelo 172 is quarterly. The schemas have different root structures and period identifiers.</li>
+      <li><strong>Entity identifiers:</strong> CARF uses GIIN-like identifiers for reporting entities; Modelo uses Spanish NIF.</li>
+      <li><strong>Asset classification:</strong> CARF has its own crypto-asset type taxonomy, partially overlapping with but not identical to Modelo's classification codes.</li>
+      <li><strong>Transaction types:</strong> CARF has different type codes for the additional transaction categories (staking, lending, ICO) not covered in Modelo 172.</li>
+      <li><strong>Multi-jurisdiction fields:</strong> CARF records include sending and receiving country codes for cross-border exchange routing — absent from Modelo.</li>
+    </ul>
+
+    <p>The AEAT is expected to publish its national CARF implementation guide in Q3 2026. Until then, build systems that store data in a normalized internal format from which both schemas can be generated — avoid hardcoding either schema at the data capture layer.</p>
+
+    <h2>What If You Already File Modelo 172?</h2>
+
+    <p>Good news: if you have a functioning Modelo 172 pipeline, you're starting from a strong position. The data capture requirements overlap significantly. The gaps are concrete and manageable:</p>
+
+    <table class="diff-table">
+      <thead>
+        <tr><th>Gap</th><th>What to add</th><th>Effort</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>EU client scope (non-Spanish)</td>
+          <td>Extend KYC to collect TIN for all EU member states, not just Spanish NIF/NIE</td>
+          <td>Medium — KYC flow update, existing-user outreach</td>
+        </tr>
+        <tr>
+          <td>Staking rewards</td>
+          <td>Add structured staking reward records to transaction log with EUR value at receipt</td>
+          <td>Low — if staking data already captured informally</td>
+        </tr>
+        <tr>
+          <td>Lending/DeFi income</td>
+          <td>Add income type to transaction taxonomy; capture EUR value at receipt date</td>
+          <td>Low-Medium</td>
+        </tr>
+        <tr>
+          <td>Transfers to unhosted wallets</td>
+          <td>Log destination address + EUR value for all outbound transfers</td>
+          <td>Low — destination address likely already recorded</td>
+        </tr>
+        <tr>
+          <td>CARF XML generation</td>
+          <td>Build CARF XML serializer alongside existing Modelo serializer</td>
+          <td>Medium — different schema, but same underlying data</td>
+        </tr>
+        <tr>
+          <td>Year-end balance snapshot</td>
+          <td>Add December 31 snapshot generation (you already do this for Modelo 173)</td>
+          <td>Low — primarily a schema translation</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Total additional effort for a firm with clean Modelo 172 infrastructure: estimated 3–6 months of engineering time, depending on stack complexity. For firms without any structured Modelo 172 pipeline, build one now — DAC8 readiness follows naturally.</p>
+
+    <h2>Penalties for DAC8 Non-Compliance</h2>
+
+    <p>Spain's DAC8 transposition establishes penalties aligned with the General Tax Act. Expected penalties for RCASP non-compliance:</p>
+
+    <ul>
+      <li><strong>Failure to register</strong> (non-EU CASPs): up to €500,000 per member state where the provider operates without registering</li>
+      <li><strong>Failure to report</strong>: per-record penalties equivalent to the Modelo 172 framework — €20 per omitted item, minimum €300, up to €600,000 for systematic omissions</li>
+      <li><strong>Incorrect client identification</strong> (wrong TIN, missing TIN): penalty per client record with incorrect data</li>
+      <li><strong>Late submission</strong>: 5% of unreported transaction value, minimum €1,500</li>
+    </ul>
+
+    <p>The OECD CARF framework includes a peer review mechanism — member states will be assessed on their enforcement of CASP compliance. Spain, having been an early MiCA enforcer, is expected to apply DAC8 penalties actively from the first reporting cycle.</p>
+
+    <h2>Action Plan: What to Do Now</h2>
+
+    <p>September 2027 seems distant. It isn't. The data you need to report was generated starting January 1, 2026 — today. Every day without the right infrastructure is data you'll need to reconstruct later, at significant cost and risk.</p>
+
+    <ol>
+      <li><strong>Update your KYC onboarding today</strong> to collect the TIN for every EU member state your clients reside in. Add a mandatory field for non-Spanish EU residents at account opening.</li>
+      <li><strong>Audit your existing EU client base</strong> for missing TINs. Plan a retroactive collection campaign — email, in-app prompt, account suspension for non-compliance. This is the longest lead time item.</li>
+      <li><strong>Extend your transaction log schema</strong> to capture staking rewards, lending income, and unhosted wallet transfer destinations as structured fields — not free-text notes.</li>
+      <li><strong>Get your Modelo 172 infrastructure clean</strong> first. If you're not filing Modelo 172 correctly today, DAC8 is impossible. Modelo 172 compliance is the prerequisite.</li>
+      <li><strong>Monitor AEAT CARF specs</strong> expected Q3 2026. Subscribe to AEAT regulatory updates and ESMA's DAC8 implementation guidance. Build your serializer against the OECD CARF schema now — national customizations are typically minor.</li>
+      <li><strong>Budget engineering time in 2026 Q3/Q4</strong> for CARF XML implementation and testing. Don't leave it for 2027.</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>The first-mover advantage is real.</strong> Firms that have clean, structured data capture in place by end of 2026 will file DAC8 reports confidently in September 2027. Firms scrambling to reconstruct 2026 data in August 2027 will either file incorrectly — triggering penalty exposure — or pay emergency compliance fees that dwarf the cost of building the infrastructure now.</p>
+    </div>
+
+    <div class="faq">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <p class="faq-q">What is DAC8?</p>
+        <p class="faq-a">DAC8 is the 8th amendment to the EU Directive on Administrative Cooperation. It requires EU crypto-asset service providers to report clients' crypto transactions to their national tax authority annually, which then automatically shares the data with tax authorities in all other EU member states where those clients reside. First reports covering 2026 are due September 30, 2027.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">What is the DAC8 deadline?</p>
+        <p class="faq-a">September 30, 2027 for first reports covering calendar year 2026. Data capture must begin January 1, 2026 — the reporting infrastructure must be live from day one of the reporting period.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">What is the difference between DAC8 and Modelo 172?</p>
+        <p class="faq-a">Modelo 172 covers only Spanish tax resident clients, is filed quarterly to AEAT using Spain's proprietary XML schema. DAC8 covers all EU resident clients, is filed annually using the OECD CARF XML schema, and triggers automatic data sharing across all 27 EU member states. DAC8 also covers staking, lending, ICO proceeds, and unhosted wallet transfers — transaction types Modelo 172 does not fully address. Both run in parallel from 2027.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">Does DAC8 apply to non-EU crypto exchanges serving EU clients?</p>
+        <p class="faq-a">Yes. Non-EU CASPs with EU clients must register with a competent authority in one EU member state and comply with DAC8 for all EU clients. Failure to register is sanctionable in every EU member state where the provider operates.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">What crypto transactions must be reported under DAC8?</p>
+        <p class="faq-a">Crypto-to-fiat exchanges, crypto-to-crypto exchanges, transfers (including to unhosted wallets above threshold), staking rewards, lending income, and ICO proceeds — all with EUR equivalents at execution time. Plus year-end balance data per crypto-asset type per EU client.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">What is the CARF XML schema required by DAC8?</p>
+        <p class="faq-a">CARF (Crypto-Asset Reporting Framework) is the OECD XML schema adopted by DAC8 for cross-border reporting. It differs from Spain's current Modelo 172 XML format in structure, field definitions, and asset classification taxonomy. Both schemas must be generated separately from the same underlying transaction data from 2027.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">If we already file Modelo 172, do we need much additional work for DAC8?</p>
+        <p class="faq-a">Around 65–70% of data elements overlap. Three gaps require real work: expanding client scope to all EU residents (requires TIN collection for non-Spanish clients), adding staking/lending/ICO transaction types to your data capture, and building a CARF XML serializer alongside your existing Modelo serializer. Firms with clean Modelo 172 infrastructure have a significant head start.</p>
+      </div>
+    </div>
+  </article>
+
+  <div class="article-cta">
+    <div class="article-cta-box">
+      <h3>Automate your MiCA compliance</h3>
+      <p>SENTINEL monitors regulations effortlessly and automates compliant transaction reporting.</p>
+      <div class="cta-buttons">
+        <a href="/pricing" class="btn-primary">View Pricing</a>
+        <a href="/" class="btn-secondary">Learn More →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="related-posts">
+    <div class="related-label">Related Articles</div>
+    <a href="/blog/modelo-172-173-spain-crypto-guide" class="related-link">
+      <div class="related-link-title">Modelo 172 and 173: Spain's Crypto Tax Reporting Guide for CASPs</div>
+      <div class="related-link-desc">Complete guide to Modelo 172, 173, and 721 crypto tax reporting in Spain. Who must file, what data is required, deadlines, and XML format requirements.</div>
+    </a>
+    <a href="/blog/casp-license-spain-checklist" class="related-link">
+      <div class="related-link-title">How to Get a CASP License in Spain: 2026 Compliance Checklist</div>
+      <div class="related-link-desc">Complete checklist for obtaining a CASP license in Spain under MiCA. Covers CNMV application, capital requirements, governance, AML/KYC, and filing deadlines for 2026.</div>
+    </a>
+    <a href="/blog/crypto-tax-spain-2026-traders-guide" class="related-link">
+      <div class="related-link-title">Crypto Tax Spain 2026: Complete Guide for Traders and Investors</div>
+      <div class="related-link-desc">How crypto is taxed in Spain in 2026. Capital gains, IRPF rates, FIFO method, Modelo 721 for foreign holdings, and staking/DeFi income.</div>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="/" class="footer-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span class="footer-wordmark">SENTINEL</span>
+      </a>
+      <ul class="footer-links">
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/#deadlines">Deadlines</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="https://linkedin.com/in/micaready" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://x.com/micareadyeu" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="mailto:contact@micaready.eu" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+      </div>
+            <div>
+        <p class="footer-disclaimer" style="margin-bottom: 8px;">
+          SENTINEL provides compliance tooling, not legal advice. Consult a qualified legal professional for all regulatory decisions. True Nordic Capital © 2026.
+        </p>
+        <div style="font-family: var(--font-ui); font-size: 11px;">
+          <a href="/privacy" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
+          <span style="margin: 0 8px; color: var(--bg-border);">|</span>
+          <a href="/terms" style="color: var(--text-muted); text-decoration: none;">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const MiCA_DEADLINE = new Date('2026-07-01T00:00:00+00:00');
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function updateCountdown() {
+      const diff = MiCA_DEADLINE - new Date();
+      if (diff <= 0) { document.getElementById('countdownDisplay').textContent = 'ENFORCEMENT ACTIVE'; return; }
+      const d = Math.floor(diff / 86400000), h = Math.floor((diff % 86400000) / 3600000), m = Math.floor((diff % 3600000) / 60000), s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('countdownDisplay').textContent = `${d}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+    }
+    updateCountdown(); setInterval(updateCountdown, 1000);
+  </script>
+  <script src="/shared.js" defer></script>
+</body>
+</html>
