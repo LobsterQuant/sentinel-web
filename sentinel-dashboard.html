@@ -1166,8 +1166,20 @@
     if (drText) drText.textContent = dateRangeStr;
     
     var lsText = document.getElementById('lastSyncText');
-    var minAgo = Math.floor(Math.random() * 14) + 2; 
-    if (lsText) lsText.textContent = 'Last sync ' + minAgo + ' minutes ago';
+    if (lsText) {
+      lsText.textContent = 'Last sync Just now';
+      var startTime = Date.now();
+      setInterval(function() {
+        var elapsedMin = Math.floor((Date.now() - startTime) / 60000);
+        if (elapsedMin === 0) {
+          lsText.textContent = 'Last sync Just now';
+        } else if (elapsedMin === 1) {
+          lsText.textContent = 'Last sync 1 minute ago';
+        } else {
+          lsText.textContent = 'Last sync ' + elapsedMin + ' minutes ago';
+        }
+      }, 10000);
+    }
 
     document.querySelectorAll('[data-countup]').forEach(function(el) { cObs.observe(el); });
 
@@ -1273,7 +1285,6 @@
     (function buildDeadlines() {
       var deadlines = [
         { date: new Date('2026-07-01'), name: 'MiCA Full Enforcement',    cls: 'red' },
-        { date: new Date('2026-12-31'), name: 'CASP Annual Review',       cls: 'amber' },
         { date: new Date('2027-03-31'), name: 'Modelo 173 Filing',        cls: 'amber' },
         { date: new Date('2027-09-30'), name: 'DAC8 Implementation',      cls: 'green' },
         { date: new Date('2028-01-01'), name: 'MiCA Phase II Review',     cls: 'blue' }

@@ -819,7 +819,7 @@
             <li>Compliance deadline alerts</li>
             <li>7-day audit log</li>
           </ul>
-          <a href="https://buy.stripe.com/9B66oI73PfMree5eDT2Ji00" class="btn-secondary pricing-cta">Get Started</a>
+          <a href="https://buy.stripe.com/9B66oI73PfMree5eDT2Ji00" class="btn-secondary pricing-cta" data-monthly-url="https://buy.stripe.com/9B66oI73PfMree5eDT2Ji00" data-annual-url="https://buy.stripe.com/9B66oI73PfMree5eDT2Ji00">Get Started</a>
         </div>
 
         <!-- Professional -->
@@ -836,7 +836,7 @@
             <li>30-day audit log</li>
             <li>Full API access</li>
           </ul>
-          <a href="https://buy.stripe.com/fZu7sM73P7fVb1TcvL2Ji01" class="btn-secondary pricing-cta">Get Started</a>
+          <a href="https://buy.stripe.com/fZu7sM73P7fVb1TcvL2Ji01" class="btn-secondary pricing-cta" data-monthly-url="https://buy.stripe.com/fZu7sM73P7fVb1TcvL2Ji01" data-annual-url="https://buy.stripe.com/fZu7sM73P7fVb1TcvL2Ji01">Get Started</a>
         </div>
 
         <!-- CASP -->
@@ -1124,6 +1124,7 @@
   <script>
     const pToggle = document.getElementById('pricingToggleCheckbox');
     const prices = document.querySelectorAll('.pricing-price');
+    const ctas = document.querySelectorAll('.pricing-cta[data-annual-url]');
     const lblMonthly = document.getElementById('label-monthly');
     const lblAnnual = document.getElementById('label-annual');
     if(pToggle) {
@@ -1134,6 +1135,9 @@
         lblAnnual.style.color = isAnnual ? 'var(--text-primary)' : 'var(--text-secondary)';
         prices.forEach(p => {
           p.textContent = isAnnual ? p.getAttribute('data-annual') : p.getAttribute('data-monthly');
+        });
+        ctas.forEach(cta => {
+          cta.href = isAnnual ? cta.getAttribute('data-annual-url') : cta.getAttribute('data-monthly-url');
         });
       });
     }
