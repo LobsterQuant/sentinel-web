@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — SENTINEL | True Nordic Capital</title>
+  <meta name="description" content="True Nordic Capital built SENTINEL to solve the reporting and filing layer that Spanish CASPs are legally required to operate under MiCA.">
+  <link rel="canonical" href="https://www.micaready.eu/about">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    /* CSS overrides for About page based on terms.html structure */
+    :root {
+      --bg-void: #000000; --bg-surface: #080808; --bg-elevated: #0F0F0F; --bg-border: #1A1A1A; --bg-subtle: #141414;
+      --text-primary: #FFFFFF; --text-secondary: #ABABBA; --text-muted: #4A4A5A; --text-mono: #A8B4C0;
+      --accent: #00E5BD;
+      --font-display: 'Syne', 'DM Sans', sans-serif; --font-ui: 'DM Sans', system-ui, sans-serif; --font-mono: 'JetBrains Mono', monospace;
+      --nav-height: 60px; --banner-height: 37px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg-void); color: var(--text-primary); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; }
+    
+    .article-body { max-width: 760px; margin: 0 auto; padding: 0 48px 80px; }
+    .article-body h2 { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--text-primary); margin: 56px 0 20px; line-height: 1.15; }
+    .article-body p { font-family: var(--font-ui); font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 24px; }
+    .article-body ul { margin: 0 0 24px 0; padding-left: 0; list-style: none; }
+    .article-body li { font-family: var(--font-ui); font-size: 16px; line-height: 1.8; color: var(--text-secondary); padding: 6px 0 6px 20px; position: relative; }
+    .article-body li::before { content: ''; position: absolute; left: 0; top: 14px; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; }
+    .article-body strong { color: var(--text-primary); font-weight: 600; }
+    
+    .company-line { font-size: 18px; color: var(--text-secondary); border-left: 2px solid var(--accent); padding-left: 24px; margin: 40px 0; font-style: italic; }
+    
+    .contact-block { margin-top: 56px; padding: 32px; border: 1px solid var(--bg-border); border-radius: 8px; background: var(--bg-surface); }
+    .contact-block p { margin-bottom: 12px; }
+    .contact-block p:last-child { margin-bottom: 0; }
+    .contact-block a { color: var(--accent); text-decoration: none; }
+    .contact-block a:hover { color: var(--text-primary); text-decoration: underline; }
+    
+    @media (max-width: 700px) {
+      .article-body { padding-left: 24px; padding-right: 24px; }
+      .contact-block { padding: 24px; }
+    }
+  </style>
+  <script async src="https://plausible.io/js/pa-Qpy9rNYV7ZjMDJytfP6xI.js"></script>
+  <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span class="nav-wordmark">SENTINEL</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#how-it-works">How It Works</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a href="/faq">FAQ</a></li>
+      <li><a href="/about" class="active">About</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/#deadlines">Deadlines</a></li>
+    </ul>
+  </nav>
+
+  <div class="countdown-banner">
+    ⚠&nbsp; MiCA full enforcement:&nbsp;<span id="countdownDisplay">calculating...</span>&nbsp;— 1 July 2026
+  </div>
+
+  <header class="page-header" style="max-width: 760px; padding: calc(var(--nav-height) + var(--banner-height) + 80px) 48px 40px; margin: 0 auto; text-align: center;">
+    <div class="article-breadcrumb" style="display:flex; align-items:center; gap:8px; justify-content:center; margin-bottom:28px;">
+      <a href="/" style="font-size:12px; color:var(--text-muted); text-decoration:none;">SENTINEL</a><span style="font-size:12px; color:var(--text-muted);">/</span><span style="font-size:12px; color:var(--text-muted);">About</span>
+    </div>
+    <h1 class="reveal" style="font-family: var(--font-display); font-size: clamp(36px, 5vw, 52px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 20px;">Why we built SENTINEL</h1>
+  </header>
+
+  <article class="article-body reveal">
+    <p class="company-line">
+      True Nordic Capital is a financial technology company based in Oslo, Norway, building regulatory compliance infrastructure for EU crypto-asset service providers.
+    </p>
+
+    <p>
+      MiCA was published in June 2023. In the three years since, most of the industry's attention has gone to the licence question — whether to apply, which jurisdiction to use, how to structure the legal entity. That is a real problem. But it is not the daily operational problem. The daily operational problem is data: every transaction classified correctly, every EUR equivalent captured at execution time, every quarterly filing generated in a schema that AEAT, CNMV, and the European supervisory authorities will actually accept.
+    </p>
+
+    <p>
+      We built SENTINEL because that second layer — the reporting and filing infrastructure — does not exist as a standalone product for Spanish-market CASPs. The large AML screening vendors (Chainalysis, Elliptic, Scorechain) focus on blockchain analytics and transaction monitoring. The consulting firms charge €500/hour to reconstruct data manually at quarter-end. Neither solves the recurring operational cost of generating Modelo 172, 173, and 721 in AEAT-compliant XML, quarter after quarter, without rebuilding the process from scratch each time.
+    </p>
+
+    <p>
+      True Nordic Capital brings a specific combination to this problem: deep familiarity with EU financial regulation built through years of working across Nordic and Southern European markets, and the technical capacity to build automated data pipelines against live CNMV, ESMA, and EBA regulatory feeds. Spain was a deliberate focus — it has one of the largest populations of unlicensed CASPs facing the July 2026 MiCA enforcement deadline, a well-defined national reporting framework in Modelo 172/173/721, and a regulatory gap that the incumbents have not yet filled.
+    </p>
+
+    <h2>What we bring to this problem</h2>
+
+    <ul>
+      <li><strong>EU regulatory fluency</strong> — direct experience with MiCA implementation requirements, EBA guidelines on crypto-asset classification, ESMA technical standards, and the Banco de España → CNMV registration transition for Spanish entities</li>
+      <li><strong>Spanish tax reporting expertise</strong> — Modelo 172 (quarterly crypto transaction reporting), Modelo 173 (annual crypto holdings), and Modelo 721 (foreign asset declaration), including AEAT XML schema validation and EUR valuation methodology requirements</li>
+      <li><strong>DAC8 readiness</strong> — the EU's mandatory crypto tax information exchange framework applies from 2027; SENTINEL captures the data fields required for DAC8 reporting from day one, so clients are not rebuilding data infrastructure in 18 months</li>
+      <li><strong>Automated regulatory monitoring</strong> — CNMV, ESMA, EBA, and all national competent authorities scanned every 12 hours; material updates classified by obligation type and deadline, not buried in PDF archives</li>
+      <li><strong>Security and data handling</strong> — client transaction data processed under EU data protection standards; architecture designed for regulated entities with data residency requirements</li>
+    </ul>
+
+    <p>
+      We are not a law firm, and SENTINEL is not legal advice. It is operational infrastructure — the layer between your transaction data and your regulatory filings. For specific legal interpretation of MiCA obligations, we work alongside specialist crypto-asset regulatory counsel and can refer clients to firms we trust.
+    </p>
+
+    <div class="contact-block">
+      <p style="margin:0 0 16px; color:var(--text-primary); font-family:var(--font-display); font-size:18px; font-weight:700;">Get in touch</p>
+      <p><strong>Email:</strong> <a href="mailto:contact@micaready.eu">contact@micaready.eu</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/micaready" target="_blank">linkedin.com/in/micaready</a></p>
+      <p style="margin-top:16px; color:var(--text-muted); font-size:14px;">
+        For enterprise enquiries, compliance partnership discussions, or a product walkthrough, email is the fastest route. We typically respond within one business day.
+      </p>
+    </div>
+  </article>
+
+  <section class="cta-section" style="background: var(--bg-surface); padding: 100px 48px; text-align: center; border-top: 1px solid var(--bg-border);">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <div class="reveal" style="font-family: var(--font-ui); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin-bottom: 16px;">MiCA is here</div>
+      <h2 class="reveal" style="font-family: var(--font-display); font-size: clamp(28px, 7vw, 40px); font-weight: 800; margin-bottom: 24px; letter-spacing: -0.02em;">Ready to automate?</h2>
+      <div class="cta-buttons reveal" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="/pricing" class="btn-primary">View Pricing</a>
+        <a href="/" class="btn-secondary">Back to Home →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top: 1px solid var(--bg-border); padding: 52px 48px;">
+    <div style="max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;">
+      <a href="/" style="display: flex; align-items: center; gap: 9px; text-decoration: none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span style="font-family: var(--font-display); font-size: 14px; font-weight: 800; color: var(--text-primary); letter-spacing: 0.14em;">SENTINEL</span>
+      </a>
+      <ul style="display: flex; gap: 28px; list-style: none; flex-wrap: wrap; margin: 0; padding: 0;">
+        <li><a href="/pricing" style="font-family: var(--font-ui); font-size: 13px; color: var(--text-muted); text-decoration: none;">Pricing</a></li>
+        <li><a href="/faq" style="font-family: var(--font-ui); font-size: 13px; color: var(--text-muted); text-decoration: none;">FAQ</a></li>
+        <li><a href="/about" style="font-family: var(--font-ui); font-size: 13px; color: var(--text-muted); text-decoration: none;">About</a></li>
+        <li><a href="/blog" style="font-family: var(--font-ui); font-size: 13px; color: var(--text-muted); text-decoration: none;">Blog</a></li>
+        <li><a href="/#deadlines" style="font-family: var(--font-ui); font-size: 13px; color: var(--text-muted); text-decoration: none;">Deadlines</a></li>
+      </ul>
+      <div style="display: flex; gap: 16px;">
+        <a href="https://linkedin.com/in/micaready" target="_blank" style="color: #4a4a5a;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="https://x.com/micareadyeu" target="_blank" style="color: #4a4a5a;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="mailto:contact@micaready.eu" style="color: #4a4a5a;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+      </div>
+      <div style="margin-top: 16px;">
+        <p style="margin-bottom: 8px; font-family: var(--font-ui); font-size: 11px; color: var(--text-muted); max-width: 420px; line-height: 1.65;">
+          SENTINEL provides compliance tooling, not legal advice. Consult a qualified legal professional for all regulatory decisions. True Nordic Capital © 2026.
+        </p>
+        <div style="font-family: var(--font-ui); font-size: 11px;">
+          <a href="/privacy" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
+          <span style="margin: 0 8px; color: var(--bg-border);">|</span>
+          <a href="/terms" style="color: var(--text-muted); text-decoration: none;">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="/shared.js" defer></script>
+  <script>
+    // ── Scope shared features ────────────────────────────────────────────
+    const MiCA_DEADLINE = new Date('2026-07-01T00:00:00+00:00');
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function updateCountdown() {
+      const el = document.getElementById('countdownDisplay');
+      if (!el) return;
+      const diff = MiCA_DEADLINE - new Date();
+      if (diff <= 0) { el.textContent = 'ENFORCEMENT ACTIVE'; return; }
+      const d = Math.floor(diff / 86400000), h = Math.floor((diff % 86400000) / 3600000), m = Math.floor((diff % 3600000) / 60000), s = Math.floor((diff % 60000) / 1000);
+      el.textContent = `${d}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const siblings = [...entry.target.parentElement.querySelectorAll('.reveal:not(.visible)')];
+        const idx = siblings.indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add('visible'), Math.max(0, idx * 75));
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
+</body>
+</html>
