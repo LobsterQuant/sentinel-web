@@ -305,10 +305,10 @@ body {
 
   /* ── Landing page hero h1 ─────────────────────────────── */
   .hero-h1 {
-    font-size: clamp(32px, 8vw, 48px) !important;
+    font-size: clamp(32px, 6vw, 78px) !important;
     letter-spacing: -0.02em;
     overflow-wrap: break-word;
-    word-break: normal;
+    word-break: break-word;
     hyphens: none;
     -webkit-hyphens: none;
   }
@@ -392,6 +392,19 @@ body {
     align-items: center;
   }
 
+  /* ── Fix CTA and Pricing Card overflow ──────────────────── */
+  .btn-primary, .btn-secondary, .wl-submit {
+    white-space: normal !important;
+    word-break: break-word;
+    text-align: center;
+    height: auto;
+  }
+
+  .pricing-card {
+    word-break: break-word;
+    hyphens: auto;
+  }
+
   /* ── Nav padding ───────────────────────────────────────── */
   nav {
     padding: 0 16px;
@@ -420,7 +433,7 @@ body {
    Restores the centered position of nav-links 
    after the Right CTA was removed.
 ───────────────────────────────────────────────────────── */
-@media (min-width: 701px) {
+@media (min-width: 769px) {
   .nav-links {
     position: absolute !important;
     left: 50% !important;
@@ -442,7 +455,7 @@ body {
   right: 16px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .mobile-menu-btn {
     display: block;
   }
