@@ -75,4 +75,9 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://micaready.eu/blog/modelo-172-173-spain-crypto-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
