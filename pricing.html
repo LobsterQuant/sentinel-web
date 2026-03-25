@@ -305,6 +305,71 @@
       margin-bottom: 48px;
     }
 
+    /* ── PRICING TOGGLE ───────────────────────────────── */
+    .pricing-toggle-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards 0.54s;
+    }
+    .toggle-label {
+      font-family: var(--font-ui);
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 150ms ease;
+    }
+    .badge-discount {
+      background: var(--accent-dim);
+      color: var(--accent);
+      border-radius: var(--radius-pill);
+      padding: 2px 8px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .toggle-switch {
+      position: relative;
+      width: 48px;
+      height: 24px;
+      display: inline-block;
+    }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: var(--bg-border);
+      transition: .3s;
+      border-radius: 24px;
+    }
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: var(--text-muted);
+      transition: .3s;
+      border-radius: 50%;
+    }
+    input:checked + .toggle-slider {
+      background-color: var(--accent-border);
+    }
+    input:checked + .toggle-slider:before {
+      transform: translateX(24px);
+      background-color: var(--accent);
+    }
+
     /* ── PRICING CARDS ───────────────────────────────── */
     .pricing-grid {
       display: grid;
@@ -683,6 +748,13 @@
     }
   </style>
   <link rel="stylesheet" href="/shared.css">
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-Qpy9rNYV7ZjMDJytfP6xI.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+<link rel="icon" href="/favicon.ico">
 </head>
 <body>
 
@@ -724,12 +796,21 @@
   <section id="plans">
     <div class="section-wrap" style="padding-top: 0;">
 
+      <div class="pricing-toggle-wrap">
+        <span class="toggle-label" id="label-monthly">Monthly</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="pricingToggleCheckbox">
+          <span class="toggle-slider"></span>
+        </label>
+        <span class="toggle-label" id="label-annual" style="color: var(--text-secondary);">Annual <span class="badge-discount">Save 20%</span></span>
+      </div>
+
       <div class="pricing-grid">
 
         <!-- Individual -->
         <div class="pricing-card reveal">
           <div class="pricing-tier">Individual</div>
-          <div class="pricing-price">€99</div>
+          <div class="pricing-price" data-monthly="€99" data-annual="€79">€99</div>
           <div class="pricing-period">per month</div>
           <ul class="pricing-features">
             <li>Up to 500 transactions / month</li>
@@ -744,7 +825,7 @@
         <!-- Professional -->
         <div class="pricing-card reveal">
           <div class="pricing-tier">Professional</div>
-          <div class="pricing-price">€499</div>
+          <div class="pricing-price" data-monthly="€499" data-annual="€399">€499</div>
           <div class="pricing-period">per month</div>
           <ul class="pricing-features">
             <li>Unlimited transactions</li>
@@ -762,7 +843,7 @@
         <div class="pricing-card featured reveal">
           <div class="pricing-popular" style="background:var(--bg-void); color:var(--text-primary); border: 1px solid var(--accent)">Enterprise</div>
           <div class="pricing-tier">CASP</div>
-          <div class="pricing-price">€1,500</div>
+          <div class="pricing-price" data-monthly="€1,500" data-annual="€1,200">€1,500</div>
           <div class="pricing-period">per month</div>
           <ul class="pricing-features">
             <li>Unlimited transactions</li>
@@ -1039,6 +1120,23 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
+  <script>
+    const pToggle = document.getElementById('pricingToggleCheckbox');
+    const prices = document.querySelectorAll('.pricing-price');
+    const lblMonthly = document.getElementById('label-monthly');
+    const lblAnnual = document.getElementById('label-annual');
+    if(pToggle) {
+      lblMonthly.style.color = 'var(--text-primary)';
+      pToggle.addEventListener('change', (e) => {
+        const isAnnual = e.target.checked;
+        lblMonthly.style.color = isAnnual ? 'var(--text-secondary)' : 'var(--text-primary)';
+        lblAnnual.style.color = isAnnual ? 'var(--text-primary)' : 'var(--text-secondary)';
+        prices.forEach(p => {
+          p.textContent = isAnnual ? p.getAttribute('data-annual') : p.getAttribute('data-monthly');
+        });
+      });
+    }
   </script>
   <script src="/shared.js" defer></script>
 </body>
