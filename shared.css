@@ -12,6 +12,174 @@ html {
   scroll-padding-top: calc(60px + 37px + 24px); /* nav + banner + breathing room */
 }
 
+/* ══════════════════════════════════════════════════════════
+   NAV — shared across all pages
+   (pages with inline nav CSS override selectively as needed)
+══════════════════════════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-height, 60px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  z-index: 200;
+  background: rgba(0,0,0,0.88);
+  border-bottom: 1px solid var(--bg-border, #1A1A1A);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: background 200ms ease, border-bottom 200ms ease, backdrop-filter 200ms ease;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-logo svg { color: var(--accent, #00E5BD); }
+
+.nav-wordmark {
+  font-family: var(--font-display, 'Syne', 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-primary, #FFFFFF);
+  letter-spacing: 0.14em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-ui, 'DM Sans', system-ui, sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary, #ABABBA);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.nav-links a:hover { color: var(--text-primary, #FFFFFF); }
+.nav-links a.active { color: var(--accent, #00E5BD); }
+
+/* ── BUTTONS ───────────────────────────────────────────── */
+.btn-primary {
+  display: inline-block;
+  background: var(--text-primary, #FFFFFF);
+  color: #000;
+  border: none;
+  border-radius: var(--radius-pill, 9999px);
+  padding: 10px 24px;
+  font-family: var(--font-ui, 'DM Sans', system-ui, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 150ms ease, color 150ms ease;
+  white-space: nowrap;
+}
+.btn-primary:hover { background: var(--accent, #00E5BD); color: #000; }
+
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--text-primary, #FFFFFF);
+  border: 1px solid var(--bg-border, #1A1A1A);
+  border-radius: var(--radius-pill, 9999px);
+  padding: 10px 24px;
+  font-family: var(--font-ui, 'DM Sans', system-ui, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 150ms ease, color 150ms ease;
+  white-space: nowrap;
+}
+.btn-secondary:hover { border-color: var(--accent, #00E5BD); color: var(--accent, #00E5BD); }
+
+/* ── COUNTDOWN BANNER ──────────────────────────────────── */
+.countdown-banner {
+  position: fixed;
+  top: var(--nav-height, 60px);
+  left: 0; right: 0;
+  z-index: 190;
+  height: var(--banner-height, 37px);
+  background: #0A0A0A;
+  border-bottom: 1px solid #1E1E1E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary, #ABABBA);
+  letter-spacing: 0.08em;
+  padding: 0 24px;
+}
+
+.countdown-banner #countdownDisplay {
+  color: var(--accent, #00E5BD);
+  font-weight: 700;
+}
+
+/* ── FOOTER ────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--bg-border, #1A1A1A);
+  padding: 40px 48px;
+}
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.footer-logo {
+  display: flex; align-items: center; gap: 8px;
+  text-decoration: none; color: var(--text-primary, #FFF);
+}
+.footer-logo svg { color: var(--accent, #00E5BD); }
+.footer-wordmark {
+  font-family: var(--font-display, 'Syne', sans-serif);
+  font-size: 13px; font-weight: 800; letter-spacing: 0.14em;
+}
+.footer-links {
+  display: flex; gap: 28px; list-style: none; flex-wrap: wrap;
+}
+.footer-links a {
+  font-size: 13px; color: var(--text-muted, #4A4A5A);
+  text-decoration: none; transition: color 150ms ease;
+}
+.footer-links a:hover { color: var(--text-primary, #FFF); }
+.footer-social {
+  display: flex; gap: 16px; align-items: center;
+}
+.footer-social a {
+  width: 30px; height: 30px;
+  color: var(--text-muted, #4A4A5A);
+  display: flex; align-items: center; justify-content: center;
+  transition: color 150ms ease; text-decoration: none;
+}
+.footer-social a:hover { color: var(--text-primary, #FFF); }
+.footer-social svg { width: 16px; height: 16px; }
+.footer-disclaimer {
+  font-size: 11px; color: var(--text-muted, #4A4A5A); line-height: 1.5;
+}
+
+/* ══════════════════════════════════════════════════════════ */
+
 /* ── WAITLIST MODAL ────────────────────────────────────── */
 .wl-overlay {
   position: fixed;
