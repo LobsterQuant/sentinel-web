@@ -46,11 +46,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.micaready.eu/thank-you</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
     <loc>https://www.micaready.eu/blog/mica-compliance-spain-cnmv-casp-guide-2026</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
