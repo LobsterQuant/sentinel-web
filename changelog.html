@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Changelog — SENTINEL | MiCA Compliance Platform Updates</title>
+  <meta name="description" content="SENTINEL product changelog. Track every update, fix, and new feature as we build the EU MiCA compliance platform for CASPs and crypto businesses in Spain.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.micaready.eu/changelog">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Changelog — SENTINEL">
+  <meta property="og:description" content="Every update, fix, and new feature as we build the EU MiCA compliance platform for CASPs and crypto businesses in Spain.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://micaready.eu/changelog">
+  <meta property="og:image" content="https://micaready.eu/og-image.png">
+  <meta property="og:site_name" content="SENTINEL">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Changelog — SENTINEL">
+  <meta name="twitter:description" content="Every update, fix, and new feature as we build the EU MiCA compliance platform for CASPs and crypto businesses in Spain.">
+  <meta name="twitter:image" content="https://micaready.eu/og-image.png">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "SENTINEL Changelog",
+    "description": "Product changelog for SENTINEL — EU MiCA compliance platform.",
+    "url": "https://micaready.eu/changelog",
+    "provider": { "@type": "Organization", "name": "True Nordic Capital", "url": "https://micaready.eu" }
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+
+  <link rel="stylesheet" href="/shared.css">
+
+  <!-- Plausible Analytics -->
+  <script defer data-domain="micaready.eu" src="https://plausible.io/js/script.js"></script>
+
+  <style>
+    :root {
+      --bg-void:        #000000;
+      --bg-surface:     #080808;
+      --bg-elevated:    #0F0F0F;
+      --bg-border:      #1A1A1A;
+      --text-primary:   #FFFFFF;
+      --text-secondary: #ABABBA;
+      --text-muted:     #4A4A5A;
+      --text-mono:      #A8B4C0;
+      --accent:         #00E5BD;
+      --accent-dim:     #00E5BD22;
+      --accent-border:  #00E5BD44;
+      --font-display:   'Syne', 'DM Sans', sans-serif;
+      --font-ui:        'DM Sans', system-ui, sans-serif;
+      --font-mono:      'JetBrains Mono', 'Cascadia Mono', monospace;
+      --radius-card:    4px;
+      --nav-height:     60px;
+      --banner-height:  37px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(60px + 37px + 24px); }
+
+    body {
+      background: var(--bg-void);
+      color: var(--text-primary);
+      font-family: var(--font-ui);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ───────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; z-index: 200;
+      background: rgba(0,0,0,0.88);
+      border-bottom: 1px solid var(--bg-border);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo svg { color: var(--accent); }
+    .nav-wordmark { font-family: var(--font-display); font-size: 15px; font-weight: 800; color: var(--text-primary); letter-spacing: 0.14em; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { font-family: var(--font-ui); font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color 150ms ease; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-links a.active { color: var(--accent); }
+    .btn-primary {
+      display: inline-block; background: var(--text-primary); color: #000;
+      border: none; border-radius: 9999px; padding: 10px 24px;
+      font-family: var(--font-ui); font-size: 13px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer;
+      text-decoration: none; transition: background 150ms, color 150ms; white-space: nowrap;
+    }
+    .btn-primary:hover { background: var(--accent); color: #000; }
+
+    /* ── BANNER ─────────────────────────────────────────── */
+    .countdown-banner {
+      position: fixed; top: var(--nav-height); left: 0; right: 0;
+      height: var(--banner-height);
+      background: #0A0A0A; border-bottom: 1px solid #1E1E1E;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+      color: var(--text-secondary); letter-spacing: 0.08em; z-index: 190;
+    }
+    #countdownDisplay { color: var(--accent); font-weight: 700; }
+
+    .page-offset { height: calc(var(--nav-height) + var(--banner-height)); }
+
+    /* ── PAGE HEADER ─────────────────────────────────────── */
+    .page-header {
+      padding: 80px 48px 56px;
+      max-width: 860px; margin: 0 auto;
+    }
+    .page-header-label {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.18em;
+      color: var(--accent); margin-bottom: 16px;
+    }
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4.5vw, 52px); font-weight: 800; line-height: 1.05;
+      color: var(--text-primary); margin-bottom: 18px;
+    }
+    .page-header-sub {
+      font-size: 17px; line-height: 1.6; color: var(--text-secondary);
+      max-width: 560px;
+    }
+    .header-meta {
+      margin-top: 24px; display: flex; gap: 28px; align-items: center;
+      flex-wrap: wrap;
+    }
+    .header-meta-item {
+      font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+    .header-meta-item span { color: var(--accent); }
+
+    /* ── LAYOUT ─────────────────────────────────────────── */
+    .changelog-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 48px 120px;
+    }
+
+    /* ── RELEASE GROUP ───────────────────────────────────── */
+    .release-group {
+      margin-bottom: 60px;
+    }
+
+    .release-date-row {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 20px;
+    }
+    .release-date {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--text-muted); white-space: nowrap;
+    }
+    .release-version {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+      color: var(--accent); background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      padding: 3px 10px; border-radius: 3px; letter-spacing: 0.08em;
+    }
+    .release-date-line {
+      flex: 1; height: 1px; background: var(--bg-border);
+    }
+
+    /* ── ENTRY ───────────────────────────────────────────── */
+    .entry {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 0 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid #0E0E0E;
+      opacity: 0; transform: translateX(-8px);
+      transition: opacity 450ms ease, transform 450ms ease;
+    }
+    .entry.visible { opacity: 1; transform: none; }
+    .entry:last-child { border-bottom: none; }
+
+    .entry-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 3px 0; width: 82px; height: 22px;
+      font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      border-radius: 3px; white-space: nowrap; flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .badge-new      { background: #0a2818; color: #4ade80; border: 1px solid #166534; }
+    .badge-improved { background: #0d1f3a; color: #60a5fa; border: 1px solid #1e3a5f; }
+    .badge-fixed    { background: #2a1a08; color: #fb923c; border: 1px solid #7c2d12; }
+    .badge-security { background: #2a0a1a; color: #f472b6; border: 1px solid #831843; }
+
+    .entry-content {}
+    .entry-title {
+      font-size: 14px; font-weight: 600; color: var(--text-primary);
+      line-height: 1.45; margin-bottom: 3px;
+    }
+    .entry-desc {
+      font-size: 13px; color: var(--text-secondary); line-height: 1.55;
+    }
+
+    /* ── SUBSCRIBE NUDGE ────────────────────────────────── */
+    .subscribe-bar {
+      margin-top: 16px; margin-bottom: 56px;
+      padding: 20px 28px;
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-card);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; flex-wrap: wrap;
+    }
+    .subscribe-bar p {
+      font-size: 13px; color: var(--text-secondary);
+    }
+    .subscribe-bar p strong { color: var(--text-primary); }
+    .btn-outline {
+      display: inline-block; background: transparent; color: var(--text-primary);
+      border: 1px solid var(--bg-border); border-radius: 9999px;
+      padding: 9px 22px; font-family: var(--font-ui); font-size: 12px;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+      cursor: pointer; text-decoration: none; white-space: nowrap;
+      transition: border-color 150ms, color 150ms;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── FOOTER ─────────────────────────────────────────── */
+    footer { border-top: 1px solid var(--bg-border); padding: 40px 48px; }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text-primary); }
+    .footer-logo svg { color: var(--accent); }
+    .footer-wordmark { font-family: var(--font-display); font-size: 13px; font-weight: 800; letter-spacing: 0.14em; }
+    .footer-links { display: flex; gap: 28px; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 150ms; }
+    .footer-links a:hover { color: var(--text-primary); }
+    .footer-social { display: flex; gap: 16px; align-items: center; }
+    .footer-social a { width: 30px; height: 30px; color: var(--text-muted); display: flex; align-items: center; justify-content: center; transition: color 150ms; text-decoration: none; }
+    .footer-social a:hover { color: var(--text-primary); }
+    .footer-social svg { width: 16px; height: 16px; }
+    .footer-disclaimer { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .page-header { padding: 48px 20px 40px; }
+      .changelog-wrap { padding: 0 20px 80px; }
+      .entry { grid-template-columns: 1fr; gap: 6px; }
+      .entry-badge { width: auto; }
+      footer { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a href="/" class="nav-logo">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <span class="nav-wordmark">SENTINEL</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#how-it-works">How It Works</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a href="/faq">FAQ</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/api">API</a></li>
+      <li><a href="/changelog" class="active">Changelog</a></li>
+    </ul>
+    <a href="/pricing" class="btn-primary">Get Started</a>
+  </nav>
+
+  <!-- BANNER -->
+  <div class="countdown-banner">
+    ⚠&nbsp; MiCA full enforcement:&nbsp;<span id="countdownDisplay">calculating...</span>&nbsp;— 1 July 2026
+  </div>
+
+  <div class="page-offset"></div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="page-header-label">// Changelog</div>
+    <h1>What's shipping.</h1>
+    <p class="page-header-sub">
+      Every update, fix, and feature since we started building. We move fast — MiCA enforcement doesn't wait.
+    </p>
+    <div class="header-meta">
+      <div class="header-meta-item">Current version <span>v1.8</span></div>
+      <div class="header-meta-item">First release <span>21 Mar 2026</span></div>
+      <div class="header-meta-item">Last updated <span>26 Mar 2026</span></div>
+    </div>
+  </header>
+
+  <!-- CHANGELOG -->
+  <div class="changelog-wrap">
+
+    <!-- SUBSCRIBE NUDGE -->
+    <div class="subscribe-bar">
+      <p><strong>Stay current.</strong> Get notified when we ship new compliance features or publish regulatory updates.</p>
+      <a href="mailto:contact@micaready.eu?subject=Changelog%20updates&body=Please%20keep%20me%20updated%20on%20SENTINEL%20product%20changes." class="btn-outline">Notify me</a>
+    </div>
+
+    <!-- ═══════════ 26 MARCH 2026 ═══════════ -->
+    <div class="release-group">
+      <div class="release-date-row">
+        <span class="release-date">26 Mar 2026</span>
+        <span class="release-version">v1.8</span>
+        <div class="release-date-line"></div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-new">NEW</span>
+        <div class="entry-content">
+          <div class="entry-title">API documentation page (/api)</div>
+          <div class="entry-desc">Published the API reference teaser — endpoints for transaction classification, Modelo 172/173 XML generation, and regulatory alert webhooks. Full OpenAPI spec available post-onboarding on CASP plan.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-new">NEW</span>
+        <div class="entry-content">
+          <div class="entry-title">Unique OG images for top 5 blog posts</div>
+          <div class="entry-desc">Generated 1200×630 branded Open Graph images for the five highest-traffic blog posts. Improves click-through rate on social shares and link previews in Slack, WhatsApp, and LinkedIn.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-security">SECURITY</span>
+        <div class="entry-content">
+          <div class="entry-title">Removed API key patterns from git history</div>
+          <div class="entry-desc">Placeholder strings matching secret-scanning patterns were present in an earlier commit. History rewritten and force-pushed to keep the repository clean.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ 25 MARCH 2026 ═══════════ -->
+    <div class="release-group">
+      <div class="release-date-row">
+        <span class="release-date">25 Mar 2026</span>
+        <span class="release-version">v1.7</span>
+        <div class="release-date-line"></div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-new">NEW</span>
+        <div class="entry-content">
+          <div class="entry-title">About page</div>
+          <div class="entry-desc">Added /about covering the mission, team context, and why we built SENTINEL. Adds trust signal for enterprise and CASP buyers evaluating the product.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-new">NEW</span>
+        <div class="entry-content">
+          <div class="entry-title">Security &amp; Data page</div>
+          <div class="entry-desc">Published /security detailing data handling, encryption at rest and in transit, GDPR compliance posture, and breach notification policy. Required for CASP due diligence.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-new">NEW</span>
+        <div class="entry-content">
+          <div class="entry-title">Three new blog posts published</div>
+          <div class="entry-desc">Published "DAC8 Spain Crypto Guide 2027", "Crypto Tax Spain 2026: Complete Guide for Traders", and "CASP License in Spain: 2026 Compliance Checklist". Total blog: 8 posts indexed.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-improved">IMPROVED</span>
+        <div class="entry-content">
+          <div class="entry-title">Pricing page — annual toggle</div>
+          <div class="entry-desc">Added monthly/annual billing toggle with 20% annual discount. Each plan's CTA button now dynamically switches between the correct Stripe Checkout URLs based on selected billing period.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-fixed">FIXED</span>
+        <div class="entry-content">
+          <div class="entry-title">Mobile nav drawer — text clipping</div>
+          <div class="entry-desc">Fixed left-side offset clipping on mobile nav slide-in drawer. Navigation links were partially obscured below 430px viewport width.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-fixed">FIXED</span>
+        <div class="entry-content">
+          <div class="entry-title">Blog H1 mobile font overflow</div>
+          <div class="entry-desc">Long post titles were overflowing the viewport on mobile. Applied clamp-based font sizing and normal line wrapping across all blog post pages.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-fixed">FIXED</span>
+        <div class="entry-content">
+          <div class="entry-title">Pricing page header padding on mobile</div>
+          <div class="entry-desc">The fixed countdown banner was overlapping the pricing page H1 on smaller screens. Increased top margin and padding for banner clearance.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-improved">IMPROVED</span>
+        <div class="entry-content">
+          <div class="entry-title">Legal pages — EU provision precision</div>
+          <div class="entry-desc">Updated Privacy Policy and Terms of Service with specific references to GDPR Articles 13/14, CCPA, and MiCA regulatory context. Improved responsive typography.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ 24 MARCH 2026 ═══════════ -->
+    <div class="release-group">
+      <div class="release-date-row">
+        <span class="release-date">24 Mar 2026</span>
+        <span class="release-version">v1.6</span>
+        <div class="release-date-line"></div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-new">NEW</span>
+        <div class="entry-content">
+          <div class="entry-title">Privacy Policy and Terms of Service</div>
+          <div class="entry-desc">Launched /privacy and /terms with full GDPR-compliant disclosures. Covers data controller identity, lawful basis, retention periods, subject rights, and third-party processors. Linked from all page footers.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-improved">IMPROVED</span>
+        <div class="entry-content">
+          <div class="entry-title">Dashboard mobile responsiveness</div>
+          <div class="entry-desc">Fixed chart rendering, sidebar nav links, and timeline layout on mobile viewports. Sync timer randomised to avoid simultaneous load spikes. Live Demo button added to pricing page.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-improved">IMPROVED</span>
+        <div class="entry-content">
+          <div class="entry-title">OG image, compliance calendar, and pricing cards</div>
+          <div class="entry-desc">Updated default Open Graph image. Refreshed compliance calendar deadlines on the dashboard. Pricing card copy tightened for clarity.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-fixed">FIXED</span>
+        <div class="entry-content">
+          <div class="entry-title">Shared CSS missing from secondary pages</div>
+          <div class="entry-desc">Several pages (FAQ, dashboard) were missing the shared.css link, causing modal and banner styles to break on direct navigation. Fixed across all pages.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-fixed">FIXED</span>
+        <div class="entry-content">
+          <div class="entry-title">DAC8/MiCA blog post deadline inconsistency</div>
+          <div class="entry-desc">The post cited both December 2025 and July 2026 as the MiCA enforcement date. Corrected to reflect the actual hard deadline of 1 July 2026.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ 23 MARCH 2026 ═══════════ -->
+    <div class="release-group">
+      <div class="release-date-row">
+        <span class="release-date">23 Mar 2026</span>
+        <span class="release-version">v1.5</span>
+        <div class="release-date-line"></div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-new">NEW</span>
+        <div class="entry-content">
+          <div class="entry-title">Plausible Analytics integrated</div>
+          <div class="entry-desc">Privacy-first analytics added across all pages via Plausible.io. No cookies, no GDPR consent banner required. Tracking page views, referrers, and CTA click-through rates.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-new">NEW</span>
+        <div class="entry-content">
+          <div class="entry-title">Two new blog posts: CNMV guide + DAC8/MiCA dual compliance</div>
+          <div class="entry-desc">Published "CNMV vs Banco de España — Spanish crypto firms 2026 guide" and "DAC8 and MiCA in Spain — dual compliance burden 2026". Both indexed in sitemap.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-improved">IMPROVED</span>
+        <div class="entry-content">
+          <div class="entry-title">Hero headline and subheadline copy</div>
+          <div class="entry-desc">Rewrote the landing page hero to lead with urgency (MiCA July 1 deadline) rather than feature description. Reduced desktop H1 font size 15% to improve above-the-fold density.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-fixed">FIXED</span>
+        <div class="entry-content">
+          <div class="entry-title">Pricing button behaviour + nav centering</div>
+          <div class="entry-desc">Pricing page CTA buttons were mis-routing to the waitlist modal instead of Stripe Checkout. Fixed routing logic and restored nav link centering that regressed in a prior commit.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-fixed">FIXED</span>
+        <div class="entry-content">
+          <div class="entry-title">Footer contact email and logo link</div>
+          <div class="entry-desc">Footer logo was linking to # instead of /. Contact email added to footer across all pages.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ 22 MARCH 2026 ═══════════ -->
+    <div class="release-group">
+      <div class="release-date-row">
+        <span class="release-date">22 Mar 2026</span>
+        <span class="release-version">v1.4</span>
+        <div class="release-date-line"></div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-new">NEW</span>
+        <div class="entry-content">
+          <div class="entry-title">Stripe Checkout live — all three plans</div>
+          <div class="entry-desc">Payment links live for Individual (€99/mo), Professional (€499/mo), and CASP (€1,500/mo). EUR currency, Norway billing, Stripe Tax enabled. Thank-you page added post-purchase.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-new">NEW</span>
+        <div class="entry-content">
+          <div class="entry-title">Blog page launched — first two posts published</div>
+          <div class="entry-desc">Launched /blog with "MiCA Compliance Spain guide" and "DAC8 Reporting Spain". Both posts include JSON-LD Article schema, canonical tags, and sitemap entries.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-new">NEW</span>
+        <div class="entry-content">
+          <div class="entry-title">LinkedIn and X/Twitter social icons in footer</div>
+          <div class="entry-desc">Added social links (linkedin.com/in/micaready and @micareadyeu) to all page footers.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-improved">IMPROVED</span>
+        <div class="entry-content">
+          <div class="entry-title">All URLs migrated to micaready.eu</div>
+          <div class="entry-desc">Replaced all instances of the staging Vercel URL (sentinel-web-delta.vercel.app) with the production domain across canonical tags, OG meta, and sitemaps.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-fixed">FIXED</span>
+        <div class="entry-content">
+          <div class="entry-title">Waitlist modal intercepting Stripe links</div>
+          <div class="entry-desc">The modal was capturing click events on Stripe payment links and redirecting them to the waitlist form. Fixed event propagation so checkout links route correctly.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ 21 MARCH 2026 ═══════════ -->
+    <div class="release-group">
+      <div class="release-date-row">
+        <span class="release-date">21 Mar 2026</span>
+        <span class="release-version">v1.0</span>
+        <div class="release-date-line"></div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-new">NEW</span>
+        <div class="entry-content">
+          <div class="entry-title">SENTINEL launched — landing page + dashboard</div>
+          <div class="entry-desc">Initial public launch. Landing page with MiCA compliance positioning, countdown to July 1 enforcement deadline, and live demo dashboard showing transaction classification and regulatory timeline.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-new">NEW</span>
+        <div class="entry-content">
+          <div class="entry-title">Pricing, FAQ, and full SEO foundation</div>
+          <div class="entry-desc">Pricing page with three-tier structure. FAQ covering key compliance questions. Full SEO across all pages: meta descriptions, canonical tags, Open Graph, Twitter Card, JSON-LD structured data, sitemap.xml, and robots.txt.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-new">NEW</span>
+        <div class="entry-content">
+          <div class="entry-title">Waitlist modal + MiCA deadline banner</div>
+          <div class="entry-desc">Persistent countdown banner on all pages showing days until July 1, 2026. Waitlist modal for pre-launch lead capture, wired to Formspree.</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="entry-badge badge-fixed">FIXED</span>
+        <div class="entry-content">
+          <div class="entry-title">Mobile responsiveness — typography and banner wrapping</div>
+          <div class="entry-desc">First-day fix pass: hero typography overflow on narrow viewports, countdown banner wrapping, and dashboard chart/timeline rendering on mobile.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /changelog-wrap -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="/" class="footer-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span class="footer-wordmark">SENTINEL</span>
+      </a>
+      <ul class="footer-links">
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/api">API</a></li>
+        <li><a href="/changelog">Changelog</a></li>
+        <li><a href="/#deadlines">Deadlines</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="https://linkedin.com/in/micaready" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://x.com/micareadyeu" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="mailto:contact@micaready.eu" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+      </div>
+      <div>
+        <p class="footer-disclaimer" style="margin-bottom: 8px;">
+          SENTINEL provides compliance tooling, not legal advice. Consult a qualified legal professional for all regulatory decisions. True Nordic Capital © 2026.
+        </p>
+        <div style="font-family: var(--font-ui); font-size: 11px;">
+          <a href="/privacy" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
+          <span style="margin: 0 8px; color: var(--bg-border);">|</span>
+          <a href="/terms" style="color: var(--text-muted); text-decoration: none;">Terms of Service</a>
+          <span style="margin: 0 8px; color: var(--bg-border);">|</span>
+          <a href="/security" style="color: var(--text-muted); text-decoration: none;">Security &amp; Data</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Countdown
+    function updateCountdown() {
+      const deadline = new Date('2026-07-01T00:00:00Z');
+      const diff = deadline - new Date();
+      if (diff <= 0) { document.getElementById('countdownDisplay').textContent = 'ENFORCEMENT ACTIVE'; return; }
+      document.getElementById('countdownDisplay').textContent = Math.floor(diff / 86400000) + ' days';
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+
+    // Reveal entries on scroll
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.05 }
+    );
+    document.querySelectorAll('.entry').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
