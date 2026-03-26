@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Reference — SENTINEL | MiCA Compliance API for CASPs</title>
+  <meta name="description" content="SENTINEL API: automate MiCA transaction classification, generate Modelo 172/173 XML, and receive regulatory alerts programmatically. Available on CASP plan.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.micaready.eu/api">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="API Reference — SENTINEL | MiCA Compliance API">
+  <meta property="og:description" content="Automate MiCA transaction classification, Modelo 172/173 XML generation, and regulatory alerts via the SENTINEL API. CASP plan required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://micaready.eu/api">
+  <meta property="og:image" content="https://micaready.eu/og-image.png">
+  <meta property="og:site_name" content="SENTINEL">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="API Reference — SENTINEL | MiCA Compliance API">
+  <meta name="twitter:description" content="Automate MiCA transaction classification, Modelo 172/173 XML generation, and regulatory alerts via the SENTINEL API.">
+  <meta name="twitter:image" content="https://micaready.eu/og-image.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "SENTINEL API Reference",
+    "description": "Programmatic access to MiCA transaction classification, Modelo 172/173 XML generation, and EU regulatory alerts.",
+    "url": "https://micaready.eu/api",
+    "provider": {
+      "@type": "Organization",
+      "name": "True Nordic Capital",
+      "url": "https://micaready.eu"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="/shared.css">
+
+  <style>
+    :root {
+      --bg-void:         #000000;
+      --bg-surface:      #080808;
+      --bg-elevated:     #0F0F0F;
+      --bg-border:       #1A1A1A;
+      --bg-subtle:       #141414;
+      --text-primary:    #FFFFFF;
+      --text-secondary:  #ABABBA;
+      --text-muted:      #4A4A5A;
+      --text-mono:       #A8B4C0;
+      --accent:          #00E5BD;
+      --accent-dim:      #00E5BD22;
+      --accent-border:   #00E5BD44;
+      --status-ok:       #00E5BD;
+      --status-warning:  #F59E0B;
+      --status-info:     #6B8CFF;
+      --font-display:    'Syne', 'DM Sans', sans-serif;
+      --font-ui:         'DM Sans', system-ui, sans-serif;
+      --font-mono:       'JetBrains Mono', 'Cascadia Mono', monospace;
+      --radius-card:     4px;
+      --radius-pill:     9999px;
+      --nav-height:      60px;
+      --banner-height:   37px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(60px + 37px + 24px); }
+
+    body {
+      background: var(--bg-void);
+      color: var(--text-primary);
+      font-family: var(--font-ui);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ──────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      z-index: 200;
+      background: rgba(0,0,0,0.88);
+      border-bottom: 1px solid var(--bg-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo svg { color: var(--accent); }
+    .nav-wordmark {
+      font-family: var(--font-display);
+      font-size: 15px; font-weight: 800;
+      color: var(--text-primary); letter-spacing: 0.14em;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 36px; list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-ui); font-size: 13px; font-weight: 500;
+      color: var(--text-secondary); text-decoration: none;
+      transition: color 150ms ease;
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-links a.active { color: var(--accent); }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--text-primary); color: #000;
+      border: none; border-radius: var(--radius-pill);
+      padding: 10px 24px; font-family: var(--font-ui);
+      font-size: 13px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      cursor: pointer; text-decoration: none;
+      transition: background 150ms ease, color 150ms ease; white-space: nowrap;
+    }
+    .btn-primary:hover { background: var(--accent); color: #000; }
+
+    .btn-accent {
+      display: inline-block;
+      background: var(--accent); color: #000;
+      border: none; border-radius: var(--radius-pill);
+      padding: 14px 32px; font-family: var(--font-ui);
+      font-size: 14px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      cursor: pointer; text-decoration: none;
+      transition: opacity 150ms ease; white-space: nowrap;
+    }
+    .btn-accent:hover { opacity: 0.88; }
+
+    /* ── BANNER ───────────────────────────────────── */
+    .countdown-banner {
+      position: fixed;
+      top: var(--nav-height); left: 0; right: 0;
+      height: var(--banner-height);
+      background: #0A0A0A;
+      border-bottom: 1px solid #1E1E1E;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+      color: var(--text-secondary); letter-spacing: 0.08em;
+      z-index: 190;
+    }
+    #countdownDisplay { color: var(--accent); font-weight: 700; }
+
+    /* ── PAGE OFFSET ──────────────────────────────── */
+    .page-offset {
+      height: calc(var(--nav-height) + var(--banner-height));
+    }
+
+    /* ── PAGE HEADER ──────────────────────────────── */
+    .page-header {
+      padding: 80px 48px 64px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .page-header-label {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.18em;
+      color: var(--accent); margin-bottom: 16px;
+    }
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 56px); font-weight: 800; line-height: 1.05;
+      color: var(--text-primary); margin-bottom: 20px;
+    }
+    .page-header-sub {
+      font-size: 18px; line-height: 1.6; color: var(--text-secondary);
+      max-width: 640px; margin-bottom: 32px;
+    }
+    .header-badges {
+      display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 14px; border-radius: 3px;
+      font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .badge-teal { background: var(--accent-dim); color: var(--accent); border: 1px solid var(--accent-border); }
+    .badge-muted { background: #111; color: var(--text-muted); border: 1px solid #1A1A1A; }
+
+    /* ── LAYOUT ───────────────────────────────────── */
+    .api-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px 120px;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR ──────────────────────────────────── */
+    .api-sidebar {
+      position: sticky;
+      top: calc(var(--nav-height) + var(--banner-height) + 32px);
+      padding-right: 40px;
+    }
+    .sidebar-section {
+      margin-bottom: 28px;
+    }
+    .sidebar-heading {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.16em;
+      color: var(--text-muted); margin-bottom: 10px;
+    }
+    .sidebar-links {
+      list-style: none; display: flex; flex-direction: column; gap: 2px;
+    }
+    .sidebar-links a {
+      display: block; padding: 5px 10px;
+      font-size: 13px; color: var(--text-secondary);
+      text-decoration: none; border-radius: 3px;
+      transition: color 150ms ease, background 150ms ease;
+    }
+    .sidebar-links a:hover { color: var(--text-primary); background: var(--bg-surface); }
+    .sidebar-links a.active { color: var(--accent); background: var(--accent-dim); }
+
+    /* ── MAIN CONTENT ─────────────────────────────── */
+    .api-main { min-width: 0; }
+
+    .api-section {
+      margin-bottom: 72px;
+      scroll-margin-top: calc(var(--nav-height) + var(--banner-height) + 32px);
+    }
+    .api-section-label {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.16em;
+      color: var(--accent); margin-bottom: 10px;
+    }
+    .api-section h2 {
+      font-family: var(--font-display); font-size: 26px; font-weight: 800;
+      color: var(--text-primary); margin-bottom: 16px; line-height: 1.15;
+    }
+    .api-section p {
+      font-size: 15px; line-height: 1.7; color: var(--text-secondary);
+      margin-bottom: 20px; max-width: 680px;
+    }
+    .api-section ul {
+      margin-left: 20px; margin-bottom: 20px;
+    }
+    .api-section ul li {
+      font-size: 15px; line-height: 1.7; color: var(--text-secondary); margin-bottom: 6px;
+    }
+    .api-section ul li strong { color: var(--text-primary); }
+
+    /* ── DIVIDER ──────────────────────────────────── */
+    .divider {
+      height: 1px; background: var(--bg-border);
+      margin-bottom: 72px;
+    }
+
+    /* ── ENDPOINT CARD ────────────────────────────── */
+    .endpoint-card {
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-card);
+      background: var(--bg-surface);
+      margin-bottom: 32px;
+      overflow: hidden;
+    }
+    .endpoint-header {
+      display: flex; align-items: center; gap: 14px;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--bg-border);
+      background: var(--bg-elevated);
+      cursor: pointer;
+    }
+    .method {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 3px; letter-spacing: 0.08em;
+    }
+    .method-post { background: #0d2e1a; color: #4ade80; border: 1px solid #166534; }
+    .method-get  { background: #0d1f3a; color: #60a5fa; border: 1px solid #1e3a5f; }
+    .endpoint-path {
+      font-family: var(--font-mono); font-size: 14px; font-weight: 500;
+      color: var(--text-primary);
+    }
+    .endpoint-desc {
+      margin-left: auto; font-size: 13px; color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .endpoint-body {
+      padding: 0;
+    }
+    .endpoint-tabs {
+      display: flex; gap: 0;
+      border-bottom: 1px solid var(--bg-border);
+    }
+    .ep-tab {
+      padding: 10px 20px;
+      font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--text-muted);
+      cursor: pointer; border: none; background: none;
+      border-bottom: 2px solid transparent;
+      transition: color 150ms, border-color 150ms;
+    }
+    .ep-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .ep-tab:hover { color: var(--text-secondary); }
+
+    /* ── CODE BLOCK ───────────────────────────────── */
+    pre {
+      margin: 0; padding: 24px;
+      font-family: var(--font-mono); font-size: 13px; line-height: 1.7;
+      color: var(--text-mono);
+      background: #060810;
+      overflow-x: auto;
+    }
+    .code-comment { color: #3a4a5a; }
+    .code-key     { color: #60a5fa; }
+    .code-str     { color: #a3e635; }
+    .code-num     { color: #fb923c; }
+    .code-kw      { color: var(--accent); }
+    .code-url     { color: #c084fc; }
+    .inline-code {
+      font-family: var(--font-mono); font-size: 12px;
+      background: var(--bg-elevated); color: var(--accent);
+      padding: 2px 7px; border-radius: 3px;
+      border: 1px solid var(--bg-border);
+    }
+
+    /* ── AUTH TABLE ───────────────────────────────── */
+    .api-table {
+      width: 100%; border-collapse: collapse; margin-bottom: 24px;
+    }
+    .api-table th {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--text-muted); text-align: left;
+      padding: 10px 16px; border-bottom: 1px solid var(--bg-border);
+    }
+    .api-table td {
+      font-size: 14px; color: var(--text-secondary);
+      padding: 12px 16px; border-bottom: 1px solid #111;
+      vertical-align: top;
+    }
+    .api-table td:first-child {
+      font-family: var(--font-mono); font-size: 12px; color: var(--accent);
+    }
+    .api-table tr:last-child td { border-bottom: none; }
+
+    /* ── RATE LIMIT GRID ──────────────────────────── */
+    .rate-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 8px; margin-bottom: 28px;
+    }
+    .rate-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-card);
+      padding: 20px 24px;
+    }
+    .rate-plan {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--text-muted); margin-bottom: 8px;
+    }
+    .rate-value {
+      font-family: var(--font-display); font-size: 26px; font-weight: 800;
+      color: var(--text-primary); margin-bottom: 4px;
+    }
+    .rate-unit {
+      font-size: 13px; color: var(--text-muted);
+    }
+    .rate-note {
+      margin-top: 8px; font-size: 12px; color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+    .rate-card.highlighted {
+      border-color: var(--accent-border);
+      background: var(--accent-dim);
+    }
+    .rate-card.highlighted .rate-value { color: var(--accent); }
+    .rate-card.highlighted .rate-plan { color: var(--accent); }
+
+    /* ── ONBOARDING NOTE ──────────────────────────── */
+    .onboarding-note {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius-card);
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .onboarding-note-label {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--accent); margin-bottom: 10px;
+    }
+    .onboarding-note p {
+      font-size: 14px; line-height: 1.6; color: var(--text-secondary);
+      margin: 0; max-width: 100%;
+    }
+
+    /* ── CTA BOX ──────────────────────────────────── */
+    .api-cta-box {
+      background: linear-gradient(135deg, #060810 0%, #0a1a15 100%);
+      border: 1px solid var(--accent-border);
+      border-radius: 6px;
+      padding: 52px 56px;
+      text-align: center;
+      margin-top: 16px;
+    }
+    .api-cta-box h2 {
+      font-family: var(--font-display);
+      font-size: 32px; font-weight: 800;
+      color: var(--text-primary); margin-bottom: 14px;
+    }
+    .api-cta-box p {
+      font-size: 16px; color: var(--text-secondary);
+      margin-bottom: 32px; max-width: 520px; margin-left: auto; margin-right: auto;
+    }
+    .cta-sub {
+      margin-top: 18px; font-size: 13px; color: var(--text-muted);
+    }
+
+    /* ── FOOTER ───────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--bg-border);
+      padding: 40px 48px;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .footer-logo {
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none; color: var(--text-primary);
+    }
+    .footer-logo svg { color: var(--accent); }
+    .footer-wordmark {
+      font-family: var(--font-display); font-size: 13px; font-weight: 800;
+      letter-spacing: 0.14em;
+    }
+    .footer-links {
+      display: flex; gap: 28px; list-style: none; flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-size: 13px; color: var(--text-muted); text-decoration: none;
+      transition: color 150ms ease;
+    }
+    .footer-links a:hover { color: var(--text-primary); }
+    .footer-social {
+      display: flex; gap: 16px; align-items: center;
+    }
+    .footer-social a {
+      width: 30px; height: 30px; color: var(--text-muted);
+      display: flex; align-items: center; justify-content: center;
+      transition: color 150ms ease; text-decoration: none;
+    }
+    .footer-social a:hover { color: var(--text-primary); }
+    .footer-social svg { width: 16px; height: 16px; }
+    .footer-disclaimer {
+      font-size: 11px; color: var(--text-muted); line-height: 1.5;
+    }
+
+    /* ── REVEAL ───────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 500ms ease, transform 500ms ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 768px) {
+      .api-layout { grid-template-columns: 1fr; padding: 0 24px 80px; }
+      .api-sidebar { display: none; }
+      .page-header { padding: 48px 24px 40px; }
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .rate-grid { grid-template-columns: 1fr; }
+      .api-cta-box { padding: 40px 28px; }
+      .endpoint-desc { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav id="mainNav">
+    <a href="/" class="nav-logo">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <span class="nav-wordmark">SENTINEL</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#how-it-works">How It Works</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a href="/faq">FAQ</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/api" class="active">API</a></li>
+    </ul>
+    <a href="/pricing" class="btn-primary">Get Started</a>
+  </nav>
+
+  <!-- ═══════════════ COUNTDOWN BANNER ═══════════════ -->
+  <div class="countdown-banner">
+    ⚠&nbsp; MiCA full enforcement:&nbsp;<span id="countdownDisplay">calculating...</span>&nbsp;— 1 July 2026
+  </div>
+
+  <div class="page-offset"></div>
+
+  <!-- ═══════════════ PAGE HEADER ═══════════════ -->
+  <header class="page-header">
+    <div class="page-header-label">// API Reference</div>
+    <h1>Compliance infrastructure,<br>not just a dashboard.</h1>
+    <p class="page-header-sub">
+      The SENTINEL API lets you embed MiCA classification, automated Modelo XML generation, and regulatory alert delivery directly into your own systems. Built for CASPs who run their own tech stack.
+    </p>
+    <div class="header-badges">
+      <span class="badge badge-teal">REST / JSON</span>
+      <span class="badge badge-teal">HTTPS only</span>
+      <span class="badge badge-muted">CASP plan required</span>
+      <span class="badge badge-muted">API keys · bearer auth</span>
+    </div>
+  </header>
+
+  <!-- ═══════════════ LAYOUT ═══════════════ -->
+  <div class="api-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="api-sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Overview</div>
+        <ul class="sidebar-links">
+          <li><a href="#overview" class="active">What the API does</a></li>
+          <li><a href="#base-url">Base URL</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Authentication</div>
+        <ul class="sidebar-links">
+          <li><a href="#auth">API keys</a></li>
+          <li><a href="#rate-limits">Rate limits</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Endpoints</div>
+        <ul class="sidebar-links">
+          <li><a href="#ep-classify">Classify transaction</a></li>
+          <li><a href="#ep-batch">Batch classification</a></li>
+          <li><a href="#ep-modelo">Generate Modelo XML</a></li>
+          <li><a href="#ep-alerts">Regulatory alerts</a></li>
+          <li><a href="#ep-status">Compliance status</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Access</div>
+        <ul class="sidebar-links">
+          <li><a href="#onboarding">Full docs & onboarding</a></li>
+          <li><a href="#request-access">Request API access</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="api-main">
+
+      <!-- OVERVIEW -->
+      <section id="overview" class="api-section reveal">
+        <div class="api-section-label">Overview</div>
+        <h2>What the API does</h2>
+        <p>
+          SENTINEL exposes three core compliance capabilities as HTTP endpoints, so you can integrate them into your own back-office, reporting pipeline, or customer-facing compliance portal.
+        </p>
+        <ul>
+          <li><strong>Transaction classification</strong> — Submit raw crypto transactions and get back a MiCA-compliant asset type, applicable regulation, and Modelo field mapping. Supports single transactions or batches up to 5,000 rows.</li>
+          <li><strong>Modelo XML generation</strong> — Pass a reporting period and classified transaction data; receive a valid Modelo 172/173 XML file ready for AEAT submission. No manual data entry.</li>
+          <li><strong>Regulatory alerts</strong> — Subscribe your endpoint to webhook notifications when CNMV, AEAT, or EBA publish relevant guidance updates, deadline changes, or threshold adjustments affecting your obligation scope.</li>
+        </ul>
+        <p>
+          All responses follow a consistent envelope format. Errors are structured with machine-readable codes. The API is stateless — you own and store the underlying transaction data.
+        </p>
+      </section>
+
+      <!-- BASE URL -->
+      <section id="base-url" class="api-section reveal" style="margin-top: -24px; margin-bottom: 48px;">
+        <div class="api-section-label">Base URL</div>
+        <div class="endpoint-card" style="cursor:default;">
+          <pre style="padding: 18px 24px;"><span class="code-kw">https://</span><span class="code-url">api.micaready.eu</span><span class="code-kw">/v1</span></pre>
+        </div>
+        <p style="font-size: 13px; color: var(--text-muted); margin: 0;">
+          All endpoints are versioned under <span class="inline-code">/v1</span>. The API is served exclusively over HTTPS. HTTP requests are rejected.
+        </p>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- AUTH -->
+      <section id="auth" class="api-section reveal">
+        <div class="api-section-label">Authentication</div>
+        <h2>API keys</h2>
+        <p>
+          Authenticate every request with a bearer token in the <span class="inline-code">Authorization</span> header. API keys are issued per account after onboarding and can be rotated at any time from your dashboard.
+        </p>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header" style="cursor: default;">
+            <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);">REQUEST HEADER</span>
+          </div>
+          <pre><span class="code-comment"># Include in every request</span>
+<span class="code-key">Authorization</span>: <span class="code-str">Bearer YOUR_API_KEY_HERE</span>
+
+<span class="code-comment"># Example with curl</span>
+<span class="code-kw">curl</span> https://api.micaready.eu/v1/classify \
+  -H <span class="code-str">"Authorization: Bearer YOUR_API_KEY_HERE"</span> \
+  -H <span class="code-str">"Content-Type: application/json"</span> \
+  -d <span class="code-str">'{ ... }'</span></pre>
+        </div>
+
+        <table class="api-table">
+          <thead>
+            <tr>
+              <th>Key format</th>
+              <th>Environment</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>YOUR_LIVE_KEY</td>
+              <td>Production</td>
+              <td>Counts against your monthly quota. Rotate immediately if compromised.</td>
+            </tr>
+            <tr>
+              <td>YOUR_TEST_KEY</td>
+              <td>Sandbox</td>
+              <td>Returns fixture data. Free, no quota. Available after onboarding.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- RATE LIMITS -->
+      <section id="rate-limits" class="api-section reveal">
+        <div class="api-section-label">Rate limits</div>
+        <h2>Request limits by plan</h2>
+        <p>
+          Limits apply per calendar month and per-minute for burst control. Exceeded requests return <span class="inline-code">429 Too Many Requests</span> with a <span class="inline-code">Retry-After</span> header.
+        </p>
+
+        <div class="rate-grid">
+          <div class="rate-card">
+            <div class="rate-plan">Individual</div>
+            <div class="rate-value">—</div>
+            <div class="rate-unit">API access not included</div>
+            <div class="rate-note">Dashboard only</div>
+          </div>
+          <div class="rate-card">
+            <div class="rate-plan">Professional</div>
+            <div class="rate-value">10k</div>
+            <div class="rate-unit">API calls / month</div>
+            <div class="rate-note">60 req / min burst</div>
+          </div>
+          <div class="rate-card highlighted">
+            <div class="rate-plan">CASP</div>
+            <div class="rate-value">Unlimited</div>
+            <div class="rate-unit">API calls / month</div>
+            <div class="rate-note">300 req / min · SLA 99.9%</div>
+          </div>
+        </div>
+
+        <p style="font-size: 13px; color: var(--text-muted);">
+          Batch endpoints (up to 5,000 transactions per call) count as a single API call against your quota regardless of batch size. Webhook deliveries do not count against request limits.
+        </p>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ENDPOINT: CLASSIFY -->
+      <section id="ep-classify" class="api-section reveal">
+        <div class="api-section-label">Endpoints</div>
+        <h2>Classify a transaction</h2>
+        <p>
+          Submit a single crypto transaction and receive a MiCA asset classification, the applicable regulatory framework, and the correct Modelo 172/173 field mapping.
+        </p>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header" style="cursor:default;">
+            <span class="method method-post">POST</span>
+            <span class="endpoint-path">/v1/classify</span>
+            <span class="endpoint-desc">Single transaction · ~80ms p50</span>
+          </div>
+          <div class="endpoint-body">
+            <div class="endpoint-tabs">
+              <button class="ep-tab active">Request</button>
+              <button class="ep-tab" onclick="toggleTab(this, 'resp-classify')">Response</button>
+            </div>
+            <div id="req-classify">
+<pre>{
+  <span class="code-key">"txid"</span>:          <span class="code-str">"0xa3f8...c291"</span>,
+  <span class="code-key">"asset"</span>:         <span class="code-str">"USDC"</span>,
+  <span class="code-key">"asset_address"</span>: <span class="code-str">"0xa0b8...6c08"</span>,
+  <span class="code-key">"chain"</span>:         <span class="code-str">"ethereum"</span>,
+  <span class="code-key">"amount"</span>:        <span class="code-num">4500.00</span>,
+  <span class="code-key">"currency"</span>:      <span class="code-str">"EUR"</span>,
+  <span class="code-key">"direction"</span>:     <span class="code-str">"receive"</span>,
+  <span class="code-key">"timestamp"</span>:     <span class="code-str">"2026-03-15T14:22:00Z"</span>,
+  <span class="code-key">"counterparty"</span>:  <span class="code-str">"0x1f9840...0eb8"</span>
+}</pre>
+            </div>
+            <div id="resp-classify" style="display:none;">
+<pre>{
+  <span class="code-key">"ok"</span>: <span class="code-kw">true</span>,
+  <span class="code-key">"txid"</span>: <span class="code-str">"0xa3f8...c291"</span>,
+  <span class="code-key">"classification"</span>: {
+    <span class="code-key">"asset_type"</span>:      <span class="code-str">"e-money-token"</span>,
+    <span class="code-key">"mica_category"</span>:   <span class="code-str">"Title III EMT"</span>,
+    <span class="code-key">"regulation"</span>:      <span class="code-str">"MiCA Art. 48–58"</span>,
+    <span class="code-key">"dac8_reportable"</span>: <span class="code-kw">true</span>,
+    <span class="code-key">"modelo_172"</span>: {
+      <span class="code-key">"campo"</span>:          <span class="code-str">"C04"</span>,
+      <span class="code-key">"tipo_operacion"</span>: <span class="code-str">"adquisicion"</span>,
+      <span class="code-key">"valor_eur"</span>:      <span class="code-num">4500.00</span>
+    }
+  },
+  <span class="code-key">"confidence"</span>: <span class="code-num">0.98</span>,
+  <span class="code-key">"processed_at"</span>: <span class="code-str">"2026-03-15T14:22:01.083Z"</span>
+}</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ENDPOINT: BATCH -->
+      <section id="ep-batch" class="api-section reveal">
+        <h2>Batch classification</h2>
+        <p>
+          Classify up to 5,000 transactions per call. Results are returned synchronously for batches under 500 items; larger batches are processed asynchronously and delivered to your webhook.
+        </p>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header" style="cursor:default;">
+            <span class="method method-post">POST</span>
+            <span class="endpoint-path">/v1/classify/batch</span>
+            <span class="endpoint-desc">Up to 5,000 tx · async ≥500</span>
+          </div>
+          <div class="endpoint-body">
+            <div class="endpoint-tabs">
+              <button class="ep-tab active">Request</button>
+              <button class="ep-tab" onclick="toggleTab(this, 'resp-batch')">Response</button>
+            </div>
+            <div id="req-batch">
+<pre>{
+  <span class="code-key">"transactions"</span>: [
+    {
+      <span class="code-key">"txid"</span>:      <span class="code-str">"0xa3f8...c291"</span>,
+      <span class="code-key">"asset"</span>:     <span class="code-str">"BTC"</span>,
+      <span class="code-key">"amount"</span>:    <span class="code-num">0.15</span>,
+      <span class="code-key">"currency"</span>:  <span class="code-str">"EUR"</span>,
+      <span class="code-key">"direction"</span>: <span class="code-str">"send"</span>,
+      <span class="code-key">"timestamp"</span>: <span class="code-str">"2026-03-15T10:00:00Z"</span>
+    },
+    <span class="code-comment">// ... up to 5,000 items</span>
+  ],
+  <span class="code-key">"webhook_url"</span>: <span class="code-str">"https://your-system.com/sentinel-webhook"</span>,
+  <span class="code-key">"period"</span>:      <span class="code-str">"2026-Q1"</span>
+}</pre>
+            </div>
+            <div id="resp-batch" style="display:none;">
+<pre><span class="code-comment">// Synchronous (< 500 tx)</span>
+{
+  <span class="code-key">"ok"</span>: <span class="code-kw">true</span>,
+  <span class="code-key">"mode"</span>: <span class="code-str">"sync"</span>,
+  <span class="code-key">"results"</span>: [ <span class="code-comment">/* array of classification objects */</span> ],
+  <span class="code-key">"summary"</span>: {
+    <span class="code-key">"total"</span>:        <span class="code-num">142</span>,
+    <span class="code-key">"classified"</span>:   <span class="code-num">140</span>,
+    <span class="code-key">"review_needed"</span>: <span class="code-num">2</span>,
+    <span class="code-key">"dac8_reportable"</span>: <span class="code-num">89</span>
+  }
+}
+
+<span class="code-comment">// Asynchronous (≥ 500 tx)</span>
+{
+  <span class="code-key">"ok"</span>: <span class="code-kw">true</span>,
+  <span class="code-key">"mode"</span>:    <span class="code-str">"async"</span>,
+  <span class="code-key">"job_id"</span>:  <span class="code-str">"job_2026Q1_a9b3c1"</span>,
+  <span class="code-key">"eta_seconds"</span>: <span class="code-num">12</span>,
+  <span class="code-key">"webhook"</span>: <span class="code-str">"https://your-system.com/sentinel-webhook"</span>
+}</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ENDPOINT: MODELO -->
+      <section id="ep-modelo" class="api-section reveal">
+        <h2>Generate Modelo XML</h2>
+        <p>
+          Pass a reporting period and your classified transaction data. SENTINEL returns a valid Modelo 172 and/or 173 XML file, ready for submission to AEAT. Schema is validated against the current AEAT XSD before delivery.
+        </p>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header" style="cursor:default;">
+            <span class="method method-post">POST</span>
+            <span class="endpoint-path">/v1/modelo/generate</span>
+            <span class="endpoint-desc">172 · 173 · 721</span>
+          </div>
+          <div class="endpoint-body">
+            <div class="endpoint-tabs">
+              <button class="ep-tab active">Request</button>
+              <button class="ep-tab" onclick="toggleTab(this, 'resp-modelo')">Response</button>
+            </div>
+            <div id="req-modelo">
+<pre>{
+  <span class="code-key">"period"</span>:       <span class="code-str">"2026"</span>,
+  <span class="code-key">"modelo"</span>:       <span class="code-str">"172"</span>,       <span class="code-comment">// "172" | "173" | "721"</span>
+  <span class="code-key">"nif"</span>:          <span class="code-str">"A12345678"</span>,
+  <span class="code-key">"razon_social"</span>: <span class="code-str">"Criptan SL"</span>,
+  <span class="code-key">"transactions"</span>: [
+    <span class="code-comment">// Array of classified tx from /v1/classify</span>
+    <span class="code-comment">// or a job_id from a completed batch job</span>
+    { <span class="code-key">"job_id"</span>: <span class="code-str">"job_2026Q1_a9b3c1"</span> }
+  ],
+  <span class="code-key">"validate_schema"</span>: <span class="code-kw">true</span>  <span class="code-comment">// recommended</span>
+}</pre>
+            </div>
+            <div id="resp-modelo" style="display:none;">
+<pre>{
+  <span class="code-key">"ok"</span>: <span class="code-kw">true</span>,
+  <span class="code-key">"modelo"</span>:  <span class="code-str">"172"</span>,
+  <span class="code-key">"period"</span>:  <span class="code-str">"2026"</span>,
+  <span class="code-key">"nif"</span>:     <span class="code-str">"A12345678"</span>,
+  <span class="code-key">"schema_valid"</span>: <span class="code-kw">true</span>,
+  <span class="code-key">"download_url"</span>: <span class="code-str">"https://api.micaready.eu/v1/files/m172_2026_A12345678.xml"</span>,
+  <span class="code-key">"expires_at"</span>:  <span class="code-str">"2026-04-01T00:00:00Z"</span>,  <span class="code-comment">// 7-day TTL</span>
+  <span class="code-key">"summary"</span>: {
+    <span class="code-key">"total_records"</span>:    <span class="code-num">1842</span>,
+    <span class="code-key">"total_eur_value"</span>:  <span class="code-num">2481900.50</span>,
+    <span class="code-key">"reportable_users"</span>: <span class="code-num">214</span>
+  }
+}</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ENDPOINT: ALERTS -->
+      <section id="ep-alerts" class="api-section reveal">
+        <h2>Regulatory alerts webhook</h2>
+        <p>
+          Register a webhook endpoint to receive push notifications when CNMV, AEAT, or EBA publish updates relevant to your compliance scope. No polling required.
+        </p>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header" style="cursor:default;">
+            <span class="method method-post">POST</span>
+            <span class="endpoint-path">/v1/alerts/webhooks</span>
+            <span class="endpoint-desc">Register endpoint</span>
+          </div>
+          <div class="endpoint-body">
+            <div class="endpoint-tabs">
+              <button class="ep-tab active">Request</button>
+              <button class="ep-tab" onclick="toggleTab(this, 'resp-alerts')">Webhook payload</button>
+            </div>
+            <div id="req-alerts">
+<pre>{
+  <span class="code-key">"url"</span>:    <span class="code-str">"https://your-system.com/compliance-alerts"</span>,
+  <span class="code-key">"secret"</span>: <span class="code-str">"whsec_your_signing_secret"</span>,
+  <span class="code-key">"events"</span>: [
+    <span class="code-str">"cnmv.guidance_update"</span>,
+    <span class="code-str">"aeat.threshold_change"</span>,
+    <span class="code-str">"eba.mica_opinion"</span>,
+    <span class="code-str">"deadline.reminder"</span>
+  ]
+}</pre>
+            </div>
+            <div id="resp-alerts" style="display:none;">
+<pre><span class="code-comment">// Delivered to your endpoint via HTTP POST</span>
+{
+  <span class="code-key">"event"</span>:     <span class="code-str">"aeat.threshold_change"</span>,
+  <span class="code-key">"severity"</span>:  <span class="code-str">"high"</span>,
+  <span class="code-key">"source"</span>:    <span class="code-str">"AEAT BOE-2026-XXXX"</span>,
+  <span class="code-key">"published"</span>: <span class="code-str">"2026-03-20T09:00:00Z"</span>,
+  <span class="code-key">"summary"</span>:   <span class="code-str">"Modelo 172 reporting threshold lowered to €1,000 for 2027 fiscal year."</span>,
+  <span class="code-key">"affected"</span>:  [<span class="code-str">"modelo_172"</span>, <span class="code-str">"dac8"</span>],
+  <span class="code-key">"action_required"</span>: <span class="code-kw">true</span>,
+  <span class="code-key">"reference_url"</span>: <span class="code-str">"https://www.boe.es/..."</span>
+}</pre>
+            </div>
+          </div>
+        </div>
+
+        <p style="font-size: 13px; color: var(--text-muted);">
+          Webhook payloads are signed with HMAC-SHA256 using your <span class="inline-code">whsec_</span> secret. Verify the <span class="inline-code">X-SENTINEL-Signature</span> header on every delivery.
+        </p>
+      </section>
+
+      <!-- ENDPOINT: STATUS -->
+      <section id="ep-status" class="api-section reveal">
+        <h2>Compliance status</h2>
+        <p>
+          Retrieve the current compliance posture for an account or reporting period — outstanding obligations, upcoming deadlines, and any open items requiring review.
+        </p>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header" style="cursor:default;">
+            <span class="method method-get">GET</span>
+            <span class="endpoint-path">/v1/status</span>
+            <span class="endpoint-desc">Account compliance snapshot</span>
+          </div>
+          <div class="endpoint-body">
+            <div class="endpoint-tabs">
+              <button class="ep-tab active">Response</button>
+            </div>
+<pre>{
+  <span class="code-key">"ok"</span>: <span class="code-kw">true</span>,
+  <span class="code-key">"account"</span>: {
+    <span class="code-key">"nif"</span>:          <span class="code-str">"A12345678"</span>,
+    <span class="code-key">"plan"</span>:         <span class="code-str">"casp"</span>,
+    <span class="code-key">"api_calls_used"</span>: <span class="code-num">4821</span>
+  },
+  <span class="code-key">"compliance"</span>: {
+    <span class="code-key">"overall"</span>: <span class="code-str">"action_required"</span>,
+    <span class="code-key">"obligations"</span>: [
+      {
+        <span class="code-key">"type"</span>:     <span class="code-str">"modelo_172"</span>,
+        <span class="code-key">"period"</span>:   <span class="code-str">"2025"</span>,
+        <span class="code-key">"due"</span>:      <span class="code-str">"2026-03-31"</span>,
+        <span class="code-key">"status"</span>:   <span class="code-str">"pending_submission"</span>,
+        <span class="code-key">"days_left"</span>: <span class="code-num">5</span>
+      },
+      {
+        <span class="code-key">"type"</span>:     <span class="code-str">"mica_casp_licence"</span>,
+        <span class="code-key">"due"</span>:      <span class="code-str">"2026-07-01"</span>,
+        <span class="code-key">"status"</span>:   <span class="code-str">"in_progress"</span>,
+        <span class="code-key">"days_left"</span>: <span class="code-num">97</span>
+      }
+    ]
+  },
+  <span class="code-key">"generated_at"</span>: <span class="code-str">"2026-03-26T06:00:00Z"</span>
+}</pre>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ONBOARDING NOTE -->
+      <section id="onboarding" class="api-section reveal">
+        <div class="api-section-label">Full documentation</div>
+        <h2>Docs are available after onboarding</h2>
+
+        <div class="onboarding-note">
+          <div class="onboarding-note-label">ℹ Note</div>
+          <p>
+            This page is an integration teaser — enough for your engineering team to assess feasibility before you commit to a plan. The full API reference (all parameters, error codes, sandbox environment, SDK examples in Python and TypeScript, and Postman collection) is provided during CASP onboarding. Onboarding takes under 48 hours from sign-up to live credentials.
+          </p>
+        </div>
+
+        <p>What's included in the CASP onboarding package:</p>
+        <ul>
+          <li><strong>Full OpenAPI 3.1 spec</strong> — import directly into Postman, Insomnia, or your own API gateway</li>
+          <li><strong>Sandbox environment</strong> — test against realistic fixture data with no quota consumption</li>
+          <li><strong>Python & TypeScript SDKs</strong> — thin wrappers with types, retries, and error handling built in</li>
+          <li><strong>Webhook signature verification examples</strong> — copy-paste into your stack</li>
+          <li><strong>Dedicated Slack channel</strong> — direct access to the engineering team during integration</li>
+          <li><strong>AEAT test file validation</strong> — verify your generated Modelo XML before the real submission window opens</li>
+        </ul>
+      </section>
+
+      <!-- CTA -->
+      <section id="request-access" class="api-section reveal">
+        <div class="api-cta-box">
+          <div class="api-section-label" style="text-align:center; margin-bottom:16px;">CASP plan · API access</div>
+          <h2>Ready to integrate?</h2>
+          <p>
+            API access is included on the CASP plan at €1,500/month. Send your details and we'll start onboarding within 24 hours.
+          </p>
+          <a
+            href="mailto:contact@micaready.eu?subject=API%20Access%20Request%20%E2%80%94%20CASP%20Plan&body=Hi%2C%0A%0AWe%27re%20interested%20in%20API%20access%20under%20the%20CASP%20plan.%0A%0ACompany%3A%0ANIF%3A%0ATech%20stack%3A%0AExpected%20monthly%20transaction%20volume%3A%0A%0AThanks"
+            class="btn-accent"
+          >
+            Request API Access
+          </a>
+          <div class="cta-sub">
+            Or view the <a href="/pricing" style="color: var(--accent); text-decoration: none;">full pricing page</a> to compare plans.
+            Onboarding starts within 24 hours of sign-up.
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <a href="/" class="footer-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span class="footer-wordmark">SENTINEL</span>
+      </a>
+      <ul class="footer-links">
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/api">API</a></li>
+        <li><a href="/#deadlines">Deadlines</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="https://linkedin.com/in/micaready" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://x.com/micareadyeu" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="mailto:contact@micaready.eu" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+      </div>
+      <div>
+        <p class="footer-disclaimer" style="margin-bottom: 8px;">
+          SENTINEL provides compliance tooling, not legal advice. Consult a qualified legal professional for all regulatory decisions. True Nordic Capital © 2026.
+        </p>
+        <div style="font-family: var(--font-ui); font-size: 11px;">
+          <a href="/privacy" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
+          <span style="margin: 0 8px; color: var(--bg-border);">|</span>
+          <a href="/terms" style="color: var(--text-muted); text-decoration: none;">Terms of Service</a>
+          <span style="margin: 0 8px; color: var(--bg-border);">|</span>
+          <a href="/security" style="color: var(--text-muted); text-decoration: none;">Security &amp; Data</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Countdown ──────────────────────────────────────────────────────────────
+    function updateCountdown() {
+      const deadline = new Date('2026-07-01T00:00:00Z');
+      const now = new Date();
+      const diff = deadline - now;
+      if (diff <= 0) { document.getElementById('countdownDisplay').textContent = 'ENFORCEMENT ACTIVE'; return; }
+      const days = Math.floor(diff / 86400000);
+      document.getElementById('countdownDisplay').textContent = days + ' days';
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+
+    // ── Reveal on scroll ───────────────────────────────────────────────────────
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.08 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Sidebar active tracking ────────────────────────────────────────────────
+    const sections = document.querySelectorAll('.api-section[id]');
+    const sideLinks = document.querySelectorAll('.sidebar-links a');
+    const scrollOffset = 120;
+
+    function updateSidebarActive() {
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY + scrollOffset >= sec.offsetTop) current = sec.id;
+      });
+      sideLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    }
+    window.addEventListener('scroll', updateSidebarActive, { passive: true });
+    updateSidebarActive();
+
+    // ── Tab toggle ─────────────────────────────────────────────────────────────
+    function toggleTab(btn, showId) {
+      const card = btn.closest('.endpoint-card');
+      // Deactivate all tabs
+      card.querySelectorAll('.ep-tab').forEach(t => t.classList.remove('active'));
+      // Hide all panels (pre blocks / divs that are siblings in endpoint-body)
+      card.querySelectorAll('.endpoint-body > div[id]').forEach(d => d.style.display = 'none');
+      // Show correct panel and activate tab
+      btn.classList.add('active');
+      const panel = document.getElementById(showId);
+      if (panel) panel.style.display = 'block';
+    }
+
+    // First tab click on "Request" tabs (which don't call toggleTab — they show req div)
+    document.querySelectorAll('.ep-tab:first-child').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const card = this.closest('.endpoint-card');
+        card.querySelectorAll('.ep-tab').forEach(t => t.classList.remove('active'));
+        card.querySelectorAll('.endpoint-body > div[id]').forEach(d => d.style.display = 'none');
+        this.classList.add('active');
+        // Show first div[id] in endpoint-body
+        const first = card.querySelector('.endpoint-body > div[id]');
+        if (first) first.style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>
